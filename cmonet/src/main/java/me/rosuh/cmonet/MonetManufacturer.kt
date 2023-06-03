@@ -27,14 +27,13 @@ class MonetManufacturer(
 
     /**
      * cache in memory
-      */
+     */
     private var isForceSupport = sp.getValue(KEY_DYNAMIC_COLOR_FORCE, false)
 
     override fun isDynamicColorAvailable(): Boolean {
         val setContains =
             supportedSet.contains(Build.MANUFACTURER.lowercase()) || supportedSet.contains(Build.BRAND.lowercase())
-        return DynamicColors.isDynamicColorAvailable() && setContains
-                || isForceSupport
+        return DynamicColors.isDynamicColorAvailable() && setContains || isForceSupport
     }
 
     override fun setForceSupport(supported: Boolean) {
@@ -43,7 +42,7 @@ class MonetManufacturer(
     }
 
     companion object {
-        private const val TAG = "MonetManufacturer"
+//        private const val TAG = "MonetManufacturer"
         private const val KEY_DYNAMIC_COLOR_FORCE = "dynamic_color_force"
     }
 }

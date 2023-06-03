@@ -48,26 +48,31 @@ class SimpleSp(
                     putInt(key, value)
                 }
             }
+
             is Float -> {
                 sp.edit {
                     putFloat(key, value)
                 }
             }
+
             is String -> {
                 sp.edit {
                     putString(key, value)
                 }
             }
+
             is Long -> {
                 sp.edit {
                     putLong(key, value)
                 }
             }
+
             is Boolean -> {
                 sp.edit {
                     putBoolean(key, value)
                 }
             }
+
             else -> {
                 throw IllegalArgumentException("Not support such type yet!")
             }
@@ -80,18 +85,23 @@ class SimpleSp(
             is Int -> {
                 return sp.get(key, defaultValue)
             }
+
             is Float -> {
                 return sp.get(key, defaultValue)
             }
+
             is String -> {
                 return sp.get(key, defaultValue)
             }
+
             is Long -> {
                 return sp.get(key, defaultValue)
             }
+
             is Boolean -> {
                 return sp.get(key, defaultValue)
             }
+
             else -> {
                 throw IllegalArgumentException("Not support such type yet!")
             }

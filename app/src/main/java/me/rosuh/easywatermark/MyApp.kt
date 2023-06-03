@@ -13,6 +13,20 @@ import me.rosuh.easywatermark.data.repo.WaterMarkRepository
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
+//TODO ad
+//TODO firebase
+//TODO ic launcher
+//TODO color
+//TODO ad id, internet permission in manifest
+//TODO leak canary
+//TODO rate app
+//TODO share app
+//TODO more app
+//TODO policy
+//TODO keystore
+
+//done
+
 @HiltAndroidApp
 class MyApp : Application() {
 

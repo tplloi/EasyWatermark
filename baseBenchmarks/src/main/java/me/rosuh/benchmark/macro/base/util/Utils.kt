@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.benchmark.macro.base.util
+package me.rosuh.benchmark.macro.base.util
 
 const val TARGET_PACKAGE = "me.rosuh.easywatermark"
 const val DEFAULT_ITERATIONS = 10

@@ -13,7 +13,7 @@ object CMonet {
     private lateinit var application: Application
 
     fun init(application: Application, apply: Boolean = true) {
-        Log.d(TAG, "init")
+//        Log.d(TAG, "init")
         this.application = application
         monetManufacturer = MonetManufacturer(application)
         if (apply) {
@@ -22,7 +22,7 @@ object CMonet {
     }
 
     private fun applyToActivitiesIfAvailable(application: Application) {
-        Log.d(TAG, "applyToActivitiesIfAvailable")
+//        Log.d(TAG, "applyToActivitiesIfAvailable")
         if (isDynamicColorAvailable()) {
             DynamicColors.applyToActivitiesIfAvailable(application)
         }
@@ -35,12 +35,12 @@ object CMonet {
     }
 
     fun forceSupportDynamicColor() {
-        Log.d(TAG, "forceSupportDynamicColor")
+//        Log.d(TAG, "forceSupportDynamicColor")
         monetManufacturer.setForceSupport(true)
     }
 
     fun disableSupportDynamicColor() {
-        Log.d(TAG, "disableSupportDynamicColor")
+//        Log.d(TAG, "disableSupportDynamicColor")
         monetManufacturer.setForceSupport(false)
     }
 }
