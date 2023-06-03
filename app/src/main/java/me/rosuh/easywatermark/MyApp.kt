@@ -13,6 +13,7 @@ import me.rosuh.easywatermark.data.repo.WaterMarkRepository
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
+//TODO pkg name
 //TODO ad
 //TODO firebase
 //TODO ic launcher
@@ -24,6 +25,7 @@ import kotlin.system.exitProcess
 //TODO more app
 //TODO policy
 //TODO keystore
+//TODO proguard
 
 //done
 

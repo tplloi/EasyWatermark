@@ -11,6 +11,8 @@ plugins {
 android {
     compileSdk = (Apps.compileSdk)
     buildToolsVersion = (Apps.buildTools)
+    namespace = "me.rosuh.easywatermark"
+
     defaultConfig {
         applicationId = "me.rosuh.easywatermark"
         minSdk = (Apps.minSdk)
@@ -68,7 +70,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    namespace = "me.rosuh.easywatermark"
 
     lint {
         baseline = file("lint-baseline.xml")
@@ -119,15 +120,14 @@ dependencies {
 
     implementation(libs.colorpicker)
 
-
-    testImplementation(libs.test.junit)
-    testImplementation(libs.test.rules)
-    testImplementation(libs.test.runner)
-    androidTestImplementation(libs.mockito.core)
-    androidTestImplementation(libs.mockito.android)
-    androidTestImplementation(libs.robolectric)
-    androidTestImplementation(libs.hamcrest.library)
-    androidTestImplementation(libs.test.espresso.core)
-    androidTestImplementation(libs.test.uiautomator)
-    androidTestImplementation(libs.test.ext.junit)
+//    testImplementation(libs.test.junit)
+//    testImplementation(libs.test.rules)
+//    testImplementation(libs.test.runner)
+//    androidTestImplementation(libs.mockito.core)
+//    androidTestImplementation(libs.mockito.android)
+//    androidTestImplementation(libs.robolectric)
+//    androidTestImplementation(libs.hamcrest.library)
+//    androidTestImplementation(libs.test.espresso.core)
+//    androidTestImplementation(libs.test.uiautomator)
+//    androidTestImplementation(libs.test.ext.junit)
 }
