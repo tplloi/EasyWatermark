@@ -13,19 +13,19 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.mckimquyen.watermark.databinding.DialogEditTextBinding
+import com.mckimquyen.watermark.databinding.DlgEditTextBinding
 import com.mckimquyen.watermark.ui.UiState
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import kotlinx.coroutines.launch
 
-class EditTextContentFragment : BaseBindFragment<DialogEditTextBinding>() {
+class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): DialogEditTextBinding {
-        return DialogEditTextBinding.inflate(layoutInflater, container, false)
+    ): DlgEditTextBinding {
+        return DlgEditTextBinding.inflate(layoutInflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

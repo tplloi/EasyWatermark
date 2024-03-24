@@ -36,17 +36,17 @@ class CompressImageDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val root = inflater.inflate(R.layout.dialog_compress_img, container, false)
+        val root = inflater.inflate(R.layout.dlg_compress_img, container, false)
         with(root) {
-            cpbCompress = findViewById(R.id.cpb_compress)
-            tvCompressTips = findViewById(R.id.tv_compress_tips)
-            btnCancel = findViewById<MaterialButton>(R.id.btn_cancel).apply {
+            cpbCompress = findViewById(R.id.cpbCompress)
+            tvCompressTips = findViewById(R.id.tvCompressTips)
+            btnCancel = findViewById<MaterialButton>(R.id.btnCancel).apply {
                 setOnClickListener {
                     shareViewModel.cancelCompressJob()
                     dismissAllowingStateLoss()
                 }
             }
-            btnCompress = findViewById(R.id.btn_compress)
+            btnCompress = findViewById(R.id.btnCompress)
         }
         setTupState()
         shareViewModel.compressedResult.observe(

@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTitle"
         style="@style/TextAppearance.Material3.TitleLarge"
@@ -17,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_info_title"
+        android:id="@+id/tvInfoTitle"
         style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,18 +30,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <ScrollView
-        android:id="@+id/sv_info"
+        android:id="@+id/svInfo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:background="@drawable/bg_recovery_mode_info"
-        app:layout_constraintBottom_toTopOf="@id/btn_copy"
+        app:layout_constraintBottom_toTopOf="@id/btnCopy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_info_title">
+        app:layout_constraintTop_toBottomOf="@id/tvInfoTitle">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_crash_info"
+            android:id="@+id/tvCrashInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -51,49 +50,49 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_copy"
+        android:id="@+id/btnCopy"
         style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="@string/copy"
-        app:layout_constraintBottom_toTopOf="@id/btn_email"
+        app:layout_constraintBottom_toTopOf="@id/btnEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_email"
+        android:id="@+id/btnEmail"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send email"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_telegram"
-        app:layout_constraintEnd_toStartOf="@id/btn_telegram"
+        android:text="@string/send_email"
+        app:layout_constraintBottom_toBottomOf="@+id/btnTelegram"
+        app:layout_constraintEnd_toStartOf="@id/btnTelegram"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_telegram"
+        android:id="@+id/btnTelegram"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Telegram"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_store"
-        app:layout_constraintEnd_toStartOf="@id/btn_store"
-        app:layout_constraintStart_toEndOf="@+id/btn_email" />
+        android:text="@string/send_telegram"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStore"
+        app:layout_constraintEnd_toStartOf="@id/btnStore"
+        app:layout_constraintStart_toEndOf="@+id/btnEmail" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_store"
+        android:id="@+id/btnStore"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Jump to Store"
-        app:layout_constraintBottom_toTopOf="@+id/btn_close_recovery_mode"
+        android:text="@string/jump_to_store"
+        app:layout_constraintBottom_toTopOf="@+id/btnCloseRecoveryMode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_telegram" />
+        app:layout_constraintStart_toEndOf="@+id/btnTelegram" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_close_recovery_mode"
+        android:id="@+id/btnCloseRecoveryMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
     android:layout_height="wrap_content"
-
     android:minWidth="280dp"
     android:paddingBottom="8dp">
 
@@ -21,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/cpb_compress"
+        android:id="@+id/cpbCompress"
         style="@style/ProgressBarStyle"
         android:layout_width="36dp"
         android:layout_height="36dp"
@@ -33,7 +32,7 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/tv_compress_tips"
+        android:id="@+id/tvCompressTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -42,23 +41,23 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cpb_compress" />
+        app:layout_constraintTop_toBottomOf="@id/cpbCompress" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_cancel"
+        android:id="@+id/btnCancel"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/tips_cancel_output"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_compress"
-        app:layout_constraintEnd_toStartOf="@id/btn_compress"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCompress"
+        app:layout_constraintEnd_toStartOf="@id/btnCompress"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="@+id/btn_compress" />
+        app:layout_constraintTop_toTopOf="@+id/btnCompress" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_compress"
+        android:id="@+id/btnCompress"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,6 +66,6 @@
         android:text="@string/tips_compress_images"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_compress_tips" />
+        app:layout_constraintTop_toBottomOf="@id/tvCompressTips" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -165,7 +165,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (MyApp.recoveryMode) {
-            setContentView(R.layout.activity_recovery)
+            setContentView(R.layout.a_recovery)
             initRecoveryView()
             return
         }
@@ -185,13 +185,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecoveryView() {
-        val tvCrashInfo = findViewById<TextView>(R.id.tv_crash_info).apply {
+        val tvCrashInfo = findViewById<TextView>(R.id.tvCrashInfo).apply {
             with(getSharedPreferences(MyApp.SP_NAME, MODE_PRIVATE)) {
                 val crashInfo = getString(MyApp.KEY_STACK_TRACE, "")
                 text = crashInfo
             }
         }
-        val btnCopy = findViewById<Button>(R.id.btn_copy).apply {
+        val btnCopy = findViewById<Button>(R.id.btnCopy).apply {
             setOnClickListener {
                 try {
                     val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -205,17 +205,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        val btnSendEmail = findViewById<Button>(R.id.btn_email).apply {
+        val btnSendEmail = findViewById<Button>(R.id.btnEmail).apply {
             setOnClickListener {
                 viewModel.extraCrashInfo(this@MainActivity, tvCrashInfo.text.toString())
             }
         }
-        val btnTelegram = findViewById<Button>(R.id.btn_telegram).apply {
+        val btnTelegram = findViewById<Button>(R.id.btnTelegram).apply {
             setOnClickListener {
                 openLink("https://t.me/rosuh")
             }
         }
-        val btnStore = findViewById<Button>(R.id.btn_store).apply {
+        val btnStore = findViewById<Button>(R.id.btnStore).apply {
             setOnClickListener {
                 openLink(Uri.parse("market://details?id=me.rosuh.easywatermark")) {
                     Toast.makeText(this@MainActivity, R.string.store_not_found, Toast.LENGTH_SHORT)
@@ -224,7 +224,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<Button>(R.id.btn_close_recovery_mode).apply {
+        findViewById<Button>(R.id.btnCloseRecoveryMode).apply {
             setOnClickListener {
                 (MyApp.instance as MyApp).launchSuccess()
                 Toast.makeText(this@MainActivity, R.string.recovery_mode_closed, Toast.LENGTH_SHORT)

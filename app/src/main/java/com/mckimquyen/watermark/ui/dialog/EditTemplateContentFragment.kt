@@ -10,11 +10,11 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.FragmentManager
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.entity.Template
-import com.mckimquyen.watermark.databinding.DialogEditTemplateBinding
+import com.mckimquyen.watermark.databinding.DlgEditTemplateBinding
 import com.mckimquyen.watermark.ui.base.BaseBindBSDFragment
 import java.util.Date
 
-class EditTemplateContentFragment : BaseBindBSDFragment<DialogEditTemplateBinding>() {
+class EditTemplateContentFragment : BaseBindBSDFragment<DlgEditTemplateBinding>() {
 
     private var template: Template? = null
 
@@ -23,8 +23,8 @@ class EditTemplateContentFragment : BaseBindBSDFragment<DialogEditTemplateBindin
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): DialogEditTemplateBinding {
-        return DialogEditTemplateBinding.inflate(layoutInflater, container, false)
+    ): DlgEditTemplateBinding {
+        return DlgEditTemplateBinding.inflate(layoutInflater, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
