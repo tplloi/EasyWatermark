@@ -7,7 +7,7 @@
     android:padding="5dp">
 
     <com.mckimquyen.watermark.ui.widget.ProgressImageView
-        android:id="@+id/iv_icon"
+        android:id="@+id/ivIcon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,9 +16,10 @@
         tools:src="@drawable/ic_picker_image" />
 
     <ImageView
-        android:id="@+id/iv_done"
+        android:id="@+id/ivDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_save_done"
         app:layout_constraintBottom_toBottomOf="parent"

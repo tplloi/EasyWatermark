@@ -96,7 +96,7 @@ class TextTypefaceAdapter(
     }
 
     internal class TypefaceHolder(val root: View) : BaseViewHolder(root) {
-        val tvPreview: TextView by lazy { root.findViewById(R.id.tv_preview) }
+        val tvPreview: TextView by lazy { root.findViewById(R.id.tvPreview) }
         val tvTitle: TextView? by lazy { root.findViewById(R.id.tv_title) }
     }
 

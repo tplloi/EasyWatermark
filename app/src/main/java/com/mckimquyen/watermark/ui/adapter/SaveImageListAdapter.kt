@@ -151,7 +151,7 @@ class SaveImageListAdapter(
             ivDone.disappear()
         }
 
-        val ivIcon: ProgressImageView = itemView.findViewById(R.id.iv_icon)
-        private val ivDone: ImageView = itemView.findViewById(R.id.iv_done)
+        val ivIcon: ProgressImageView = itemView.findViewById(R.id.ivIcon)
+        private val ivDone: ImageView = itemView.findViewById(R.id.ivDone)
     }
 }

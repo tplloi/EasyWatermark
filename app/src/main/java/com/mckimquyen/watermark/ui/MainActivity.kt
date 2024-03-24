@@ -2,7 +2,6 @@ package com.mckimquyen.watermark.ui
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.app.ProgressDialog.show
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -74,7 +73,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.mckimquyen.watermark.utils.onItemClick
-import android.graphics.PointF
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -666,19 +664,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_settings -> {
+        R.id.actionSettings -> {
             startActivity(Intent(this, AboutActivity::class.java))
             true
         }
 
-        R.id.action_pick -> {
+        R.id.actionPick -> {
             preCheckStoragePermission {
                 performFileSearch(REQ_CODE_PICK_IMAGE)
             }
             true
         }
 
-        R.id.action_save -> {
+        R.id.actionSave -> {
             SaveImageBSDialogFragment.safetyShow(supportFragmentManager)
             true
         }

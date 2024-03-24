@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="md_theme_light_primary">#6E5D00</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFE245</color>
@@ -55,5 +55,5 @@
     <color name="md_theme_dark_primaryInverse">#6E5D00</color>
     <color name="seed">#FFDE32</color>
     <color name="error">#BA1B1B</color>
-    <color name="design_default_color_on_error">#fff</color>
+    <color name="design_default_color_on_error" tools:ignore="PrivateResource">#fff</color>
 </resources>

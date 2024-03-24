@@ -252,8 +252,8 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
 
         init {
             view.inflate {
-                cbImage = view.findViewById(R.id.cb_image)
-                ivImage = view.findViewById(R.id.iv_image)
+                cbImage = view.findViewById(R.id.cbImage)
+                ivImage = view.findViewById(R.id.ivImage)
                 isInflated = true
                 action?.invoke()
             }

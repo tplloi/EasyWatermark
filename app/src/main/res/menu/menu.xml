@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_pick"
+        android:id="@+id/actionPick"
         android:icon="@drawable/ic_picker_image"
         android:title="@string/action_pick"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_save"
+        android:id="@+id/actionSave"
         android:icon="@drawable/ic_save"
         android:title="@string/action_save"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/actionSettings"
         android:icon="@drawable/ic_about"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />

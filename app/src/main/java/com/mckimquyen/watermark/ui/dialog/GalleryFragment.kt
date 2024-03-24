@@ -129,7 +129,7 @@ class GalleryFragment : BaseBindBSDFragment<FragmentGalleryBinding>() {
 
         rootView.topAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.iv_sys_image -> {
+                R.id.ivSysImage -> {
                     val mime = "image/*"
                     pickImageLauncher.launch(mime)
                     return@setOnMenuItemClickListener true

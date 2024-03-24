@@ -5,12 +5,12 @@
     android:layout_height="56dp">
 
     <TextView
-        android:id="@+id/tv_preview"
+        android:id="@+id/tvPreview"
         style="@style/Widget.AppCompat.ActionButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Aa!"
+        android:text="@string/aa"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
