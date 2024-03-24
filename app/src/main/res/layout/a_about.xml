@@ -16,10 +16,11 @@
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorPrimary" />
+        app:tint="?attr/colorPrimary"
+        tools:ignore="ContentDescription" />
 
     <com.mckimquyen.watermark.ui.widget.ColoredImageVIew
-        android:id="@+id/iv_logo"
+        android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -32,16 +33,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_logo">
+        app:layout_constraintTop_toBottomOf="@id/ivLogo">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_container"
+            android:id="@+id/clContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_title_about"
+                android:id="@+id/tvTitleAbout"
                 style="@style/TextAppearance.Material3.LabelMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_version"
+                android:id="@+id/tvVersion"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -63,34 +64,32 @@
                 app:drawableStartCompat="@drawable/ic_version"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_about" />
+                app:layout_constraintTop_toBottomOf="@id/tvTitleAbout" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_version_value"
+                android:id="@+id/tvVersionValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
-
-                app:layout_constraintBottom_toBottomOf="@id/tv_version"
-                app:layout_constraintEnd_toEndOf="@id/tv_version"
-                app:layout_constraintTop_toTopOf="@id/tv_version" />
+                app:layout_constraintBottom_toBottomOf="@id/tvVersion"
+                app:layout_constraintEnd_toEndOf="@id/tvVersion"
+                app:layout_constraintTop_toTopOf="@id/tvVersion" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_rating"
+                android:id="@+id/tvRating"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_rating"
-
                 app:drawableStartCompat="@drawable/ic_rate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_version" />
+                app:layout_constraintTop_toBottomOf="@id/tvVersion" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_feed_back"
+                android:id="@+id/tvFeedBack"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -100,10 +99,10 @@
                 app:drawableStartCompat="@drawable/ic_bug_report"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_rating" />
+                app:layout_constraintTop_toBottomOf="@id/tvRating" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_title_info"
+                android:id="@+id/tvTitleInfo"
                 style="@style/TextAppearance.Material3.LabelMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,11 +111,10 @@
                 android:paddingEnd="28dp"
                 android:text="@string/about_title_about"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_feed_back" />
-
+                app:layout_constraintTop_toBottomOf="@id/tvFeedBack" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_change_log"
+                android:id="@+id/tvChangeLog"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -126,38 +124,36 @@
                 app:drawableStartCompat="@drawable/ic_update_log"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title_info" />
+                app:layout_constraintTop_toBottomOf="@id/tvTitleInfo" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_open_source"
+                android:id="@+id/tvOpenSource"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_open_source"
-
                 app:drawableStartCompat="@drawable/ic_open_source"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_change_log" />
+                app:layout_constraintTop_toBottomOf="@id/tvChangeLog" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_privacy_cn"
+                android:id="@+id/tvPrivacyCn"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_privacy_statement_zh"
-
                 app:drawableStartCompat="@drawable/ic_privacy_cn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_open_source" />
+                app:layout_constraintTop_toBottomOf="@id/tvOpenSource" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_privacy_eng"
+                android:id="@+id/tvPrivacyEng"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
@@ -167,7 +163,7 @@
                 app:drawableStartCompat="@drawable/ic_privacy_en"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_privacy_cn" />
+                app:layout_constraintTop_toBottomOf="@id/tvPrivacyCn" />
 
             <HorizontalScrollView
                 android:id="@+id/hsv"
@@ -180,7 +176,7 @@
                 android:scrollbars="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_privacy_eng">
+                app:layout_constraintTop_toBottomOf="@id/tvPrivacyEng">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -188,7 +184,7 @@
                     android:orientation="horizontal">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_dev_container"
+                        android:id="@+id/clDevContainer"
                         android:layout_width="300dp"
                         android:layout_height="226dp"
                         android:layout_marginStart="28dp"
@@ -203,13 +199,13 @@
                             android:layout_marginEnd="32dp"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="Developed with ♥ by rosu"
+                            android:text="@string/developed_with_by_rosu"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_sub_title"
+                            android:id="@+id/tvSubTitle"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginStart="32dp"
@@ -217,14 +213,13 @@
                             android:layout_marginEnd="32dp"
                             android:ellipsize="end"
                             android:text="@string/dev_comment"
-
-                            app:layout_constraintBottom_toTopOf="@id/civ_avatar"
+                            app:layout_constraintBottom_toTopOf="@id/civAvatar"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
                         <com.mckimquyen.watermark.ui.widget.CircleImageView
-                            android:id="@+id/civ_avatar"
+                            android:id="@+id/civAvatar"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="5dp"
@@ -236,7 +231,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_designer_container"
+                        android:id="@+id/clDesignerContainer"
                         android:layout_width="300dp"
                         android:layout_height="226dp"
                         android:layout_marginStart="14dp"
@@ -244,7 +239,7 @@
                         android:background="@drawable/bg_card_person_info">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_title_designer"
+                            android:id="@+id/tvTitleDesigner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="32dp"
@@ -258,7 +253,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_sub_title_designer"
+                            android:id="@+id/tvSubTitleDesigner"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginStart="32dp"
@@ -266,14 +261,14 @@
                             android:layout_marginEnd="32dp"
                             android:ellipsize="end"
                             android:text="A Designer."
-                            app:layout_constraintBottom_toTopOf="@id/civ_avatar_designer"
+                            app:layout_constraintBottom_toTopOf="@id/civAvatarDesigner"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_title_designer"
+                            app:layout_constraintTop_toBottomOf="@id/tvTitleDesigner"
                             tools:text="Designer" />
 
                         <com.mckimquyen.watermark.ui.widget.CircleImageView
-                            android:id="@+id/civ_avatar_designer"
+                            android:id="@+id/civAvatarDesigner"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_marginBottom="5dp"
@@ -288,20 +283,20 @@
             </HorizontalScrollView>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switch_dynamic_color"
+                android:id="@+id/switchDynamicColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="28dp"
-                android:text="Force Open Dynamic Color Support"
+                android:text="@string/force_open_dynamic_color_support"
                 app:layout_constraintTop_toBottomOf="@id/hsv" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switch_debug"
+                android:id="@+id/switchDebug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="28dp"
-                android:text="Show Bounds"
-                app:layout_constraintTop_toBottomOf="@id/switch_dynamic_color" />
+                android:text="@string/show_bounds"
+                app:layout_constraintTop_toBottomOf="@id/switchDynamicColor" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

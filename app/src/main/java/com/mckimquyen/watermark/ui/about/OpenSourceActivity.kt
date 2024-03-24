@@ -2,13 +2,13 @@ package com.mckimquyen.watermark.ui.about
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.mckimquyen.watermark.databinding.ActivityOpenSourceBinding
+import com.mckimquyen.watermark.databinding.AOpenSourceBinding
 import com.mckimquyen.watermark.utils.ktx.inflate
 import com.mckimquyen.watermark.utils.ktx.openLink
 
 class OpenSourceActivity : AppCompatActivity() {
 
-    private val binding by inflate<ActivityOpenSourceBinding>()
+    private val binding by inflate<AOpenSourceBinding>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

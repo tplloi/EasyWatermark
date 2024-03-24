@@ -20,7 +20,7 @@ import androidx.core.widget.TextViewCompat
 import androidx.palette.graphics.Palette
 import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.ActivityAboutBinding
+import com.mckimquyen.watermark.databinding.AAboutBinding
 import com.mckimquyen.watermark.utils.ktx.bgColor
 import com.mckimquyen.watermark.utils.ktx.colorBackground
 import com.mckimquyen.watermark.utils.ktx.colorPrimary
@@ -35,7 +35,7 @@ import com.mckimquyen.cmonet.CMonet
 @AndroidEntryPoint
 class AboutActivity : AppCompatActivity() {
 
-    private val binding by inflate<ActivityAboutBinding>()
+    private val binding by inflate<AAboutBinding>()
 
     private val viewModel: AboutViewModel by viewModels()
 
