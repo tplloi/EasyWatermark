@@ -7,7 +7,7 @@ import android.webkit.MimeTypeMap
 class FileUtils {
     companion object {
 
-        const val outPutFolderName = "EasyWaterMark"
+        const val outPutFolderName = "WaterMarkCreator"
 
         /**
          * 获取文件类型
@@ -22,6 +22,7 @@ class FileUtils {
                 uri.scheme == "content" && resolver.getType(uri) != null -> {
                     resolver.getType(uri)
                 }
+
                 else -> {
                     // content provider 无法通过下面的方式获取到信息
                     val extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString())

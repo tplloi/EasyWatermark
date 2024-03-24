@@ -16,7 +16,7 @@ fun Palette?.bgColor(context: Context): Int {
     val harmonizedColor = MaterialColors.harmonize(
         platteColor, ContextCompat.getColor(context, R.color.md_theme_dark_background)
     )
-    Log.i("Palette", "platteColor = $platteColor, finalColor $harmonizedColor")
+//    Log.i("Palette", "platteColor = $platteColor, finalColor $harmonizedColor")
     return harmonizedColor
 }
 

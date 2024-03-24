@@ -18,7 +18,7 @@ class MultiPickContract :
 
     override fun getSynchronousResult(
         context: Context,
-        input: String
+        input: String,
     ): SynchronousResult<List<Uri?>>? {
         return null
     }

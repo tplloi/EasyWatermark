@@ -25,12 +25,12 @@ fun Int.toColor(
     toColor: Int,
     autoStart: Boolean = true,
     duration: Long = WaterMarkImageView.ANIMATION_DURATION,
-    doOnUpdate: (it: ValueAnimator) -> Unit = {}
+    doOnUpdate: (it: ValueAnimator) -> Unit = {},
 ): ObjectAnimator? {
     return ObjectAnimator.ofInt(
-        this,
-        "backgroundColor",
-        this,
+        /* target = */ this,
+        /* propertyName = */ "backgroundColor",
+        /* ...values = */ this,
         toColor
     ).apply {
         setEvaluator(ArgbEvaluator())

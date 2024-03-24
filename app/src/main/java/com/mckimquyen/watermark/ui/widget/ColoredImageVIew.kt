@@ -27,7 +27,7 @@ class ColoredImageVIew : AppCompatImageView {
     private val paint by lazy { Paint() }
     var enable = true
 
-    private val colorList = if (context.supportDynamicColor()) {
+    private val colorList = if (supportDynamicColor()) {
         arrayOf(
             context.colorPrimary,
             context.colorSecondary,

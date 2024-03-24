@@ -10,7 +10,11 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.WindowInsets
 import android.view.WindowMetrics
-import androidx.fragment.app.*
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
+import androidx.fragment.app.commitNow
 import androidx.viewbinding.ViewBinding
 import com.mckimquyen.watermark.R
 
@@ -66,18 +70,18 @@ inline fun FragmentManager.commitWithAnimation(body: FragmentTransaction.() -> U
     }
 }
 
-fun Activity.getScreenWidth(): Int {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        val windowMetrics: WindowMetrics = this.windowManager.currentWindowMetrics
-        val insets: Insets = windowMetrics.windowInsets
-            .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
-        windowMetrics.bounds.width() - insets.left - insets.right
-    } else {
-        val displayMetrics = DisplayMetrics()
-        this.windowManager.defaultDisplay.getMetrics(displayMetrics)
-        displayMetrics.widthPixels
-    }
-}
+//fun Activity.getScreenWidth(): Int {
+//    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//        val windowMetrics: WindowMetrics = this.windowManager.currentWindowMetrics
+//        val insets: Insets = windowMetrics.windowInsets
+//            .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+//        windowMetrics.bounds.width() - insets.left - insets.right
+//    } else {
+//        val displayMetrics = DisplayMetrics()
+//        this.windowManager.defaultDisplay.getMetrics(displayMetrics)
+//        displayMetrics.widthPixels
+//    }
+//}
 
 fun Activity.getScreenHeight(): Int {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

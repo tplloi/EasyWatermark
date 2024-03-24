@@ -88,20 +88,20 @@ class MyApp : Application() {
     private fun catchException() {
         Thread.setDefaultUncaughtExceptionHandler { t, e ->
             // Because intent limit data to 1mb, so that we should limit the stack track by magic number below
-            Log.e("MyApp", "uncaughtException")
+//            Log.e("MyApp", "uncaughtException")
             val maxStringLength = 1024 * 1024 / 2 / 10 // the 10 is a magic number ;)
             var fullStackTrace = Log.getStackTraceString(e)
             if (fullStackTrace.length > maxStringLength) {
                 fullStackTrace = fullStackTrace.substring(IntRange(0, maxStringLength))
             }
-            Log.e("MyApp", "uncaughtException: $fullStackTrace")
+//            Log.e("MyApp", "uncaughtException: $fullStackTrace")
             sp.edit(true) {
                 putInt(SP_KEY_CRASH_COUNT, sp.getInt(SP_KEY_CRASH_COUNT, 0) + 1)
                 putInt(SP_KEY_RECOVERY_VERSION, BuildConfig.VERSION_CODE)
                 putBoolean(KEY_IS_CRASH, true)
                 putString(
-                    KEY_STACK_TRACE,
-                    """
+                    /* p0 = */ KEY_STACK_TRACE,
+                    /* p1 = */ """
                     Crash in ${t.name}:
                     $fullStackTrace
                     """.trimIndent()

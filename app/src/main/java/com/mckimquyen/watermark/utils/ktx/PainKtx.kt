@@ -7,17 +7,10 @@ import android.text.TextPaint
 import com.mckimquyen.watermark.data.model.ImageInfo
 import com.mckimquyen.watermark.data.model.WaterMark
 
-/**
- * 因为预览和实际图像之间存在缩放，所以在预览时要除去缩放比。而在保存时，就不需要了
- * Because there is a zoom between the preview and the actual image, the zoom ratio should be removed when previewing
- * When saving, it’s not needed
- * @author hi@rosuh.me
- * @date 2020/9/8
- */
 fun Paint.applyConfig(
     imageInfo: ImageInfo,
     config: WaterMark?,
-    isScale: Boolean = true
+    isScale: Boolean = true,
 ): Paint {
     val size = config?.textSize ?: 14f
     textSize = if (isScale) size else size * imageInfo.scaleX
@@ -36,7 +29,7 @@ fun Paint.applyConfig(
 fun TextPaint.applyConfig(
     imageInfo: ImageInfo,
     config: WaterMark?,
-    isScale: Boolean = true
+    isScale: Boolean = true,
 ): TextPaint {
     return (this as Paint).applyConfig(imageInfo, config, isScale) as TextPaint
 }
