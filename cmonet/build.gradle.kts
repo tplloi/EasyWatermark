@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "me.rosuh.cmonet"
+    namespace = "com.mckimquyen.cmonet"
     compileSdk = Apps.targetSdk
 
     defaultConfig {
@@ -15,10 +15,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.test.junit)
-    androidTestImplementation(libs.test.ext.junit)
-    androidTestImplementation(libs.test.espresso.core)
+    api(libs.core.ktx)
+    api(libs.appcompat)
+    api(libs.material)
+//    testImplementation(libs.test.junit)
+//    androidTestImplementation(libs.test.ext.junit)
+//    androidTestImplementation(libs.test.espresso.core)
 }

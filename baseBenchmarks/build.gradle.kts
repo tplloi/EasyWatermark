@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "me.rosuh.benchmark.macro.base"
+    namespace = "com.mckimquyen.benchmark.macro.base"
     compileSdk = 33
 
     defaultConfig {

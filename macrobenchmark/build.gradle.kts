@@ -9,7 +9,7 @@ plugins {
 android {
     // [START_EXCLUDE]
     compileSdk = 33
-    namespace = "me.rosuh.macrobenchmark"
+    namespace = "com.mckimquyen.macrobenchmark"
 
     defaultConfig {
         minSdk = Apps.minSdk
@@ -58,10 +58,10 @@ androidComponents {
 // [END macrobenchmark_setup_variant]
 
 dependencies {
-    implementation(project(":baseBenchmarks"))
-    implementation(libs.benchmark)
-    implementation(libs.test.ext.junit)
-    implementation(libs.test.espresso.core)
-    implementation(libs.test.uiautomator)
-    implementation(libs.kotlin.stdlib)
+    api(project(":baseBenchmarks"))
+    api(libs.benchmark)
+    api(libs.test.ext.junit)
+    api(libs.test.espresso.core)
+    api(libs.test.uiautomator)
+    api(libs.kotlin.stdlib)
 }

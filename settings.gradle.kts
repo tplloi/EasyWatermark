@@ -3,7 +3,6 @@ include(":cmonet")
 include(":baseBenchmarks")
 include(":macrobenchmark")
 
-
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
@@ -52,7 +51,6 @@ dependencyResolutionManagement {
             library("compressor", "id.zelory:compressor:3.0.1")
             library("colorpicker", "com.github.skydoves:colorpickerview:2.2.3")
 
-
             // benchmark && test libs
             library("benchmark", "androidx.benchmark:benchmark-macro-junit4:1.1.1")
             library("profieinstaller", "androidx.profileinstaller:profileinstaller:1.2.2")
@@ -61,7 +59,6 @@ dependencyResolutionManagement {
             library("test-core", "androidx.test:core:${testVersion}")
             library("test-rules", "androidx.test:rules:${testVersion}")
             library("test-runner", "androidx.test:runner:${testVersion}")
-
             library("test-junit", "junit:junit:4.13.2")
             library("test-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
             library("test-uiautomator", "androidx.test.uiautomator:uiautomator:2.2.0")

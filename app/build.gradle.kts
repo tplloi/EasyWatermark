@@ -11,14 +11,14 @@ plugins {
 android {
     compileSdk = (Apps.compileSdk)
     buildToolsVersion = (Apps.buildTools)
-    namespace = "me.rosuh.easywatermark"
+    namespace = "com.mckimquyen.watermark"
 
     defaultConfig {
-        applicationId = "me.rosuh.easywatermark"
+        applicationId = "com.mckimquyen.watermark"
         minSdk = (Apps.minSdk)
         targetSdk = (Apps.targetSdk)
-        versionCode = 20808
-        versionName = "2.8.8"
+        versionCode = 20240323
+        versionName = "2024.03.23"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
     }
@@ -81,53 +81,33 @@ kapt {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(mapOf("path" to ":cmonet")))
-
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
+    api(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    api(project(mapOf("path" to ":cmonet")))
+    api(libs.room.runtime)
+    api(libs.room.ktx)
     kapt(libs.room.compiler)
-
-    implementation(libs.datastore.preference)
-
-    implementation(libs.dagger.hilt.android)
+    api(libs.datastore.preference)
+    api(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
-
-    implementation(libs.asyncLayoutInflater)
-
-    implementation(libs.glide.glide)
+    api(libs.asyncLayoutInflater)
+    api(libs.glide.glide)
     kapt(libs.glide.compiler)
-
-    implementation(libs.compressor)
-
-    implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.coroutine.android)
-    implementation(libs.kotlin.coroutine.core)
-
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.fragment.ktx)
-    implementation(libs.activity.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.viewModel.ktx)
-    implementation(libs.viewpager2)
-    implementation(libs.recyclerview)
-    implementation(libs.constraintLayout)
-    implementation(libs.exifInterface)
-    implementation(libs.palette.ktx)
-    implementation(libs.profieinstaller)
-
-    implementation(libs.colorpicker)
-
-//    testImplementation(libs.test.junit)
-//    testImplementation(libs.test.rules)
-//    testImplementation(libs.test.runner)
-//    androidTestImplementation(libs.mockito.core)
-//    androidTestImplementation(libs.mockito.android)
-//    androidTestImplementation(libs.robolectric)
-//    androidTestImplementation(libs.hamcrest.library)
-//    androidTestImplementation(libs.test.espresso.core)
-//    androidTestImplementation(libs.test.uiautomator)
-//    androidTestImplementation(libs.test.ext.junit)
+    api(libs.compressor)
+    api(libs.kotlin.stdlib)
+    api(libs.kotlin.coroutine.android)
+    api(libs.kotlin.coroutine.core)
+    api(libs.appcompat)
+    api(libs.material)
+    api(libs.fragment.ktx)
+    api(libs.activity.ktx)
+    api(libs.lifecycle.runtime.ktx)
+    api(libs.lifecycle.livedata.ktx)
+    api(libs.lifecycle.viewModel.ktx)
+    api(libs.viewpager2)
+    api(libs.recyclerview)
+    api(libs.constraintLayout)
+    api(libs.exifInterface)
+    api(libs.palette.ktx)
+    api(libs.profieinstaller)
+    api(libs.colorpicker)
 }
