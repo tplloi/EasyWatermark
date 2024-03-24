@@ -22,7 +22,7 @@
     <string name="water_mark_mode_image">Ikon</string>
     <string name="tips_ok">Bekreft</string>
     <string name="tips_cancel_output">Avbryt</string>
-    <string name="app_name">Easy Watermark</string>
+    <string name="app_name">Watermark Creator</string>
     <string name="tips_do_not_choose_image">Ingen bilder valgt</string>
     <string name="request_permission_failed">Fikk ikke tilgang</string>
     <string name="error_file_not_found">Bilde kunne ikke åpnes, eller ble ikke valgt</string>

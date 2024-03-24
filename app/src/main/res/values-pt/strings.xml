@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Easy Watermark</string>
+    <string name="app_name">Watermark Creator</string>
     <string name="action_settings">Sobre</string>
     <string name="title_layout">Layout</string>
     <string name="title_style">Estilo</string>

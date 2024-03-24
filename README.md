@@ -1,4 +1,4 @@
-<h1 align="center">Easy Watermark</h1>
+<h1 align="center">Watermark Creator</h1>
 
 <p align="center">
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rosuh/easywatermark">
