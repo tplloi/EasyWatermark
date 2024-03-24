@@ -5,7 +5,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 
 /**
  * Encapsulate View and SpringAnimation
- * @author hi@rosuh.me
+ * @author roy.mobile.dev@gmail.com
  * @date 2021/8/12
  */
 class ViewAnimation(

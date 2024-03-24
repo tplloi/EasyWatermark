@@ -297,7 +297,7 @@ fun getAvailableMemory(context: Context): ActivityManager.MemoryInfo {
 
 /**
  * Only the size equals or larger target options can be reused.
- * @author hi@rosuh.me
+ * @author roy.mobile.dev@gmail.com
  * @date 2021/8/16
  */
 //private fun canUseForInBitmap(
@@ -320,7 +320,7 @@ fun getAvailableMemory(context: Context): ActivityManager.MemoryInfo {
 //}
 
 /**
- * @author hi@rosuh.me
+ * @author roy.mobile.dev@gmail.com
  * @date 2021/10/16
  * Copy from [ImageView]
  */

@@ -6,7 +6,7 @@ import android.util.LruCache
 
 /**
  * Simple Bitmap cache.
- * @author hi@rosuh.me
+ * @author roy.mobile.dev@gmail.com
  */
 object BitmapCache {
     private val memoryCache: LruCache<BitmapInfo, BitmapValue> by lazy {

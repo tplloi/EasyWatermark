@@ -121,7 +121,7 @@ class MainViewModel @Inject constructor(
         }
         viewModelScope.launch {
             val template = Template(
-                0,
+                id = 0,
                 content = content,
                 creationDate = Date(),
                 lastModifiedDate = Date()
@@ -149,14 +149,14 @@ class MainViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             if (this@MainViewModel.imageList.value?.first.isNullOrEmpty()) {
-                saveResult.value = Result.failure(null, code = TYPE_ERROR_NOT_IMG)
+                saveResult.value = Result.failure(data = null, code = TYPE_ERROR_NOT_IMG)
                 return@launch
             }
             saveResult.value =
                 Result.success(null, code = TYPE_SAVING)
             val result = generateList(contentResolver, viewInfo, imageList)
             if (result.isFailure()) {
-                saveResult.value = Result.failure(null, code = TYPE_ERROR_FILE_NOT_FOUND)
+                saveResult.value = Result.failure(data = null, code = TYPE_ERROR_FILE_NOT_FOUND)
                 return@launch
             }
             saveImageUri.value = result.data!!
@@ -209,21 +209,21 @@ class MainViewModel @Inject constructor(
             }
             val mutableBitmap = rect.data?.bitmap?.copy(Bitmap.Config.ARGB_8888, true)
                 ?: return@withContext Result.failure(
-                    null,
+                    data = null,
                     code = "-1",
                     message = "Copy bitmap from uri failed."
                 )
 
             val inSample = calculateInSampleSize(
-                mutableBitmap.width,
-                mutableBitmap.height,
-                WaterMarkImageView.calculateDrawLimitWidth(viewInfo.width, viewInfo.paddingLeft),
-                WaterMarkImageView.calculateDrawLimitHeight(viewInfo.height, viewInfo.paddingRight),
+                width = mutableBitmap.width,
+                height = mutableBitmap.height,
+                reqWidth = WaterMarkImageView.calculateDrawLimitWidth(viewInfo.width, viewInfo.paddingLeft),
+                reqHeight = WaterMarkImageView.calculateDrawLimitHeight(viewInfo.height, viewInfo.paddingRight),
             )
             imageInfo.width = mutableBitmap.width
             imageInfo.height = mutableBitmap.height
             val tmpConfig = waterMark.value ?: return@withContext Result.failure(
-                null,
+                data = null,
                 code = "-1",
                 message = "config.value == null"
             )
@@ -231,13 +231,13 @@ class MainViewModel @Inject constructor(
             val canvas = Canvas(mutableBitmap)
             // generate matrix of drawable
             val imageMatrix = WaterMarkImageView.adjustMatrix(
-                Matrix(),
-                viewInfo.width,
-                viewInfo.height,
-                viewInfo.paddingLeft,
-                viewInfo.paddingTop,
-                imageInfo.width,
-                imageInfo.height
+                srcMatrix = Matrix(),
+                viewWidth = viewInfo.width,
+                viewHeight = viewInfo.height,
+                paddingLeft = viewInfo.paddingLeft,
+                paddingTop = viewInfo.paddingTop,
+                bitmapWidth = imageInfo.width,
+                bitmapHeight = imageInfo.height
             )
             Log.i(
                 "generateImage",
@@ -259,40 +259,40 @@ class MainViewModel @Inject constructor(
             val shader = when (waterMark.value?.markMode) {
                 WaterMarkRepository.MarkMode.Text -> {
                     WaterMarkImageView.buildTextBitmapShader(
-                        imageInfo,
-                        waterMark.value!!,
-                        bitmapPaint,
-                        Dispatchers.IO
+                        imageInfo = imageInfo,
+                        config = waterMark.value!!,
+                        textPaint = bitmapPaint,
+                        coroutineContext = Dispatchers.IO
                     )
                 }
 
                 WaterMarkRepository.MarkMode.Image -> {
                     val iconBitmapRect = decodeSampledBitmapFromResource(
-                        contentResolver,
-                        tmpConfig.iconUri,
-                        viewInfo.width,
-                        viewInfo.height
+                        resolver = contentResolver,
+                        uri = tmpConfig.iconUri,
+                        reqWidth = viewInfo.width,
+                        reqHeight = viewInfo.height
                     )
                     if (iconBitmapRect.isFailure() || iconBitmapRect.data == null) {
                         return@withContext Result.failure(
-                            null,
+                            data = null,
                             code = "-1",
                             message = "decodeSampledBitmapFromResource == null"
                         )
                     }
                     val iconBitmap = iconBitmapRect.data!!.bitmap
                     WaterMarkImageView.buildIconBitmapShader(
-                        imageInfo,
-                        iconBitmap,
-                        tmpConfig,
-                        bitmapPaint,
+                        imageInfo = imageInfo,
+                        srcBitmap = iconBitmap,
+                        config = tmpConfig,
+                        textPaint = bitmapPaint,
                         scale = true,
-                        Dispatchers.IO
+                        coroutineContext = Dispatchers.IO
                     )
                 }
 
                 null -> return@withContext Result.failure(
-                    null,
+                    data = null,
                     code = "-1",
                     message = "Unknown markmode"
                 )
@@ -306,19 +306,19 @@ class MainViewModel @Inject constructor(
                     0 + imageInfo.offsetY * mutableBitmap.height
                 )
                 canvas.drawRect(
-                    0f,
-                    0f,
-                    (shader?.width ?: 0).toFloat(),
-                    (shader?.height ?: 0).toFloat(),
-                    layoutPaint
+                    /* left = */ 0f,
+                    /* top = */ 0f,
+                    /* right = */ (shader?.width ?: 0).toFloat(),
+                    /* bottom = */ (shader?.height ?: 0).toFloat(),
+                    /* paint = */ layoutPaint
                 )
             } else {
                 canvas.drawRect(
-                    0f,
-                    0f,
-                    mutableBitmap.width.toFloat(),
-                    mutableBitmap.height.toFloat(),
-                    layoutPaint
+                    /* left = */ 0f,
+                    /* top = */ 0f,
+                    /* right = */ mutableBitmap.width.toFloat(),
+                    /* bottom = */ mutableBitmap.height.toFloat(),
+                    /* paint = */ layoutPaint
                 )
             }
 
@@ -338,9 +338,9 @@ class MainViewModel @Inject constructor(
                 val imageContentUri = contentResolver.insert(imageCollection, imageDetail)
                 contentResolver.openFileDescriptor(imageContentUri!!, "w", null).use { pfd ->
                     mutableBitmap.compress(
-                        outputFormat,
-                        compressLevel,
-                        FileOutputStream(pfd!!.fileDescriptor)
+                        /* format = */ outputFormat,
+                        /* quality = */ compressLevel,
+                        /* stream = */ FileOutputStream(pfd!!.fileDescriptor)
                     )
                 }
                 imageDetail.clear()
@@ -353,7 +353,7 @@ class MainViewModel @Inject constructor(
                 val picturesFile: File =
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
                         ?: return@withContext Result.failure(
-                            null,
+                            data = null,
                             code = "-1",
                             message = "Can't get pictures directory."
                         )
@@ -365,19 +365,18 @@ class MainViewModel @Inject constructor(
                 if (!mediaDir.exists()) {
                     mediaDir.mkdirs()
                 }
-                val outputFile =
-                    File(mediaDir, generateOutputName())
+                val outputFile = File(mediaDir, generateOutputName())
                 outputFile.outputStream().use { fileOutputStream ->
                     mutableBitmap.compress(
-                        outputFormat,
-                        compressLevel,
-                        fileOutputStream
+                        /* format = */ outputFormat,
+                        /* quality = */ compressLevel,
+                        /* stream = */ fileOutputStream
                     )
                 }
                 val outputUri = FileProvider.getUriForFile(
-                    MyApp.instance,
-                    "${BuildConfig.APPLICATION_ID}.fileprovider",
-                    outputFile
+                    /* context = */ MyApp.instance,
+                    /* authority = */ "${BuildConfig.APPLICATION_ID}.fileprovider",
+                    /* file = */ outputFile
                 )
                 MyApp.instance.sendBroadcast(
                     Intent(
@@ -633,7 +632,7 @@ ${System.currentTimeMillis().formatDate("yyy-MM-dd")}
 """.trimIndent()
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "message/rfc822"
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("hi@rosuh.me"))
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("roy.mobile.dev@gmail.com"))
             putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.email_subject))
             putExtra(Intent.EXTRA_TEXT, mainContent)
         }
@@ -647,9 +646,9 @@ ${System.currentTimeMillis().formatDate("yyy-MM-dd")}
         } catch (e: ActivityNotFoundException) {
             e.printStackTrace()
             Toast.makeText(
-                activity,
-                activity.getString(R.string.tip_not_mail_found),
-                Toast.LENGTH_LONG
+                /* context = */ activity,
+                /* text = */ activity.getString(R.string.tip_not_mail_found),
+                /* duration = */ Toast.LENGTH_LONG
             ).show()
         }
     }
@@ -678,11 +677,11 @@ ${System.currentTimeMillis().formatDate("yyy-MM-dd")}
         }
         val list = ArrayList<Image>()
         contentResolver.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            projection,
-            null,
-            null,
-            (if (Build.VERSION.SDK_INT > 28) MediaStore.Images.Media.DATE_MODIFIED else MediaStore.Images.Media.DATE_TAKEN) + " DESC"
+            /* uri = */ MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            /* projection = */ projection,
+            /* selection = */ null,
+            /* selectionArgs = */ null,
+            /* sortOrder = */ (if (Build.VERSION.SDK_INT > 28) MediaStore.Images.Media.DATE_MODIFIED else MediaStore.Images.Media.DATE_TAKEN) + " DESC"
         )?.use { cursor ->
             val imageIdColumn = cursor.getColumnIndex(MediaStore.Images.Media._ID)
             val bucketIdColumn = cursor.getColumnIndex(MediaStore.Images.Media.BUCKET_ID)

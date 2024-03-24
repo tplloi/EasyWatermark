@@ -12,7 +12,7 @@ import androidx.core.view.marginTop
 
 /**
  * An Custom ViewGroup abstract class for convenience.
- * @author hi@rosuh.me
+ * @author roy.mobile.dev@gmail.com
  * @date 2021/8/12
  */
 abstract class CustomViewGroup : ViewGroup {

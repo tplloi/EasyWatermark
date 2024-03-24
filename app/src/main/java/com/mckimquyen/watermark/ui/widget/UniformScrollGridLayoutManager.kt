@@ -10,22 +10,22 @@ import androidx.recyclerview.widget.RecyclerView
 
 class UniformScrollGridLayoutManager : GridLayoutManager {
 
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+//    constructor(
+//        context: Context?,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     constructor(context: Context?, spanCount: Int) : super(context, spanCount)
-    constructor(
-        context: Context?,
-        spanCount: Int,
-        orientation: Int,
-        reverseLayout: Boolean
-    ) : super(context, spanCount, orientation, reverseLayout)
+//    constructor(
+//        context: Context?,
+//        spanCount: Int,
+//        orientation: Int,
+//        reverseLayout: Boolean,
+//    ) : super(context, spanCount, orientation, reverseLayout)
 
-    var enable: Boolean = true
+    private var enable: Boolean = true
 
     var speed = 1.2f
 
@@ -34,7 +34,7 @@ class UniformScrollGridLayoutManager : GridLayoutManager {
     override fun smoothScrollToPosition(
         recyclerView: RecyclerView?,
         state: RecyclerView.State?,
-        position: Int
+        position: Int,
     ) {
         if (enable) {
             val linearSmoothScroller =

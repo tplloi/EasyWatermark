@@ -15,8 +15,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -69,10 +73,10 @@ import com.mckimquyen.watermark.utils.ktx.openLink
 import com.mckimquyen.watermark.utils.ktx.preCheckStoragePermission
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 import com.mckimquyen.watermark.utils.ktx.toColor
+import com.mckimquyen.watermark.utils.onItemClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import com.mckimquyen.watermark.utils.onItemClick
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -217,7 +221,7 @@ class MainActivity : AppCompatActivity() {
         }
         val btnStore = findViewById<Button>(R.id.btnStore).apply {
             setOnClickListener {
-                openLink(Uri.parse("market://details?id=me.rosuh.easywatermark")) {
+                openLink(Uri.parse("market://details?id=com.mckimquyen.watermark")) {
                     Toast.makeText(this@MainActivity, R.string.store_not_found, Toast.LENGTH_SHORT)
                         .show()
                 }
@@ -241,10 +245,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registerResultCallback() {
-        pickIconLauncher =
-            registerForActivityResult(PickImageContract()) { uri: Uri? ->
-                handleActivityResult(REQ_PICK_ICON, listOf(uri))
-            }
+        pickIconLauncher = registerForActivityResult(PickImageContract()) { uri: Uri? ->
+            handleActivityResult(REQ_PICK_ICON, listOf(uri))
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -364,7 +367,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
         viewModel.saveResult.observe(this) {
             if (it.isFailure()) {
                 when (it.code) {
@@ -373,6 +375,7 @@ class MainActivity : AppCompatActivity() {
                         CompressImageDialogFragment.safetyShow(supportFragmentManager)
                         viewModel.resetJobStatus()
                     }
+
                     MainViewModel.TYPE_ERROR_FILE_NOT_FOUND -> toast(getString(R.string.error_file_not_found))
                     MainViewModel.TYPE_ERROR_NOT_IMG -> toast(getString(R.string.error_not_img))
                     else -> toast("${getString(R.string.tips_error)}: ${it.message}")
@@ -425,6 +428,7 @@ class MainActivity : AppCompatActivity() {
                     LaunchView.ViewMode.Editor -> {
                         launchView.logoView.stop()
                     }
+
                     LaunchView.ViewMode.LaunchMode -> {
                         launchView.logoView.start()
                     }
@@ -556,6 +560,7 @@ class MainActivity : AppCompatActivity() {
                                 manuallySelectedItem(curPos)
                             }
                         }
+
                         2 -> {
                             launchView.rvPanel.smoothScrollToPosition(0)
                             adapter?.also {
@@ -563,6 +568,7 @@ class MainActivity : AppCompatActivity() {
                                 post { handleFuncItem(it.dataSet[0]) }
                             }
                         }
+
                         else -> {
                             launchView.rvPanel.smoothScrollToPosition(0)
                             adapter?.also {
@@ -593,37 +599,46 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleFuncItem(item: FuncTitleModel) {
-        Log.i("handleFuncItem", "item = $item")
+//        Log.i("handleFuncItem", "item = $item")
         when (item.type) {
             FuncTitleModel.FuncType.Text -> {
                 TextContentDisplayFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.Icon -> {
                 preCheckStoragePermission {
                     performFileSearch(REQ_PICK_ICON)
                 }
             }
+
             FuncTitleModel.FuncType.Color -> {
                 ColorFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.Alpha -> {
                 AlphaPbFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.Degree -> {
                 DegreePbFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.TextStyle -> {
                 TextStyleFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.Vertical -> {
                 VerticalPbFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.Horizon -> {
                 HorizonPbFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.TextSize -> {
                 TextSizePbFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
+
             FuncTitleModel.FuncType.TileMode -> {
                 TileModeFragment.replaceShow(this, launchView.fcFunctionDetail.id)
             }
@@ -652,9 +667,7 @@ class MainActivity : AppCompatActivity() {
             window.decorView.systemUiVisibility = systemUiVisibilityFlags
         }
         window.statusBarColor = color
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.findViewById<View>(android.R.id.content)?.foreground = null
-        }
+        window.findViewById<View>(android.R.id.content)?.foreground = null
     }
 
 
@@ -680,6 +693,7 @@ class MainActivity : AppCompatActivity() {
             SaveImageBSDialogFragment.safetyShow(supportFragmentManager)
             true
         }
+
         else -> {
             super.onOptionsItemSelected(item)
         }
@@ -721,7 +735,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -769,6 +783,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(MainActivity::class.simpleName, finalList.toTypedArray().contentToString())
                 dealWithImage(finalList)
             }
+
             REQ_PICK_ICON -> {
                 viewModel.updateIcon(finalList.first())
             }
@@ -782,6 +797,7 @@ class MainActivity : AppCompatActivity() {
         launchView.rvPanel.canAutoSelected = true
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (MyApp.recoveryMode) {
             super.onBackPressed()
@@ -823,7 +839,7 @@ class MainActivity : AppCompatActivity() {
         color: Int = ContextCompat.getColor(
             this,
             R.color.md_theme_dark_background
-        )
+        ),
     ) {
         (launchView.parent as? View?)?.setBackgroundColor(color)
         window?.navigationBarColor = Color.TRANSPARENT

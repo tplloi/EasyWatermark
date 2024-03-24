@@ -3,6 +3,7 @@ package com.mckimquyen.watermark.ui.widget
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapShader
@@ -71,7 +72,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
 
     private var enableWaterMark = AtomicBoolean(false)
 
-    val drawableBounds = RectF()
+    private val drawableBounds = RectF()
 
     private var onBgReady: (palette: Palette) -> Unit = {}
 
@@ -165,13 +166,13 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                 // adjust bitmap via matrix
                 setImageBitmap(imageBitmap)
                 val matrix = adjustMatrix(
-                    imageMatrix,
-                    measuredWidth,
-                    measuredHeight,
-                    paddingLeft,
-                    paddingTop,
-                    imageBitmap.width,
-                    imageBitmap.height
+                    srcMatrix = imageMatrix,
+                    viewWidth = measuredWidth,
+                    viewHeight = measuredHeight,
+                    paddingLeft = paddingLeft,
+                    paddingTop = paddingTop,
+                    bitmapWidth = imageBitmap.width,
+                    bitmapHeight = imageBitmap.height
                 )
                 imageMatrix = matrix
                 // setting background color via Palette
@@ -202,10 +203,10 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             layoutShader = when (newConfig.markMode) {
                 WaterMarkRepository.MarkMode.Text -> {
                     buildTextBitmapShader(
-                        curImageInfo,
-                        newConfig,
-                        textPaint,
-                        generateBitmapCoroutineCtx
+                        imageInfo = curImageInfo,
+                        config = newConfig,
+                        textPaint = textPaint,
+                        coroutineContext = generateBitmapCoroutineCtx
                     )
                 }
 
@@ -217,10 +218,10 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                         // if uri was changed, create a new bitmap
                         // Here would decode a inSampled bitmap, the max size was imageView's width and height
                         val iconBitmapRect = decodeSampledBitmapFromResource(
-                            context.contentResolver,
-                            newConfig.iconUri,
-                            measuredWidth,
-                            measuredHeight,
+                            resolver = context.contentResolver,
+                            uri = newConfig.iconUri,
+                            reqWidth = measuredWidth,
+                            reqHeight = measuredHeight,
                         )
                         if (iconBitmapRect.isFailure() || iconBitmapRect.data == null) {
                             return@launch
@@ -231,12 +232,12 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                     localIconUri = newConfig.iconUri
                     layoutPaint.shader = null
                     buildIconBitmapShader(
-                        curImageInfo,
-                        iconBitmap!!,
-                        newConfig,
-                        textPaint,
+                        imageInfo = curImageInfo,
+                        srcBitmap = iconBitmap!!,
+                        config = newConfig,
+                        textPaint = textPaint,
                         scale = false,
-                        generateBitmapCoroutineCtx
+                        coroutineContext = generateBitmapCoroutineCtx
                     )
                 }
             }
@@ -286,24 +287,24 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
         canvas?.withSave {
             if (curImageInfo.obtainTileMode() == Shader.TileMode.CLAMP) {
                 translate(
-                    drawableBounds.left + curImageInfo.offsetX * drawableBounds.width(),
-                    drawableBounds.top + curImageInfo.offsetY * drawableBounds.height()
+                    /* dx = */ drawableBounds.left + curImageInfo.offsetX * drawableBounds.width(),
+                    /* dy = */ drawableBounds.top + curImageInfo.offsetY * drawableBounds.height()
                 )
                 drawRect(
-                    0f,
-                    0f,
-                    (layoutShader?.width ?: 0).toFloat(),
-                    (layoutShader?.height ?: 0).toFloat(),
-                    layoutPaint
+                    /* left = */ 0f,
+                    /* top = */ 0f,
+                    /* right = */ (layoutShader?.width ?: 0).toFloat(),
+                    /* bottom = */ (layoutShader?.height ?: 0).toFloat(),
+                    /* paint = */ layoutPaint
                 )
             } else {
                 translate(drawableBounds.left, drawableBounds.top)
                 drawRect(
-                    0f,
-                    0f,
-                    drawableBounds.right - drawableBounds.left,
-                    drawableBounds.bottom - drawableBounds.top,
-                    layoutPaint
+                    /* left = */ 0f,
+                    /* top = */ 0f,
+                    /* right = */ drawableBounds.right - drawableBounds.left,
+                    /* bottom = */ drawableBounds.bottom - drawableBounds.top,
+                    /* paint = */ layoutPaint
                 )
             }
         }
@@ -313,10 +314,10 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
         val bounds = drawableBounds
         imageMatrix.mapRect(bounds, RectF(drawable.bounds))
         bounds.set(
-            bounds.left + paddingLeft,
-            bounds.top + paddingTop,
-            bounds.right + paddingRight,
-            bounds.bottom + paddingBottom,
+            /* left = */ bounds.left + paddingLeft,
+            /* top = */ bounds.top + paddingTop,
+            /* right = */ bounds.right + paddingRight,
+            /* bottom = */ bounds.bottom + paddingBottom,
         )
     }
 
@@ -356,7 +357,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
 
     private var touchRect = RectF()
 
-    fun isOutOfDrawable(deltaX: Float, deltaY: Float): Boolean {
+    private fun isOutOfDrawable(deltaX: Float, deltaY: Float): Boolean {
         if (curImageInfo.obtainTileMode() != Shader.TileMode.CLAMP) {
             return false
         }
@@ -367,10 +368,10 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
         val bitmapWith = layoutShader?.width ?: 0
         val bitmapHeight = layoutShader?.height ?: 0
         touchRect.set(
-            newX,
-            newY,
-            newX + bitmapWith,
-            newY + bitmapHeight
+            /* left = */ newX,
+            /* top = */ newY,
+            /* right = */ newX + bitmapWith,
+            /* bottom = */ newY + bitmapHeight
         )
         Log.i(TAG, "isOutOfDrawable $touchRect, drawableBounds: $drawableBounds")
         return touchRect.right < drawableBounds.left
@@ -379,7 +380,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                 || touchRect.bottom < drawableBounds.top
     }
 
-    fun isTouchWaterMark(event: MotionEvent): Boolean {
+    private fun isTouchWaterMark(event: MotionEvent): Boolean {
         if (curImageInfo.obtainTileMode() != Shader.TileMode.CLAMP) {
             return false
         }
@@ -395,7 +396,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
 
     private var animator: Animator? = null
 
-    fun backToCenter(
+    private fun backToCenter(
         post: (info: ImageInfo, x: Float, y: Float) -> Unit,
     ) {
         animator?.cancel()
@@ -432,7 +433,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
     private var mScaleFactor = 1f
 
     private val mScaleDetector by lazy {
-        ScaleGestureDetector(context, scaleListener)
+        ScaleGestureDetector(/* context = */ context, /* listener = */ scaleListener)
     }
 
     private val scaleListener = object : ScaleGestureDetector.SimpleOnScaleGestureListener() {
@@ -474,6 +475,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
     private var startY = 0f
     private var enableTouch = true
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         // Let the ScaleGestureDetector inspect all events.
         Log.i(TAG, "onTouch $event")
@@ -565,7 +567,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             return matrix
         }
 
-        private fun adjustHorizonalGap(config: WaterMark, maxSize: Int): Int {
+        private fun adjustHorizontalGap(config: WaterMark, maxSize: Int): Int {
             return (maxSize * ((config.hGap / 100f) + 1)).toInt()
         }
 
@@ -599,8 +601,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
 
             val maxSize = calculateMaxSize(rawHeight, rawWidth)
 
-
-            val finalWidth = adjustHorizonalGap(config, maxSize)
+            val finalWidth = adjustHorizontalGap(config, maxSize)
             val finalHeight = adjustVerticalGap(config, maxSize)
             // textSize represents scale ratio of icon.
             val scaleRatio = if (scale) {
@@ -610,9 +611,9 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             } * config.textSize / 14f
 
             val targetBitmap = Bitmap.createBitmap(
-                (finalWidth * scaleRatio).toInt(),
-                (finalHeight * scaleRatio).toInt(),
-                Bitmap.Config.ARGB_8888
+                /* width = */ (finalWidth * scaleRatio).toInt(),
+                /* height = */ (finalHeight * scaleRatio).toInt(),
+                /* config = */ Bitmap.Config.ARGB_8888
             )
 
             val canvas = Canvas(targetBitmap)
@@ -639,23 +640,23 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             )
 
             canvas.drawBitmap(
-                scaleBitmap,
-                (finalWidth * scaleRatio - scaleBitmap.width) / 2.toFloat(),
-                (finalHeight * scaleRatio - scaleBitmap.height) / 2.toFloat(),
-                textPaint
+                /* bitmap = */ scaleBitmap,
+                /* left = */ (finalWidth * scaleRatio - scaleBitmap.width) / 2.toFloat(),
+                /* top = */ (finalHeight * scaleRatio - scaleBitmap.height) / 2.toFloat(),
+                /* paint = */ textPaint
             )
             if (showDebugRect) {
                 canvas.restore()
             }
             val bitmapShader = BitmapShader(
-                targetBitmap,
-                tileMode,
-                tileMode
+                /* bitmap = */ targetBitmap,
+                /* tileX = */ tileMode,
+                /* tileY = */ tileMode
             )
             return@withContext WaterMarkShader(
-                bitmapShader,
-                targetBitmap.width,
-                targetBitmap.height
+                bitmapShader = bitmapShader,
+                width = targetBitmap.width,
+                height = targetBitmap.height
             )
         }
 
@@ -663,7 +664,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
          * Generate bitmap shader from input text.
          * Text watermark implemented by bitmap shader.
          * Using [StaticLayout] to draw multi line text.
-         * @author hi@rosuh.me
+         * @author roy.mobile.dev@gmail.com
          */
         suspend fun buildTextBitmapShader(
             imageInfo: ImageInfo,
@@ -681,14 +682,14 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             config.text.split("\n").forEach {
                 val startIndex = config.text.indexOf(it).coerceAtLeast(0)
                 val lineWidth = textPaint.measureText(
-                    config.text,
-                    startIndex,
-                    (startIndex + it.length).coerceAtMost(config.text.length)
+                    /* text = */ config.text,
+                    /* start = */ startIndex,
+                    /* end = */ (startIndex + it.length).coerceAtMost(config.text.length)
                 ).toInt()
                 maxLineWidth = max(maxLineWidth, lineWidth)
             }
 
-            val staticLayout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val staticLayout =
                 StaticLayout.Builder.obtain(
                     config.text,
                     0,
@@ -698,17 +699,6 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                 )
                     .setAlignment(Layout.Alignment.ALIGN_NORMAL)
                     .build()
-            } else {
-                StaticLayout(
-                    config.text,
-                    textPaint,
-                    maxLineWidth,
-                    Layout.Alignment.ALIGN_NORMAL,
-                    1.0f,
-                    0f,
-                    false
-                )
-            }
 
             val textWidth = staticLayout.width.toFloat().coerceAtLeast(1f)
             val textHeight = staticLayout.height.toFloat().coerceAtLeast(1f)
@@ -727,7 +717,7 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
             val fixWidth = textWidth * cos(radians) + textHeight * sin(radians)
             val fixHeight = textWidth * sin(radians) + textHeight * cos(radians)
 
-            val finalWidth = adjustHorizonalGap(config, fixWidth.toInt())
+            val finalWidth = adjustHorizontalGap(config, fixWidth.toInt())
             val finalHeight = adjustVerticalGap(config, fixHeight.toInt())
             val bitmap = Bitmap.createBitmap(finalWidth, finalHeight, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bitmap)
@@ -759,14 +749,14 @@ class WaterMarkImageView : androidx.appcompat.widget.AppCompatImageView, Corouti
                 canvas.restore()
             }
             val bitmapShader = BitmapShader(
-                bitmap,
-                tileMode,
-                tileMode
+                /* bitmap = */ bitmap,
+                /* tileX = */ tileMode,
+                /* tileY = */ tileMode
             )
             return@withContext WaterMarkShader(
-                bitmapShader,
-                bitmap.width,
-                bitmap.height
+                bitmapShader = bitmapShader,
+                width = bitmap.width,
+                height = bitmap.height
             )
         }
     }
