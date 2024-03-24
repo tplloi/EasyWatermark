@@ -86,7 +86,7 @@ class TextPaintStyleAdapter(
 
     internal class TypefaceHolder(val root: View) : BaseViewHolder(root) {
         val tvPreview: TextView by lazy { root.findViewById(R.id.tvPreview) }
-        val tvTitle: TextView? by lazy { root.findViewById(R.id.tv_title) }
+        val tvTitle: TextView? by lazy { root.findViewById(R.id.tvTitle) }
     }
 
     data class TextPaintStyleModel(

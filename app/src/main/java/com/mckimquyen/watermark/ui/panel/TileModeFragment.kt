@@ -7,18 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.FragmentTileModeBinding
+import com.mckimquyen.watermark.databinding.FTileModeBinding
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 
-class TileModeFragment : BaseBindFragment<FragmentTileModeBinding>() {
+class TileModeFragment : BaseBindFragment<FTileModeBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
-    ): FragmentTileModeBinding {
-        return FragmentTileModeBinding.inflate(layoutInflater, container, false)
+        container: ViewGroup?,
+    ): FTileModeBinding {
+        return FTileModeBinding.inflate(layoutInflater, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,21 +28,21 @@ class TileModeFragment : BaseBindFragment<FragmentTileModeBinding>() {
                 return@observe
             }
             val checkedId = when (it.tileMode) {
-                Shader.TileMode.CLAMP.ordinal -> R.id.rb_tile_mode_decal
-                else -> R.id.rb_tile_mode_repeat
+                Shader.TileMode.CLAMP.ordinal -> R.id.rbTileModeDecal
+                else -> R.id.rbTileModeRepeat
             }
             binding?.rgTileMode?.setOnCheckedChangeListener(null)
             binding?.rgTileMode?.check(checkedId)
             binding?.rgTileMode?.setOnCheckedChangeListener { _, id ->
                 val imageInfo = it
-                if (id == R.id.rb_tile_mode_decal && imageInfo.tileMode == Shader.TileMode.CLAMP.ordinal) {
+                if (id == R.id.rbTileModeDecal && imageInfo.tileMode == Shader.TileMode.CLAMP.ordinal) {
                     return@setOnCheckedChangeListener
                 }
-                if (id == R.id.rb_tile_mode_repeat && imageInfo.tileMode == Shader.TileMode.REPEAT.ordinal) {
+                if (id == R.id.rbTileModeRepeat && imageInfo.tileMode == Shader.TileMode.REPEAT.ordinal) {
                     return@setOnCheckedChangeListener
                 }
-                when(id) {
-                    R.id.rb_tile_mode_decal -> shareViewModel.updateTileMode(imageInfo, Shader.TileMode.CLAMP)
+                when (id) {
+                    R.id.rbTileModeDecal -> shareViewModel.updateTileMode(imageInfo, Shader.TileMode.CLAMP)
                     else -> shareViewModel.updateTileMode(imageInfo, Shader.TileMode.REPEAT)
                 }
             }

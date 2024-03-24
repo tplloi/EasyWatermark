@@ -8,16 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.slider.Slider
 import com.mckimquyen.watermark.data.model.WaterMark
-import com.mckimquyen.watermark.databinding.FragemntBasePbBinding
+import com.mckimquyen.watermark.databinding.FBasePbBinding
 import com.mckimquyen.watermark.utils.ktx.toColor
 
-abstract class BasePBFragment : BaseBindFragment<FragemntBasePbBinding>() {
+abstract class BasePBFragment : BaseBindFragment<FBasePbBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): FragemntBasePbBinding {
-        val b = FragemntBasePbBinding.inflate(layoutInflater, container, false)
+    ): FBasePbBinding {
+        val b = FBasePbBinding.inflate(layoutInflater, container, false)
 
         b.slideContentSize.apply {
             value = formatValue(shareViewModel.waterMark.value)

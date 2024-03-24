@@ -9,7 +9,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mckimquyen.watermark.databinding.FragmentTextStyleBinding
+import com.mckimquyen.watermark.databinding.FTextStyleBinding
 import com.mckimquyen.watermark.ui.adapter.DividerAdapter
 import com.mckimquyen.watermark.ui.adapter.TextPaintStyleAdapter
 import com.mckimquyen.watermark.ui.adapter.TextTypefaceAdapter
@@ -17,12 +17,12 @@ import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.ui.widget.utils.BounceEdgeEffectFactory
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 
-class TextStyleFragment : BaseBindFragment<FragmentTextStyleBinding>() {
+class TextStyleFragment : BaseBindFragment<FTextStyleBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentTextStyleBinding {
-        return FragmentTextStyleBinding.inflate(layoutInflater)
+    ): FTextStyleBinding {
+        return FTextStyleBinding.inflate(layoutInflater)
     }
 
     private val paintStyleAdapter by lazy {

@@ -9,7 +9,7 @@
     android:paddingEnd="16dp">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/et_water_text"
+        android:id="@+id/etWaterText"
         style="@style/TextAppearance.Material3.BodyMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,23 +22,23 @@
         android:singleLine="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/blink_cursor"
+        app:layout_constraintEnd_toStartOf="@id/blinkCursor"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
         tools:text="输入文字" />
 
     <com.mckimquyen.watermark.ui.widget.BlinkCursorView
-        android:id="@+id/blink_cursor"
+        android:id="@+id/blinkCursor"
         android:layout_width="3dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:background="?android:attr/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@id/et_water_text"
+        app:layout_constraintBottom_toBottomOf="@id/etWaterText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/et_water_text"
-        app:layout_constraintTop_toTopOf="@id/et_water_text" />
+        app:layout_constraintStart_toEndOf="@id/etWaterText"
+        app:layout_constraintTop_toTopOf="@id/etWaterText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -195,7 +195,7 @@
                         android:background="@drawable/bg_card_person_info">
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/tv_title"
+                            android:id="@+id/tvTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="32dp"
@@ -221,7 +221,7 @@
                             app:layout_constraintBottom_toTopOf="@id/civ_avatar"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
                         <com.mckimquyen.watermark.ui.widget.CircleImageView
                             android:id="@+id/civ_avatar"

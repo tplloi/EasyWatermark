@@ -95,7 +95,7 @@ class FuncPanelAdapter(
     }
 
     class FuncTitleHolder(view: View) : BaseViewHolder(view) {
-        val tvTitle: TextView = view.findViewById(R.id.tv_title)
+        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
         val ivIcon: ImageView = view.findViewById(R.id.ivIcon)
     }
 }

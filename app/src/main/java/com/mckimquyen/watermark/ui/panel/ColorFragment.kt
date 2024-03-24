@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.FragmentColorBinding
+import com.mckimquyen.watermark.databinding.FColorBinding
 import com.mckimquyen.watermark.ui.adapter.ColorPreviewAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.ui.widget.utils.BounceEdgeEffectFactory
@@ -17,7 +17,7 @@ import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import com.mckimquyen.watermark.utils.onItemClick
 
-class ColorFragment : BaseBindFragment<FragmentColorBinding>() {
+class ColorFragment : BaseBindFragment<FColorBinding>() {
 
     private val white by lazy {
         Color.WHITE
@@ -50,8 +50,8 @@ class ColorFragment : BaseBindFragment<FragmentColorBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentColorBinding {
-        val b = FragmentColorBinding.inflate(layoutInflater, container, false)
+    ): FColorBinding {
+        val b = FColorBinding.inflate(layoutInflater, container, false)
 
         val savedColor = shareViewModel.waterMark.value?.textColor ?: Color.WHITE
         val colorArrayList = buildColorList(savedColor)

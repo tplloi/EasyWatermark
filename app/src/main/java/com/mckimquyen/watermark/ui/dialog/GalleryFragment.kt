@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.FragmentGalleryBinding
+import com.mckimquyen.watermark.databinding.FGalleryBinding
 import com.mckimquyen.watermark.ui.adapter.GalleryAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindBSDFragment
 import com.mckimquyen.watermark.ui.widget.UniformScrollGridLayoutManager
@@ -23,7 +23,7 @@ import com.mckimquyen.watermark.utils.FileUtils
 import com.mckimquyen.watermark.utils.MultiPickContract
 
 
-class GalleryFragment : BaseBindBSDFragment<FragmentGalleryBinding>() {
+class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
 
     companion object {
         private const val TAG = "GalleryFragment"
@@ -82,8 +82,8 @@ class GalleryFragment : BaseBindBSDFragment<FragmentGalleryBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
-    ): FragmentGalleryBinding {
-        val rootView = FragmentGalleryBinding.inflate(layoutInflater, container, false)
+    ): FGalleryBinding {
+        val rootView = FGalleryBinding.inflate(layoutInflater, container, false)
         rootView.topAppBar.setNavigationOnClickListener {
             dismissAllowingStateLoss()
         }

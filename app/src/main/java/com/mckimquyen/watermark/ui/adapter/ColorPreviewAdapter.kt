@@ -58,7 +58,7 @@ class ColorPreviewAdapter(
     }
 
     internal class PreviewHolder(root: View) : BaseViewHolder(root) {
-        val siv: SelectableImageView = root.findViewById(R.id.siv_color)
+        val siv: SelectableImageView = root.findViewById(R.id.sivColor)
     }
 
     sealed class PreviewType {

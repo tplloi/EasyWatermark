@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="56dp">
 
-
     <RadioGroup
-        android:id="@+id/rg_tile_mode"
+        android:id="@+id/rgTileMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -17,14 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/rb_tile_mode_repeat"
+            android:id="@+id/rbTileModeRepeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:text="@string/tile_mode_title_repeat" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/rb_tile_mode_decal"
+            android:id="@+id/rbTileModeDecal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

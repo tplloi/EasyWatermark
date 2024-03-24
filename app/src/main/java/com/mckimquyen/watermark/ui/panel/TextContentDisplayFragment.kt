@@ -8,19 +8,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commitNow
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.FragmentTextContentDisplayBinding
+import com.mckimquyen.watermark.databinding.FTextContentDisplayBinding
 import com.mckimquyen.watermark.ui.adapter.TextPaintStyleAdapter
 import com.mckimquyen.watermark.ui.adapter.TextTypefaceAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 
-class TextContentDisplayFragment : BaseBindFragment<FragmentTextContentDisplayBinding>() {
+class TextContentDisplayFragment : BaseBindFragment<FTextContentDisplayBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentTextContentDisplayBinding {
-        return FragmentTextContentDisplayBinding.inflate(layoutInflater)
+    ): FTextContentDisplayBinding {
+        return FTextContentDisplayBinding.inflate(layoutInflater)
     }
 
     private val paintStyleAdapter by lazy {
