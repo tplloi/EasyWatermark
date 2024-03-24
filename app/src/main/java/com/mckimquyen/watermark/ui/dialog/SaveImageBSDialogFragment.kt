@@ -3,6 +3,7 @@ package com.mckimquyen.watermark.ui.dialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,7 @@ class SaveImageBSDialogFragment : BaseBindBSDFragment<DlgSaveFileBinding>() {
     ): DlgSaveFileBinding {
         val root = DlgSaveFileBinding.inflate(layoutInflater, container, false)
         val isSaving = shareViewModel.saveResult.value?.code == MainViewModel.TYPE_SAVING
+        Log.d(TAG, "bindView: isSaving $isSaving")
         with(root) {
             btnSave.apply {
                 setOnClickListener {
@@ -68,9 +70,9 @@ class SaveImageBSDialogFragment : BaseBindBSDFragment<DlgSaveFileBinding>() {
             atvFormat.also {
                 it.setAdapter(
                     ArrayAdapter(
-                        requireContext(),
-                        R.layout.simple_dropdown_item_1line,
-                        popArray
+                        /* context = */ requireContext(),
+                        /* resource = */ R.layout.simple_dropdown_item_1line,
+                        /* objects = */ popArray
                     )
                 )
                 it.setText(

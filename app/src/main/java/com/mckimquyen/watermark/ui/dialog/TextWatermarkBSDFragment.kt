@@ -152,8 +152,7 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DlgEditTextContainerBinding
         }
         savedTemplateListHeight = sheetContainer.height
         TransitionManager.beginDelayedTransition(sheetContainer.parent as ViewGroup, transition)
-        val height =
-            if (savedEditHeight == 0) ViewGroup.LayoutParams.WRAP_CONTENT else savedEditHeight
+        val height = if (savedEditHeight == 0) ViewGroup.LayoutParams.WRAP_CONTENT else savedEditHeight
         sheetContainer.layoutParams.height = height
         (dialog as? BottomSheetDialog)?.behavior?.also { behavior ->
             behavior.peekHeight = height

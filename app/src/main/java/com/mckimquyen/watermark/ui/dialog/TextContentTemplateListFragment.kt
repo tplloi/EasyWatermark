@@ -25,16 +25,20 @@ class TextContentTemplateListFragment : BaseBindFragment<DlgEditTextTemplateList
     override fun bindView(
         layoutInflater: LayoutInflater, container: ViewGroup?,
     ): DlgEditTextTemplateListBinding {
-        return DlgEditTextTemplateListBinding.inflate(layoutInflater, container, false)
+        return DlgEditTextTemplateListBinding.inflate(
+            /* inflater = */ layoutInflater,
+            /* parent = */ container,
+            /* attachToParent = */ false
+        )
     }
 
     private val listAdapter by lazy {
         TextContentTemplateListAdapter {
-            setOnEditListener { template, pos ->
+            setOnEditListener { template, _ ->
                 EditTemplateContentFragment.safetyShow(childFragmentManager, template)
             }
 
-            setOnClickListener { template, pos ->
+            setOnClickListener { template, _ ->
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle(getString(R.string.dialog_title_exist_confirm))
                     .setMessage(getString(R.string.tips_use_this_template))

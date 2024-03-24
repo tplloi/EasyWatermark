@@ -22,7 +22,6 @@ import com.mckimquyen.watermark.ui.widget.UniformScrollGridLayoutManager
 import com.mckimquyen.watermark.utils.FileUtils
 import com.mckimquyen.watermark.utils.MultiPickContract
 
-
 class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
 
     companion object {
@@ -52,7 +51,7 @@ class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
         val displayManager: DisplayManager =
             requireContext().applicationContext.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
         refreshRate = displayManager.displays?.getOrNull(0)?.refreshRate ?: 60F
-        Log.i(TAG, "onCreate $refreshRate")
+//        Log.i(TAG, "onCreate $refreshRate")
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -115,10 +114,10 @@ class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
                     }
                     val verticalScrollRange = recyclerView.computeVerticalScrollRange()
                     val computeVerticalScrollOffset = recyclerView.computeVerticalScrollOffset()
-                    Log.i(
-                        TAG,
-                        "onScrolled verticalScrollRange = $verticalScrollRange, computeVerticalScrollOffset = ${recyclerView.computeVerticalScrollOffset()}, computeVerticalScrollExtent = ${recyclerView.computeVerticalScrollExtent()}"
-                    )
+//                    Log.i(
+//                        TAG,
+//                        "onScrolled verticalScrollRange = $verticalScrollRange, computeVerticalScrollOffset = ${recyclerView.computeVerticalScrollOffset()}, computeVerticalScrollExtent = ${recyclerView.computeVerticalScrollExtent()}"
+//                    )
                     rootView.ivSlider.translationY =
                         ((computeVerticalScrollOffset.toFloat() / verticalScrollRange) * (recyclerView.bottom - recyclerView.paddingBottom)).coerceAtLeast(
                             0f
@@ -216,9 +215,9 @@ class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
         } ?: emptyList()
         if (finalList.isEmpty()) {
             Toast.makeText(
-                requireContext(),
-                getString(R.string.tips_do_not_choose_image),
-                Toast.LENGTH_SHORT
+                /* context = */ requireContext(),
+                /* text = */ getString(R.string.tips_do_not_choose_image),
+                /* duration = */ Toast.LENGTH_SHORT
             ).show()
             return
         }
