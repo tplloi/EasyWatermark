@@ -13,7 +13,6 @@ import com.mckimquyen.cmonet.CMonet
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
-//TODO pkg name
 //TODO ad
 //TODO firebase
 //TODO ic launcher
@@ -25,9 +24,10 @@ import kotlin.system.exitProcess
 //TODO more app
 //TODO policy
 //TODO keystore
-//TODO proguard
 
 //done
+//pkg name
+//proguard
 
 @HiltAndroidApp
 class MyApp : Application() {
