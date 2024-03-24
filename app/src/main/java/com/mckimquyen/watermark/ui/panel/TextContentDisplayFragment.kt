@@ -1,7 +1,6 @@
 package com.mckimquyen.watermark.ui.panel
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.commitNow
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.databinding.FTextContentDisplayBinding
-import com.mckimquyen.watermark.ui.adapter.TextPaintStyleAdapter
-import com.mckimquyen.watermark.ui.adapter.TextTypefaceAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
@@ -18,32 +15,33 @@ import com.mckimquyen.watermark.utils.ktx.titleTextColor
 class TextContentDisplayFragment : BaseBindFragment<FTextContentDisplayBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): FTextContentDisplayBinding {
         return FTextContentDisplayBinding.inflate(layoutInflater)
     }
 
-    private val paintStyleAdapter by lazy {
-        TextPaintStyleAdapter(
-            TextPaintStyleAdapter.obtainDefaultPaintStyleList(
-                requireContext()
-            ),
-            shareViewModel.waterMark.value?.textStyle
-        ) { _, paintStyle ->
-            shareViewModel.updateTextStyle(paintStyle)
-            typefaceAdapter.updateTextStyle(paintStyle)
-        }
-    }
-    private val typefaceAdapter by lazy {
-        TextTypefaceAdapter(
-            TextTypefaceAdapter.obtainDefaultTypefaceList(
-                requireContext()
-            ),
-            shareViewModel.waterMark.value?.textTypeface
-        ) { _, typeface ->
-            shareViewModel.updateTextTypeface(typeface)
-        }
-    }
+//    private val paintStyleAdapter by lazy {
+//        TextPaintStyleAdapter(
+//            TextPaintStyleAdapter.obtainDefaultPaintStyleList(
+//                requireContext()
+//            ),
+//            shareViewModel.waterMark.value?.textStyle
+//        ) { _, paintStyle ->
+//            shareViewModel.updateTextStyle(paintStyle)
+//            typefaceAdapter.updateTextStyle(paintStyle)
+//        }
+//    }
+
+//    private val typefaceAdapter by lazy {
+//        TextTypefaceAdapter(
+//            TextTypefaceAdapter.obtainDefaultTypefaceList(
+//                requireContext()
+//            ),
+//            shareViewModel.waterMark.value?.textTypeface
+//        ) { _, typeface ->
+//            shareViewModel.updateTextTypeface(typeface)
+//        }
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

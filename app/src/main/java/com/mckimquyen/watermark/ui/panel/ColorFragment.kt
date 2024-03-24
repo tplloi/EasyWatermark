@@ -48,7 +48,7 @@ class ColorFragment : BaseBindFragment<FColorBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): FColorBinding {
         val b = FColorBinding.inflate(layoutInflater, container, false)
 
@@ -56,8 +56,7 @@ class ColorFragment : BaseBindFragment<FColorBinding>() {
         val colorArrayList = buildColorList(savedColor)
 
         b.rvColor.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter =
                 ColorPreviewAdapter(colorArrayList)
             onItemClick { recyclerView, position, _ ->
@@ -85,7 +84,7 @@ class ColorFragment : BaseBindFragment<FColorBinding>() {
                 object : ColorEnvelopeListener {
                     override fun onColorSelected(
                         envelope: ColorEnvelope?,
-                        fromUser: Boolean
+                        fromUser: Boolean,
                     ) {
                         envelope?.color?.let {
                             adapter.updateSelectedColor(it)

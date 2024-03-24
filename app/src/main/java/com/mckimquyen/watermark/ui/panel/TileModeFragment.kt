@@ -64,9 +64,9 @@ class TileModeFragment : BaseBindFragment<FTileModeBinding>() {
             }
             fa.commitWithAnimation {
                 replace(
-                    containerId,
-                    TileModeFragment(),
-                    TAG
+                    /* containerViewId = */ containerId,
+                    /* fragment = */ TileModeFragment(),
+                    /* tag = */ TAG
                 )
             }
         }

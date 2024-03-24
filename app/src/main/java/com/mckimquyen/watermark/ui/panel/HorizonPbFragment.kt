@@ -40,9 +40,9 @@ class HorizonPbFragment : BasePBFragment() {
             }
             fa.commitWithAnimation {
                 replace(
-                    containerId,
-                    HorizonPbFragment(),
-                    TAG
+                    /* containerViewId = */ containerId,
+                    /* fragment = */ HorizonPbFragment(),
+                    /* tag = */ TAG
                 )
             }
         }

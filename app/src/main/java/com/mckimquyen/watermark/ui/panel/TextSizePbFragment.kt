@@ -22,11 +22,13 @@ class TextSizePbFragment : BasePBFragment() {
     }
 
     override fun formatValue(config: WaterMark?): Float {
-        return (config?.textSize?.toInt()?.toFloat() ?: 1f).coerceAtLeast(1f).coerceAtMost(WaterMarkRepository.MAX_TEXT_SIZE)
+        return (config?.textSize?.toInt()?.toFloat() ?: 1f).coerceAtLeast(1f)
+            .coerceAtMost(WaterMarkRepository.MAX_TEXT_SIZE)
     }
 
     override fun formatValueTips(config: WaterMark?): String {
-        val size = (config?.textSize?.toInt()?.toFloat() ?: 1f).coerceAtLeast(1f).coerceAtMost(WaterMarkRepository.MAX_TEXT_SIZE)
+        val size = (config?.textSize?.toInt()?.toFloat() ?: 1f).coerceAtLeast(1f)
+            .coerceAtMost(WaterMarkRepository.MAX_TEXT_SIZE)
         return "$size"
     }
 
@@ -40,9 +42,9 @@ class TextSizePbFragment : BasePBFragment() {
             }
             fa.commitWithAnimation {
                 replace(
-                    containerId,
-                    TextSizePbFragment(),
-                    TAG
+                    /* containerViewId = */ containerId,
+                    /* fragment = */ TextSizePbFragment(),
+                    /* tag = */ TAG
                 )
             }
         }

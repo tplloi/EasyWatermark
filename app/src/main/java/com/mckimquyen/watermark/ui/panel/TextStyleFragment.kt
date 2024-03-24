@@ -20,7 +20,7 @@ import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 class TextStyleFragment : BaseBindFragment<FTextStyleBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): FTextStyleBinding {
         return FTextStyleBinding.inflate(layoutInflater)
     }
@@ -58,8 +58,11 @@ class TextStyleFragment : BaseBindFragment<FTextStyleBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.rvColor?.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                /* context = */ requireContext(),
+                /* orientation = */LinearLayoutManager.HORIZONTAL,
+                /* reverseLayout = */false
+            )
             adapter = concatAdapter
             edgeEffectFactory = BounceEdgeEffectFactory(context, this)
         }
@@ -75,9 +78,9 @@ class TextStyleFragment : BaseBindFragment<FTextStyleBinding>() {
             }
             fa.commitWithAnimation {
                 replace(
-                    containerId,
-                    TextStyleFragment(),
-                    TAG
+                    /* containerViewId = */ containerId,
+                    /* fragment = */ TextStyleFragment(),
+                    /* tag = */ TAG
                 )
             }
         }

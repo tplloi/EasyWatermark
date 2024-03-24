@@ -1,7 +1,6 @@
 package com.mckimquyen.watermark.ui.panel
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.slider.Slider
