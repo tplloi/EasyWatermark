@@ -55,18 +55,18 @@ dependencyResolutionManagement {
             library("benchmark", "androidx.benchmark:benchmark-macro-junit4:1.1.1")
             library("profieinstaller", "androidx.profileinstaller:profileinstaller:1.2.2")
 
-            val testVersion = "1.4.0"
-            library("test-core", "androidx.test:core:${testVersion}")
-            library("test-rules", "androidx.test:rules:${testVersion}")
-            library("test-runner", "androidx.test:runner:${testVersion}")
-            library("test-junit", "junit:junit:4.13.2")
-            library("test-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
-            library("test-uiautomator", "androidx.test.uiautomator:uiautomator:2.2.0")
-            library("test-ext-junit", "androidx.test.ext:junit:1.1.4")
-            library("mockito-core", "org.mockito:mockito-core:4.0.0")
-            library("mockito-android", "org.mockito:mockito-android:4.0.0")
-            library("robolectric", "org.robolectric:robolectric:4.4")
-            library("hamcrest-library", "org.hamcrest:hamcrest-library:2.2")
+//            val testVersion = "1.4.0"
+//            library("test-core", "androidx.test:core:${testVersion}")
+//            library("test-rules", "androidx.test:rules:${testVersion}")
+//            library("test-runner", "androidx.test:runner:${testVersion}")
+//            library("test-junit", "junit:junit:4.13.2")
+//            library("test-espresso-core", "androidx.test.espresso:espresso-core:3.4.0")
+//            library("test-uiautomator", "androidx.test.uiautomator:uiautomator:2.2.0")
+//            library("test-ext-junit", "androidx.test.ext:junit:1.1.4")
+//            library("mockito-core", "org.mockito:mockito-core:4.0.0")
+//            library("mockito-android", "org.mockito:mockito-android:4.0.0")
+//            library("robolectric", "org.robolectric:robolectric:4.4")
+//            library("hamcrest-library", "org.hamcrest:hamcrest-library:2.2")
         }
     }
 }

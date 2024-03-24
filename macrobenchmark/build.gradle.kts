@@ -60,8 +60,8 @@ androidComponents {
 dependencies {
     api(project(":baseBenchmarks"))
     api(libs.benchmark)
-    api(libs.test.ext.junit)
-    api(libs.test.espresso.core)
-    api(libs.test.uiautomator)
+//    api(libs.test.ext.junit)
+//    api(libs.test.espresso.core)
+//    api(libs.test.uiautomator)
     api(libs.kotlin.stdlib)
 }
