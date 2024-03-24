@@ -1,7 +1,7 @@
 include(":app")
 include(":cmonet")
-include(":baseBenchmarks")
-include(":macrobenchmark")
+//include(":baseBenchmarks")
+//include(":macrobenchmark")
 
 dependencyResolutionManagement {
     versionCatalogs {
