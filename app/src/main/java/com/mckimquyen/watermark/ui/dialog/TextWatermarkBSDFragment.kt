@@ -21,13 +21,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.transition.MaterialFadeThrough
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.DialogEditTextContainerBinding
+import com.mckimquyen.watermark.databinding.DlgEditTextContainerBinding
 import com.mckimquyen.watermark.ui.UiState
 import com.mckimquyen.watermark.ui.base.BaseBindBSDFragment
 import com.mckimquyen.watermark.utils.ktx.getScreenHeight
 import kotlinx.coroutines.launch
 
-class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBinding>() {
+class TextWatermarkBSDFragment : BaseBindBSDFragment<DlgEditTextContainerBinding>() {
 
     private var savedTemplateListHeight: Int = 0
     private var savedEditHeight: Int = 0
@@ -36,9 +36,9 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
-    ): DialogEditTextContainerBinding {
-        return DialogEditTextContainerBinding.inflate(layoutInflater, container, false)
+        container: ViewGroup?,
+    ): DlgEditTextContainerBinding {
+        return DlgEditTextContainerBinding.inflate(layoutInflater, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +56,7 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
                                 dialog?.onBackPressed()
                             }
                         }
+
                         UiState.GoEdit -> {
                             if (childFragmentManager.fragments.lastOrNull() is TextContentTemplateListFragment) {
                                 collapseToEdit()
@@ -63,9 +64,11 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
                                 dialog?.onBackPressed()
                             }
                         }
+
                         UiState.GoTemplate -> {
                             expandToTemplateList()
                         }
+
                         else -> {}
                     }
                 }
@@ -86,7 +89,7 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
                     childFragmentManager
                         .beginTransaction()
                         .replace(
-                            R.id.fragment_container_view,
+                            R.id.fragmentContainerView,
                             TextContentTemplateListFragment()
                         )
                         .addToBackStack(null)
@@ -195,7 +198,7 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
                 R.anim.fragment_close_out_slide
             )
             .add(
-                R.id.fragment_container_view,
+                R.id.fragmentContainerView,
                 EditTextContentFragment()
             )
             .addToBackStack(EditTextContentFragment.TAG)
@@ -223,6 +226,7 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DialogEditTextContainerBind
                     f == null -> {
                         newInstance().show(manager, TAG)
                     }
+
                     !f.isAdded -> {
                         f.show(manager, TAG)
                     }

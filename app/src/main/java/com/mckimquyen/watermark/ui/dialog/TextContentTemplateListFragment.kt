@@ -1,12 +1,10 @@
 package com.mckimquyen.watermark.ui.dialog
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -15,19 +13,19 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mckimquyen.watermark.R
-import com.mckimquyen.watermark.databinding.DialogEditTextTemplateListBinding
+import com.mckimquyen.watermark.databinding.DlgEditTextTemplateListBinding
 import com.mckimquyen.watermark.ui.UiState
 import com.mckimquyen.watermark.ui.adapter.TextContentTemplateListAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindFragment
 import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import kotlinx.coroutines.launch
 
-class TextContentTemplateListFragment : BaseBindFragment<DialogEditTextTemplateListBinding>() {
+class TextContentTemplateListFragment : BaseBindFragment<DlgEditTextTemplateListBinding>() {
 
     override fun bindView(
-        layoutInflater: LayoutInflater, container: ViewGroup?
-    ): DialogEditTextTemplateListBinding {
-        return DialogEditTextTemplateListBinding.inflate(layoutInflater, container, false)
+        layoutInflater: LayoutInflater, container: ViewGroup?,
+    ): DlgEditTextTemplateListBinding {
+        return DlgEditTextTemplateListBinding.inflate(layoutInflater, container, false)
     }
 
     private val listAdapter by lazy {

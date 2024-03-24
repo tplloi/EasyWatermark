@@ -20,14 +20,14 @@ import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.ImageInfo
 import com.mckimquyen.watermark.data.model.JobState
 import com.mckimquyen.watermark.data.model.Result
-import com.mckimquyen.watermark.databinding.DialogSaveFileBinding
+import com.mckimquyen.watermark.databinding.DlgSaveFileBinding
 import com.mckimquyen.watermark.ui.MainActivity
 import com.mckimquyen.watermark.ui.MainViewModel
 import com.mckimquyen.watermark.ui.adapter.SaveImageListAdapter
 import com.mckimquyen.watermark.ui.base.BaseBindBSDFragment
 import com.mckimquyen.watermark.utils.ktx.preCheckStoragePermission
 
-class SaveImageBSDialogFragment : BaseBindBSDFragment<DialogSaveFileBinding>() {
+class SaveImageBSDialogFragment : BaseBindBSDFragment<DlgSaveFileBinding>() {
     private val imageList: List<ImageInfo>
         get() = (requireContext() as MainActivity).getImageList()
 
@@ -36,8 +36,8 @@ class SaveImageBSDialogFragment : BaseBindBSDFragment<DialogSaveFileBinding>() {
     override fun bindView(
         layoutInflater: LayoutInflater,
         container: ViewGroup?,
-    ): DialogSaveFileBinding {
-        val root = DialogSaveFileBinding.inflate(layoutInflater, container, false)
+    ): DlgSaveFileBinding {
+        val root = DlgSaveFileBinding.inflate(layoutInflater, container, false)
         val isSaving = shareViewModel.saveResult.value?.code == MainViewModel.TYPE_SAVING
         with(root) {
             btnSave.apply {
