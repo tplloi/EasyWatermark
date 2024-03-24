@@ -30,7 +30,7 @@ class ViewAnimationListenerBuilder : ViewAnimationListener {
         this.applyBeforeStart = applyOnStart
     }
 
-    fun applyAfterEnd(applyOnEnd: ApplyOnEnd) {
-        this.applyAfterEnd = applyOnEnd
-    }
+//    fun applyAfterEnd(applyOnEnd: ApplyOnEnd) {
+//        this.applyAfterEnd = applyOnEnd
+//    }
 }

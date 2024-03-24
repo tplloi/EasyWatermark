@@ -1,7 +1,6 @@
 package com.mckimquyen.watermark.ui.panel
 
 import android.graphics.Color
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
@@ -15,7 +14,7 @@ import com.mckimquyen.watermark.utils.ktx.commitWithAnimation
 import com.skydoves.colorpickerview.ColorEnvelope
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import com.mckimquyen.watermark.utils.onItemClick
+import com.mckimquyen.watermark.ui.widget.onItemClick
 
 class ColorFragment : BaseBindFragment<FColorBinding>() {
 

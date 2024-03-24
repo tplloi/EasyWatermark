@@ -3,14 +3,9 @@ package com.mckimquyen.watermark.ui.widget.utils
 import android.view.View
 import androidx.dynamicanimation.animation.SpringAnimation
 
-/**
- * Encapsulate View and SpringAnimation
- * @author roy.mobile.dev@gmail.com
- * @date 2021/8/12
- */
 class ViewAnimation(
     val view: View,
-    val animation: SpringAnimation? = null
+    val animation: SpringAnimation? = null,
 ) {
 
     init {

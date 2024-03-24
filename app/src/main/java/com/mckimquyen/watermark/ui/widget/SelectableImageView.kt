@@ -31,8 +31,8 @@ class SelectableImageView : View {
         }
     }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context!!,
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
         attrs,
         defStyleAttr
     )
@@ -59,14 +59,14 @@ class SelectableImageView : View {
         }
     }
 
-    var borderColor: Int = Color.WHITE
+    private var borderColor: Int = Color.WHITE
         set(value) {
             field = value
             borderPaint.color = value
             invalidate()
         }
 
-    var borderWidth = 3f
+    private var borderWidth = 3f
         set(value) {
             field = value
             borderPaint.strokeWidth = field
@@ -86,11 +86,11 @@ class SelectableImageView : View {
         PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP)
     }
 
-    var ringWidth = 3f
+    private var ringWidth = 3f
 
-    var ringColor = Color.WHITE
+    private var ringColor = Color.WHITE
 
-    var innerCircleWidth = 0f
+    private var innerCircleWidth = 0f
         set(value) {
             field = value
             invalidate()
@@ -120,24 +120,23 @@ class SelectableImageView : View {
             )
         }
 
-        val sc =
-            canvas?.saveLayer(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat(), paint)
-                ?: return
+        val sc = canvas?.saveLayer(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat(), paint)
+            ?: return
 
         canvas.drawCircle(
-            (measuredWidth / 2).toFloat(),
-            (measuredHeight / 2).toFloat(),
-            innerCircleWidth / 2,
-            paint
+            /* cx = */ (measuredWidth / 2).toFloat(),
+            /* cy = */ (measuredHeight / 2).toFloat(),
+            /* radius = */ innerCircleWidth / 2,
+            /* paint = */ paint
         )
 
         paint.xfermode = xfermode
         srcBitmap?.let {
             canvas.drawBitmap(
-                it,
-                (measuredWidth - srcBitmap!!.width).toFloat() / 2,
-                (measuredHeight - srcBitmap!!.height).toFloat() / 2,
-                paint
+                /* bitmap = */ it,
+                /* left = */ (measuredWidth - srcBitmap!!.width).toFloat() / 2,
+                /* top = */ (measuredHeight - srcBitmap!!.height).toFloat() / 2,
+                /* paint = */ paint
             )
         }
         paint.xfermode = null
@@ -148,7 +147,7 @@ class SelectableImageView : View {
         resId: Int = circleResId,
         w: Int = measuredWidth,
         h: Int = measuredHeight,
-        color: Int = circleColor
+        color: Int = circleColor,
     ): Bitmap? {
         var b: Bitmap? = null
         if (resId > 0) {
@@ -157,9 +156,9 @@ class SelectableImageView : View {
                     it.bitmap
                 } else if (it.intrinsicHeight > 0 && it.intrinsicWidth > 0) {
                     val bitmap = Bitmap.createBitmap(
-                        it.intrinsicWidth,
-                        it.intrinsicHeight,
-                        Bitmap.Config.ARGB_8888
+                        /* width = */ it.intrinsicWidth,
+                        /* height = */ it.intrinsicHeight,
+                        /* config = */ Bitmap.Config.ARGB_8888
                     )
                     val canvas = Canvas(bitmap)
                     it.setBounds(0, 0, canvas.width, canvas.height)

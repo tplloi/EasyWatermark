@@ -28,21 +28,21 @@ abstract class CustomViewGroup : ViewGroup {
         context: Context?,
         attrs: AttributeSet?,
         defStyleAttr: Int,
-        defStyleRes: Int
+        defStyleRes: Int,
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    protected fun getLayoutParamsWithMargin(
-        width: Int,
-        height: Int,
-        l: Int = 0,
-        t: Int = 0,
-        r: Int = 0,
-        b: Int = 0
-    ): MarginLayoutParams {
-        return MarginLayoutParams(width, height).apply {
-            setMargins(l, t, r, b)
-        }
-    }
+//    protected fun getLayoutParamsWithMargin(
+//        width: Int,
+//        height: Int,
+//        l: Int = 0,
+//        t: Int = 0,
+//        r: Int = 0,
+//        b: Int = 0,
+//    ): MarginLayoutParams {
+//        return MarginLayoutParams(width, height).apply {
+//            setMargins(l, t, r, b)
+//        }
+//    }
 
     val View.measuredWidthWithMargins: Int
         get() {

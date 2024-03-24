@@ -16,13 +16,12 @@ class AsyncSquareFrameLayout : SquareFrameLayout {
         defStyleAttr
     )
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
-
+//    constructor(
+//        context: Context,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     fun inflate(action: (view: View) -> Unit) {
         AsyncLayoutInflater(context).inflate(R.layout.item_image_gallery, this) { view, _, _ ->

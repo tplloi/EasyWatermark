@@ -4,7 +4,7 @@ import android.view.View
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
-import com.mckimquyen.watermark.utils.ItemClickSupportViewHolder
+import com.mckimquyen.watermark.ui.widget.ItemClickSupportViewHolder
 
 open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
     ItemClickSupportViewHolder {

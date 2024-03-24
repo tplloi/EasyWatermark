@@ -20,12 +20,12 @@ import com.mckimquyen.watermark.utils.bitmap.getAvailableMemory
  * 放到 [onStopTrackingTouch] 方法里调用。
  */
 open class DetectedPerformanceSeekBarListener(
-    private val config: WaterMark?
+    private val config: WaterMark?,
 ) : SeekBar.OnSeekBarChangeListener {
 
-    var inTimeAction: (SeekBar?, Int, Boolean) -> Unit = { _, _, _ -> }
+    private var inTimeAction: (SeekBar?, Int, Boolean) -> Unit = { _, _, _ -> }
 
-    var postAction: (SeekBar?, Int, Boolean) -> Unit = { _, _, _ -> }
+    private var postAction: (SeekBar?, Int, Boolean) -> Unit = { _, _, _ -> }
 
     private var isHighPerformancePredicate: () -> Boolean = {
         config?.markMode == WaterMarkRepository.MarkMode.Text ||

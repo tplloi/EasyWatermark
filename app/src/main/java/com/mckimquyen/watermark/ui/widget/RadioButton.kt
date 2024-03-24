@@ -28,18 +28,18 @@ class RadioButton : View {
         defStyleAttr
     )
 
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+//    constructor(
+//        context: Context?,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    companion object {
-        private const val TAG = "RadioButton"
-    }
+//    companion object {
+//        private const val TAG = "RadioButton"
+//    }
 
-    private val icTint = ContextCompat.getColor(context, R.color.selector_gallery_icon_tint)
+//    private val icTint = ContextCompat.getColor(context, R.color.selector_gallery_icon_tint)
 
     private val bgColorNormal = Color.TRANSPARENT
     private val bgColorSelected
@@ -78,20 +78,20 @@ class RadioButton : View {
         paint.color = if (isChecked) bgColorSelected else bgColorNormal
         paint.strokeWidth = 0f
         canvas?.drawCircle(
-            measuredWidth / 2f,
-            measuredHeight / 2f,
-            (measuredWidth - strokeWidth) / 2f,
-            paint
+            /* cx = */ measuredWidth / 2f,
+            /* cy = */ measuredHeight / 2f,
+            /* radius = */ (measuredWidth - strokeWidth) / 2f,
+            /* paint = */ paint
         )
         // draw stroke
         paint.style = Paint.Style.STROKE
         paint.color = if (isChecked) strokeColorSelected else strokeColorNormal
         paint.strokeWidth = strokeWidth.toFloat()
         canvas?.drawCircle(
-            measuredWidth / 2f,
-            measuredHeight / 2f,
-            (measuredWidth - strokeWidth) / 2f,
-            paint
+            /* cx = */ measuredWidth / 2f,
+            /* cy = */ measuredHeight / 2f,
+            /* radius = */ (measuredWidth - strokeWidth) / 2f,
+            /* paint = */ paint
         )
         // icon
         if (canvas != null && isChecked) {

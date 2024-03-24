@@ -101,6 +101,7 @@ class MultiSelectRv : RecyclerView {
                             }
                             rv.stopScroll()
                         }
+
                         MotionEvent.ACTION_MOVE -> {
                             latestMoveTs = System.currentTimeMillis()
                             val moveX = event.x
@@ -138,6 +139,7 @@ class MultiSelectRv : RecyclerView {
                                         preMoveX = moveX
                                         preMoveY = moveY
                                     }
+
                                     scrollTopArea && reduce -> {
                                         Log.i(TAG, "scrollTopArea")
                                         onUnSelect?.invoke(
@@ -147,6 +149,7 @@ class MultiSelectRv : RecyclerView {
                                         preMoveX = moveX
                                         preMoveY = moveY
                                     }
+
                                     increase -> {
                                         Log.i(TAG, "increase touchPos = $touchPos")
                                         onSelect?.invoke(rv, touchPos)
@@ -154,6 +157,7 @@ class MultiSelectRv : RecyclerView {
                                         preMoveY = moveY
                                         isIncreasing = true
                                     }
+
                                     reduce -> {
                                         Log.i(TAG, "reduce touchPos = $touchPos")
                                         onUnSelect?.invoke(rv, touchPos)
@@ -199,8 +203,9 @@ class MultiSelectRv : RecyclerView {
                             preMoveX = event.x
                             preMoveY = event.y
                         }
+
                         MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
-                            Log.i(TAG, "ACTION_CANCEL or ACTION_UP")
+//                            Log.i(TAG, "ACTION_CANCEL or ACTION_UP")
                             rv.stopScroll()
                             isLongPress = false
                             isAutoScrolling = false

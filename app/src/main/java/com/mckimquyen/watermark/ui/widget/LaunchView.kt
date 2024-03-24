@@ -52,7 +52,7 @@ class LaunchView : CustomViewGroup {
         context: Context?,
         attrs: AttributeSet?,
         defStyleAttr: Int,
-        defStyleRes: Int
+        defStyleRes: Int,
     ) : super(context, attrs, defStyleAttr, defStyleRes)
     //endregion
 
@@ -264,7 +264,10 @@ class LaunchView : CustomViewGroup {
             .plus(fcFunctionDetail.measuredHeightWithMargins)
             .plus(rvPhotoList.measuredHeightWithMargins)
 
-        Log.d(TAG, "${toolbar.measuredHeight}, ${tabLayout.measuredHeightWithMargins}, ${rvPanel.measuredHeightWithMargins},  ${fcFunctionDetail.measuredHeightWithMargins},  ${rvPhotoList.measuredHeightWithMargins}")
+        Log.d(
+            TAG,
+            "${toolbar.measuredHeight}, ${tabLayout.measuredHeightWithMargins}, ${rvPanel.measuredHeightWithMargins},  ${fcFunctionDetail.measuredHeightWithMargins},  ${rvPhotoList.measuredHeightWithMargins}"
+        )
 
         measureChildWithMargins(ivPhoto, widthMeasureSpec, 0, heightMeasureSpec, heightUsed)
 
@@ -280,12 +283,8 @@ class LaunchView : CustomViewGroup {
     }
 
     private fun layoutLaunch() {
-        logoView.let {
-            it.layoutCenterHorizontal(appendY = (measuredHeight * 0.2f).toInt())
-        }
-        ivSelectedPhotoTips.let {
-            it.layoutCenterHorizontal(appendY = (measuredHeight * 0.6f).toInt())
-        }
+        logoView.layoutCenterHorizontal(appendY = (measuredHeight * 0.2f).toInt())
+        ivSelectedPhotoTips.layoutCenterHorizontal(appendY = (measuredHeight * 0.6f).toInt())
         ivGoAboutPage.let {
             it.layoutCenterHorizontal(appendY = (measuredHeight - it.measuredHeightWithMargins))
         }
@@ -293,12 +292,8 @@ class LaunchView : CustomViewGroup {
 
     private fun layoutEditor() {
         // top
-        toolbar.let {
-            it.layout(0, 0)
-        }
-        ivPhoto.let {
-            it.layout(0, toolbar.bottom)
-        }
+        toolbar.layout(0, 0)
+        ivPhoto.layout(0, toolbar.bottom)
         // bottom
         tabLayout.let {
             it.layout(0, measuredHeight - it.measuredHeightWithMargins)
@@ -334,9 +329,14 @@ class LaunchView : CustomViewGroup {
                     it.isVisible = true
                 }
             }
+
             ViewMode.LaunchMode -> {
-                editorModeDisappearAnimationList.forEach { it.start() }
-                launchModeAppearAnimationList.forEach { it.start() }
+                editorModeDisappearAnimationList.forEach {
+                    it.start()
+                }
+                launchModeAppearAnimationList.forEach {
+                    it.start()
+                }
             }
         }
         launchViewListener?.onModeChange(oldMode, toMode)
@@ -354,6 +354,7 @@ class LaunchView : CustomViewGroup {
                 startY = event.rawY
                 return true
             }
+
             MotionEvent.ACTION_MOVE -> {
                 val dx = (event.rawX - startX)
                 val dy = (event.rawY - startY)
@@ -367,6 +368,7 @@ class LaunchView : CustomViewGroup {
                 startY = event.rawY
                 startX = event.rawX
             }
+
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 dragYAnimation.start()
                 dragXAnimation.start()

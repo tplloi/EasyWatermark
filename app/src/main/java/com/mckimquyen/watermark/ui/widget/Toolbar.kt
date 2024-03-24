@@ -17,21 +17,21 @@ class Toolbar : CustomViewGroup {
         defStyleAttr
     )
 
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+//    constructor(
+//        context: Context?,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    val logoView: ColoredImageVIew by lazy {
+    private val logoView: ColoredImageVIew by lazy {
         ColoredImageVIew(context).apply {
             layoutParams = MarginLayoutParams(48.dp, 48.dp)
             setImageResource(R.drawable.ic_log_transparent)
         }
     }
 
-    val ivSelectedPhoto: ImageView by lazy {
+    private val ivSelectedPhoto: ImageView by lazy {
         ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
             layoutParams =
                 MarginLayoutParams(
@@ -42,7 +42,7 @@ class Toolbar : CustomViewGroup {
         }
     }
 
-    val ivSave: ImageView by lazy {
+    private val ivSave: ImageView by lazy {
         ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
             layoutParams =
                 MarginLayoutParams(
@@ -53,7 +53,7 @@ class Toolbar : CustomViewGroup {
         }
     }
 
-    val ivGoAboutPage: ImageView by lazy {
+    private val ivGoAboutPage: ImageView by lazy {
         ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
             layoutParams =
                 MarginLayoutParams(
@@ -78,9 +78,7 @@ class Toolbar : CustomViewGroup {
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        logoView.let {
-            it.layoutCenterVertical()
-        }
+        logoView.layoutCenterVertical()
         ivGoAboutPage.let {
             it.layout(
                 this.measuredWidth + this.paddingStart - it.measuredWidthWithMargins,

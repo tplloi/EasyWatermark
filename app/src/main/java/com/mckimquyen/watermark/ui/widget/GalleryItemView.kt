@@ -10,7 +10,6 @@ import androidx.core.view.children
 import com.mckimquyen.watermark.utils.ktx.colorSurface
 import com.mckimquyen.watermark.utils.ktx.dp
 
-
 class GalleryItemView : FrameLayout {
 
     constructor(context: Context) : super(context)
@@ -21,14 +20,14 @@ class GalleryItemView : FrameLayout {
         defStyleAttr
     )
 
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+//    constructor(
+//        context: Context,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
-    val ivImage: ImageFilterView by lazy {
+    private val ivImage: ImageFilterView by lazy {
         ImageFilterView(context).apply {
             layoutParams = MarginLayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -40,7 +39,7 @@ class GalleryItemView : FrameLayout {
     }
 
 
-    val radioButton: RadioButton by lazy {
+    private val radioButton: RadioButton by lazy {
         RadioButton(context).apply {
             layoutParams = MarginLayoutParams(
                 24.dp,

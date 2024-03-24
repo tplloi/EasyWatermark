@@ -24,12 +24,12 @@ class PhotoPreviewItem : ViewGroup {
         defStyleAttr
     )
 
-    constructor(
-        context: Context?,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+//    constructor(
+//        context: Context?,
+//        attrs: AttributeSet?,
+//        defStyleAttr: Int,
+//        defStyleRes: Int,
+//    ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     private var isLongPress = false
 
@@ -37,12 +37,11 @@ class PhotoPreviewItem : ViewGroup {
         ImageView(context).apply {
             id = View.generateViewId()
             isLongPress = false
-            layoutParams =
-                MarginLayoutParams(40.dp, 40.dp)
+            layoutParams = MarginLayoutParams(40.dp, 40.dp)
             scaleType = ImageView.ScaleType.CENTER_CROP
             setOnLongClickListener {
                 if ((parent.parent as ViewGroup).childCount <= 1) return@setOnLongClickListener false
-                Log.i("gestureDetectorCompat", "long click")
+//                Log.i("gestureDetectorCompat", "long click")
                 isLongPress = true
                 VibrateHelper.get().doVibrate(it)
                 ivDel.appear(duration = 150L)
@@ -65,6 +64,7 @@ class PhotoPreviewItem : ViewGroup {
                             )
                             view.parent.requestDisallowInterceptTouchEvent(isLongPress)
                         }
+
                         MotionEvent.ACTION_MOVE -> {
                             if (!isLongPress) return false
                             val topEdge = ivDel.top.toFloat()
@@ -84,6 +84,7 @@ class PhotoPreviewItem : ViewGroup {
                                 false
                             }
                         }
+
                         MotionEvent.ACTION_UP -> {
                             if (!isLongPress) {
                                 post { this@PhotoPreviewItem.performClick() }
@@ -154,9 +155,9 @@ class PhotoPreviewItem : ViewGroup {
         this.onRemove = block
     }
 
-    fun onRemoveCancel(block: () -> Unit = {}) {
-        this.onRemoveCancel = block
-    }
+//    fun onRemoveCancel(block: () -> Unit = {}) {
+//        this.onRemoveCancel = block
+//    }
 
     val ivDel: ImageView by lazy {
         ImageView(context).apply {

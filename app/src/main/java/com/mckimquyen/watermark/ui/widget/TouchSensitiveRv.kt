@@ -31,15 +31,15 @@ class TouchSensitiveRv : RecyclerView {
         defStyleAttr
     )
 
-    var isTouching = false
+    private var isTouching = false
 
     // toggle whether if scroll listener can detected snap view to handle selected item
     var canAutoSelected = true
 
-    var childWidth = 0
+    private var childWidth = 0
         private set
 
-    var childHeight = 0
+    private var childHeight = 0
         private set
 
     var canTouch: Boolean = true
@@ -61,19 +61,19 @@ class TouchSensitiveRv : RecyclerView {
         Paint()
     }
 
-    private val borderWidth = 3.dp.toFloat()
+//    private val borderWidth = 3.dp.toFloat()
 
-    private val colorPrimary by lazy {
-        val typedValue = TypedValue()
-        context.theme.resolveAttribute(R.attr.colorPrimary, typedValue, true)
-        typedValue.data
-    }
+//    private val colorPrimary by lazy {
+//        val typedValue = TypedValue()
+//        context.theme.resolveAttribute(R.attr.colorPrimary, typedValue, true)
+//        typedValue.data
+//    }
 
-    private val colorPrimaryDark by lazy {
-        val typedValue = TypedValue()
-        context.theme.resolveAttribute(R.attr.colorPrimary, typedValue, true)
-        typedValue.data
-    }
+//    private val colorPrimaryDark by lazy {
+//        val typedValue = TypedValue()
+//        context.theme.resolveAttribute(R.attr.colorPrimary, typedValue, true)
+//        typedValue.data
+//    }
 
     private val colorAccent by lazy {
         val typedValue = TypedValue()
@@ -156,16 +156,16 @@ class TouchSensitiveRv : RecyclerView {
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         borderRectF.set(
-            (measuredWidth - borderSize) / 2f,
-            0f,
-            (measuredWidth + borderSize) / 2f,
-            borderSize
+            /* left = */ (measuredWidth - borderSize) / 2f,
+            /* top = */ 0f,
+            /* right = */ (measuredWidth + borderSize) / 2f,
+            /* bottom = */ borderSize
         )
         glowRectF.set(
-            (measuredWidth - childWidth) / 2f,
-            0f,
-            (measuredWidth + childWidth) / 2f,
-            childHeight.toFloat()
+            /* left = */ (measuredWidth - childWidth) / 2f,
+            /* top = */ 0f,
+            /* right = */ (measuredWidth + childWidth) / 2f,
+            /* bottom = */ childHeight.toFloat()
         )
         glowRadius = borderSize / 2
         if (glowRadius <= 0) {
@@ -173,12 +173,12 @@ class TouchSensitiveRv : RecyclerView {
             return
         }
         val shader = RadialGradient(
-            (measuredWidth / 2).toFloat(),
-            (measuredHeight / 2).toFloat(),
-            glowRadius,
-            colorList,
-            null,
-            Shader.TileMode.CLAMP
+            /* centerX = */ (measuredWidth / 2).toFloat(),
+            /* centerY = */ (measuredHeight / 2).toFloat(),
+            /* radius = */ glowRadius,
+            /* colors = */ colorList,
+            /* stops = */ null,
+            /* tileMode = */ Shader.TileMode.CLAMP
         )
         glowPaint.shader = shader
     }
@@ -214,6 +214,7 @@ class TouchSensitiveRv : RecyclerView {
             MotionEvent.ACTION_DOWN -> {
                 isTouching = true
             }
+
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 isTouching = false
             }

@@ -25,7 +25,7 @@ class ColoredImageVIew : AppCompatImageView {
     private var refreshRate: Float = 60F
     private var sizeHasChanged: Boolean = true
     private val paint by lazy { Paint() }
-    var enable = true
+    private var enable = true
 
     private val colorList = if (supportDynamicColor()) {
         arrayOf(
@@ -73,7 +73,8 @@ class ColoredImageVIew : AppCompatImageView {
     private var innerBitmap: Bitmap? = null
 
     init {
-        val displayManager: DisplayManager = context.applicationContext.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+        val displayManager: DisplayManager =
+            context.applicationContext.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
         refreshRate = displayManager.displays?.getOrNull(0)?.refreshRate ?: 60F
     }
 

@@ -51,7 +51,7 @@ class ProgressImageView : AppCompatImageView {
             }
     }
 
-    private var innerBitmap: Bitmap? = null
+//    private var innerBitmap: Bitmap? = null
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
@@ -84,10 +84,10 @@ class ProgressImageView : AppCompatImageView {
         val drawable: Drawable = drawable
         imageMatrix.mapRect(bounds, RectF(drawable.bounds))
         bounds.set(
-            bounds.left + paddingLeft,
-            bounds.top + paddingTop,
-            bounds.right + paddingRight,
-            bounds.bottom + paddingBottom,
+            /* left = */ bounds.left + paddingLeft,
+            /* top = */ bounds.top + paddingTop,
+            /* right = */ bounds.right + paddingRight,
+            /* bottom = */ bounds.bottom + paddingBottom,
         )
     }
 

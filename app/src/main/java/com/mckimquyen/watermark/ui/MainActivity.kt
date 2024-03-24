@@ -73,7 +73,7 @@ import com.mckimquyen.watermark.utils.ktx.openLink
 import com.mckimquyen.watermark.utils.ktx.preCheckStoragePermission
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 import com.mckimquyen.watermark.utils.ktx.toColor
-import com.mckimquyen.watermark.utils.onItemClick
+import com.mckimquyen.watermark.ui.widget.onItemClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
