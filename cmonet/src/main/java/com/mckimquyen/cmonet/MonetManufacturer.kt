@@ -5,7 +5,7 @@ import android.os.Build
 import com.google.android.material.color.DynamicColors
 
 class MonetManufacturer(
-    context: Context
+    context: Context,
 ) : IMonetManufacturer {
     private val supportedSet by lazy {
         hashSetOf(
@@ -42,7 +42,7 @@ class MonetManufacturer(
     }
 
     companion object {
-//        private const val TAG = "MonetManufacturer"
+        //        private const val TAG = "MonetManufacturer"
         private const val KEY_DYNAMIC_COLOR_FORCE = "dynamic_color_force"
     }
 }

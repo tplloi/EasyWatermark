@@ -27,8 +27,7 @@
         <item name="android:activityCloseExitAnimation">@anim/activity_close_out</item>
     </style>
 
-    <style name="Theme.MyApp.TitleText" parent="MaterialAlertDialog.Material3.Title.Text">
-    </style>
+    <style name="Theme.MyApp.TitleText" parent="MaterialAlertDialog.Material3.Title.Text" />
 
     <style name="MySeekBarStyle" parent="Widget.Material3.Slider">
         <item name="android:maxHeight">20dp</item>
@@ -86,8 +85,7 @@
         <item name="shapeAppearanceOverlay">@null</item>
     </style>
 
-    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text">
-    </style>
+    <style name="MaterialAlertDialog.App.Title.Text" parent="MaterialAlertDialog.Material3.Title.Text" />
 
     <style name="BottomSheetDialog.App.Button" parent="Widget.Material3.Button.IconButton.Filled">
         <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
