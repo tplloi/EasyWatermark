@@ -4,13 +4,13 @@
 
     android:interpolator="@android:interpolator/fast_out_slow_in"
     android:shareInterpolator="true">
-        <scale
-            android:fromXScale="0.45"
-            android:fromYScale="0.45"
-            android:pivotX="50%p"
-            android:pivotY="50%p"
-            android:toXScale="1"
-            android:toYScale="1" />
+    <scale
+        android:fromXScale="0.45"
+        android:fromYScale="0.45"
+        android:pivotX="50%p"
+        android:pivotY="50%p"
+        android:toXScale="1"
+        android:toYScale="1" />
 
     <translate
         android:fromXDelta="-15%"

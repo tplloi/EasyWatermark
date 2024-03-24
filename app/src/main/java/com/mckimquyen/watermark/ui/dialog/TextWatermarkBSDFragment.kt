@@ -192,10 +192,10 @@ class TextWatermarkBSDFragment : BaseBindBSDFragment<DlgEditTextContainerBinding
         super.onViewCreated(view, savedInstanceState)
         childFragmentManager.beginTransaction()
             .setCustomAnimations(
-                R.anim.fragment_enter_in_slide,
-                R.anim.fragment_exit_slide,
-                R.anim.fragment_readd_in_slide,
-                R.anim.fragment_close_out_slide
+                R.anim.f_enter_in_slide,
+                R.anim.f_exit_slide,
+                R.anim.f_readd_in_slide,
+                R.anim.f_close_out_slide
             )
             .add(
                 R.id.fragmentContainerView,

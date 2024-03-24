@@ -45,10 +45,10 @@ inline fun <reified VB : ViewBinding> inflateBinding(layoutInflater: LayoutInfla
 inline fun FragmentActivity.commitWithAnimation(body: FragmentTransaction.() -> Unit) {
     supportFragmentManager.commit {
         setCustomAnimations(
-            R.anim.fragment_open_in,
-            R.anim.fragment_pop_exit_slide,
-            R.anim.fragment_close_in,
-            R.anim.fragment_pop_exit_slide
+            R.anim.f_open_in,
+            R.anim.f_pop_exit_slide,
+            R.anim.f_close_in,
+            R.anim.f_pop_exit_slide
         )
         body.invoke(this)
     }
@@ -57,10 +57,10 @@ inline fun FragmentActivity.commitWithAnimation(body: FragmentTransaction.() -> 
 inline fun FragmentManager.commitWithAnimation(body: FragmentTransaction.() -> Unit) {
     this.commitNow(allowStateLoss = true) {
         setCustomAnimations(
-            R.anim.fragment_open_in,
-            R.anim.fragment_pop_exit_slide,
-            R.anim.fragment_close_in,
-            R.anim.fragment_pop_exit_slide
+            R.anim.f_open_in,
+            R.anim.f_pop_exit_slide,
+            R.anim.f_close_in,
+            R.anim.f_pop_exit_slide
         )
         body.invoke(this)
     }
