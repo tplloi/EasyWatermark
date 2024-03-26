@@ -7,6 +7,7 @@ import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -69,12 +70,12 @@ class AboutActivity : AppCompatActivity() {
             ) as GradientDrawable
 
             this.root.background = bgDrawable
-            tvVersion.setOnClickListener {
-                openLink("https://github.com/rosuH/EasyWatermark/releases/")
-            }
+//            tvVersion.setOnClickListener {
+//                openLink("https://github.com/rosuH/EasyWatermark/releases/")
+//            }
             tvVersionValue.text = BuildConfig.VERSION_NAME
             tvRating.setOnClickListener {
-                openLink(Uri.parse("market://details?id=me.rosuh.easywatermark"))
+                openLink(Uri.parse("market://details?id=${it.context.packageName}"))
             }
             tvFeedBack.setOnClickListener {
                 openLink("https://github.com/rosuH/EasyWatermark/issues/new")
