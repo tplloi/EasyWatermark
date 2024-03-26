@@ -110,4 +110,5 @@ dependencies {
     api(libs.palette.ktx)
     api(libs.profieinstaller)
     api(libs.colorpicker)
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }

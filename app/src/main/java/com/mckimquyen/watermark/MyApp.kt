@@ -15,11 +15,8 @@ import kotlin.system.exitProcess
 
 //TODO ad
 //TODO firebase
-
-//TODO ic launcher
 //TODO color
-//TODO ad id, internet permission in manifest
-//TODO leak canary
+
 //TODO rate app
 //TODO share app
 //TODO more app
@@ -29,6 +26,9 @@ import kotlin.system.exitProcess
 //done
 //pkg name
 //proguard
+//ic launcher
+//ad id, internet permission in manifest
+//leak canary
 
 @HiltAndroidApp
 class MyApp : Application() {
