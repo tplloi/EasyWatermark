@@ -90,14 +90,14 @@ class MainActivity : AppCompatActivity() {
     private val contentFunList: List<FuncTitleModel> by lazy {
         listOf(
             FuncTitleModel(
-                FuncTitleModel.FuncType.Text,
-                getString(R.string.water_mark_mode_text),
-                R.drawable.ic_func_text
+                type = FuncTitleModel.FuncType.Text,
+                title = getString(R.string.water_mark_mode_text),
+                iconRes = R.drawable.ic_func_text
             ),
             FuncTitleModel(
-                FuncTitleModel.FuncType.Icon,
-                getString(R.string.water_mark_mode_image),
-                R.drawable.ic_func_sticker
+                type = FuncTitleModel.FuncType.Icon,
+                title = getString(R.string.water_mark_mode_image),
+                iconRes = R.drawable.ic_func_sticker
             )
         )
     }
@@ -105,14 +105,14 @@ class MainActivity : AppCompatActivity() {
     private val styleFunList: List<FuncTitleModel> by lazy {
         listOf(
             FuncTitleModel(
-                FuncTitleModel.FuncType.TileMode,
-                getString(R.string.title_tile_mode),
-                R.drawable.ic_tile_mode
+                type = FuncTitleModel.FuncType.TileMode,
+                title = getString(R.string.title_tile_mode),
+                iconRes = R.drawable.ic_tile_mode
             ),
             FuncTitleModel(
-                FuncTitleModel.FuncType.TextSize,
-                getString(R.string.title_text_size),
-                R.drawable.ic_func_size
+                type = FuncTitleModel.FuncType.TextSize,
+                title = getString(R.string.title_text_size),
+                iconRes = R.drawable.ic_func_size
             ),
             FuncTitleModel(
                 FuncTitleModel.FuncType.TextStyle,
