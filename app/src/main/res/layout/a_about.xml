@@ -90,14 +90,14 @@
                 app:layout_constraintTop_toBottomOf="@id/tvVersion" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvFeedBack"
+                android:id="@+id/tvMoreApp"
                 style="@style/AboutPageTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
-                android:text="@string/about_title_feed_back"
-                app:drawableStartCompat="@drawable/ic_bug_report"
+                android:text="@string/more_apps"
+                app:drawableStartCompat="@drawable/baseline_favorite_border_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvRating" />
@@ -112,7 +112,7 @@
                 android:paddingEnd="28dp"
                 android:text="@string/about_title_about"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvFeedBack" />
+                app:layout_constraintTop_toBottomOf="@id/tvMoreApp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvChangeLog"

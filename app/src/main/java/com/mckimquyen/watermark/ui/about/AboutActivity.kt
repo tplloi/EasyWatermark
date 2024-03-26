@@ -77,7 +77,8 @@ class AboutActivity : AppCompatActivity() {
             tvRating.setOnClickListener {
                 openLink(Uri.parse("market://details?id=${it.context.packageName}"))
             }
-            tvFeedBack.setOnClickListener {
+            tvMoreApp.setOnClickListener {
+                //TODO roy93~
                 openLink("https://github.com/rosuH/EasyWatermark/issues/new")
             }
             tvChangeLog.setOnClickListener {
