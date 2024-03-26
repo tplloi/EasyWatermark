@@ -19,6 +19,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.view.children
 import androidx.core.widget.TextViewCompat
 import androidx.palette.graphics.Palette
+import com.jakewharton.processphoenix.ProcessPhoenix
 import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.databinding.AAboutBinding
@@ -117,10 +118,11 @@ class AboutActivity : AppCompatActivity() {
             switchDynamicColor.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.toggleSupportDynamicColor(isChecked)
                 Toast.makeText(
-                    this@AboutActivity,
-                    "Reboot and you'll get what you want.",
-                    Toast.LENGTH_SHORT
+                    /* context = */ this@AboutActivity,
+                    /* text = */ getString(R.string.you_ll_need_to_close_and_restart_the_app_to_switch_themes),
+                    /* duration = */ Toast.LENGTH_SHORT
                 ).show()
+                ProcessPhoenix.triggerRebirth(this@AboutActivity)
             }
 
             binding.clDevContainer.backgroundTintList =
