@@ -15,6 +15,7 @@ import kotlin.system.exitProcess
 
 //TODO ad
 //TODO firebase
+
 //TODO ic launcher
 //TODO color
 //TODO ad id, internet permission in manifest
