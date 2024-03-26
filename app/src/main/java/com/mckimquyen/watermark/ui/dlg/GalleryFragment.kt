@@ -1,4 +1,4 @@
-package com.mckimquyen.watermark.ui.dialog
+package com.mckimquyen.watermark.ui.dlg
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -25,7 +25,7 @@ import com.mckimquyen.watermark.utils.MultiPickContract
 class GalleryFragment : BaseBindBSDFragment<FGalleryBinding>() {
 
     companion object {
-        private const val TAG = "GalleryFragment"
+        private val TAG = GalleryFragment::class.java.simpleName
     }
 
     private var isScrollSliderManually: Boolean = false

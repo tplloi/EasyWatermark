@@ -1,4 +1,4 @@
-package com.mckimquyen.watermark.ui.dialog
+package com.mckimquyen.watermark.ui.dlg
 
 import android.os.Bundle
 import android.view.LayoutInflater

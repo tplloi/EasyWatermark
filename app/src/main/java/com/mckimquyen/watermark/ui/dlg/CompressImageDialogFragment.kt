@@ -1,4 +1,4 @@
-package com.mckimquyen.watermark.ui.dialog
+package com.mckimquyen.watermark.ui.dlg
 
 import android.app.Dialog
 import android.os.Bundle
@@ -11,7 +11,6 @@ import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.google.android.material.button.MaterialButton
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.Result
@@ -50,11 +49,10 @@ class CompressImageDialogFragment : DialogFragment() {
         }
         setTupState()
         shareViewModel.compressedResult.observe(
-            viewLifecycleOwner,
-            Observer {
-                setTupState(it)
-            }
-        )
+            viewLifecycleOwner
+        ) {
+            setTupState(it)
+        }
 
         return root
     }
@@ -129,11 +127,11 @@ class CompressImageDialogFragment : DialogFragment() {
             return CompressImageDialogFragment()
         }
 
-        fun safetyHide(manager: FragmentManager) {
-            kotlin.runCatching {
-                (manager.findFragmentByTag(TAG) as? CompressImageDialogFragment)?.dismissAllowingStateLoss()
-            }
-        }
+//        fun safetyHide(manager: FragmentManager) {
+//            kotlin.runCatching {
+//                (manager.findFragmentByTag(TAG) as? CompressImageDialogFragment)?.dismissAllowingStateLoss()
+//            }
+//        }
 
         fun safetyShow(manager: FragmentManager) {
             try {

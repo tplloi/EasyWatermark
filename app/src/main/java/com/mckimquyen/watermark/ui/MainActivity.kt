@@ -46,10 +46,10 @@ import com.mckimquyen.watermark.data.repo.WaterMarkRepository
 import com.mckimquyen.watermark.ui.about.AboutActivity
 import com.mckimquyen.watermark.ui.adapter.FuncPanelAdapter
 import com.mckimquyen.watermark.ui.adapter.PhotoListPreviewAdapter
-import com.mckimquyen.watermark.ui.dialog.CompressImageDialogFragment
-import com.mckimquyen.watermark.ui.dialog.GalleryFragment
-import com.mckimquyen.watermark.ui.dialog.SaveImageBSDialogFragment
-import com.mckimquyen.watermark.ui.dialog.TextWatermarkBSDFragment
+import com.mckimquyen.watermark.ui.dlg.CompressImageDialogFragment
+import com.mckimquyen.watermark.ui.dlg.GalleryFragment
+import com.mckimquyen.watermark.ui.dlg.SaveImageBSDialogFragment
+import com.mckimquyen.watermark.ui.dlg.TextWatermarkBSDFragment
 import com.mckimquyen.watermark.ui.panel.AlphaPbFragment
 import com.mckimquyen.watermark.ui.panel.ColorFragment
 import com.mckimquyen.watermark.ui.panel.DegreePbFragment

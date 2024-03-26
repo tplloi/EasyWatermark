@@ -1,9 +1,7 @@
-package com.mckimquyen.watermark.ui.dialog
+package com.mckimquyen.watermark.ui.dlg
 
 import android.os.Bundle
 import android.text.Editable
-import android.text.Selection.setSelection
-import android.text.TextUtils.replace
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +21,7 @@ class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): DlgEditTextBinding {
         return DlgEditTextBinding.inflate(layoutInflater, container, false)
     }
@@ -40,7 +38,7 @@ class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
                     s: CharSequence?,
                     start: Int,
                     count: Int,
-                    after: Int
+                    after: Int,
                 ) {
                 }
 
@@ -48,7 +46,7 @@ class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
                     s: CharSequence?,
                     start: Int,
                     before: Int,
-                    count: Int
+                    count: Int,
                 ) {
                     shareViewModel.updateText(s?.toString() ?: "")
                 }
@@ -62,7 +60,7 @@ class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
         binding?.btnConfirm?.apply {
             setOnClickListener {
                 shareViewModel.updateText(binding?.etWaterText?.text?.toString() ?: "")
-                (requireParentFragment() as DialogFragment).dismiss()
+                (requireParentFragment() as? DialogFragment)?.dismiss()
             }
         }
 
@@ -73,7 +71,10 @@ class EditTextContentFragment : BaseBindFragment<DlgEditTextBinding>() {
         }
 
         lifecycleScope.launch {
-            shareViewModel.uiStateFlow.flowWithLifecycle(this@EditTextContentFragment.lifecycle, Lifecycle.State.STARTED)
+            shareViewModel.uiStateFlow.flowWithLifecycle(
+                this@EditTextContentFragment.lifecycle,
+                Lifecycle.State.STARTED
+            )
                 .collect {
                     if (it !is UiState.UseTemplate) {
                         return@collect

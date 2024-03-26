@@ -1,12 +1,10 @@
-package com.mckimquyen.watermark.ui.dialog
+package com.mckimquyen.watermark.ui.dlg
 
 import android.os.Bundle
-import android.text.Selection.setSelection
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.FragmentManager
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.entity.Template
@@ -22,7 +20,7 @@ class EditTemplateContentFragment : BaseBindBSDFragment<DlgEditTemplateBinding>(
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): DlgEditTemplateBinding {
         return DlgEditTemplateBinding.inflate(layoutInflater, container, false)
     }
