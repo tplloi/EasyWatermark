@@ -14,6 +14,10 @@ class OpenSourceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setSupportActionBar(binding.myToolbar)
+        setupViews()
+    }
+
+    private fun setupViews() {
         binding.myToolbar.setNavigationOnClickListener {
             onBackPressed()
         }

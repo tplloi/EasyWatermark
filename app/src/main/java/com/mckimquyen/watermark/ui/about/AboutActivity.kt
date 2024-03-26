@@ -25,7 +25,6 @@ import com.mckimquyen.watermark.utils.ktx.bgColor
 import com.mckimquyen.watermark.utils.ktx.colorBackground
 import com.mckimquyen.watermark.utils.ktx.colorPrimary
 import com.mckimquyen.watermark.utils.ktx.colorSecondaryContainer
-import com.mckimquyen.watermark.utils.ktx.colorSurface
 import com.mckimquyen.watermark.utils.ktx.inflate
 import com.mckimquyen.watermark.utils.ktx.openLink
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
@@ -54,13 +53,11 @@ class AboutActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeStatusBarStyle(color: Int = colorSurface) {
+    private fun changeStatusBarStyle() {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.TRANSPARENT
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.findViewById<View>(android.R.id.content)?.foreground = null
-        }
+        window.findViewById<View>(android.R.id.content)?.foreground = null
     }
 
 
@@ -158,7 +155,7 @@ class AboutActivity : AppCompatActivity() {
                         return@observe
                     }
 
-                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
+                    true -> {
                         applyPaletteForSupportLightStatusIcon(it)
                     }
 

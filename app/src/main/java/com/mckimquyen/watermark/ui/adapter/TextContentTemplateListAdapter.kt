@@ -9,7 +9,7 @@ import com.mckimquyen.watermark.data.model.entity.Template
 import com.mckimquyen.watermark.databinding.ItemTemplateListBinding
 
 class TextContentTemplateListAdapter(
-    private val listener: TextContentTemplateListAdapterListener? = null
+    private val listener: TextContentTemplateListAdapterListener? = null,
 ) : RecyclerView.Adapter<TextContentTemplateListAdapter.ViewHolder>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<Template>() {
@@ -44,14 +44,23 @@ class TextContentTemplateListAdapter(
         val item = mDiffer.currentList.getOrNull(position) ?: return
         holder.binding.tvContent.text = item.content
         holder.itemView.setOnClickListener {
-            listener?.onClickListener?.invoke(item, position)
+            listener?.onClickListener?.invoke(
+                item,
+                position
+            )
         }
         holder.binding.ivDelete.setOnClickListener {
-            listener?.onRemoveListener?.invoke(item, position)
+            listener?.onRemoveListener?.invoke(
+                item,
+                position
+            )
         }
 
         holder.binding.ivEdit.setOnClickListener {
-            listener?.onEditListener?.invoke(item, position)
+            listener?.onEditListener?.invoke(
+                item,
+                position
+            )
         }
     }
 
@@ -60,7 +69,7 @@ class TextContentTemplateListAdapter(
     data class TextContentTemplateListAdapterListener(
         val onClickListener: OnClickListener? = null,
         val onEditListener: OnEditListener? = null,
-        val onRemoveListener: OnRemoveListener? = null
+        val onRemoveListener: OnRemoveListener? = null,
     )
 }
 
@@ -91,7 +100,9 @@ class TextContentTemplateListAdapterListenerBuilder {
     fun build(): TextContentTemplateListAdapter {
         return TextContentTemplateListAdapter(
             TextContentTemplateListAdapter.TextContentTemplateListAdapterListener(
-                onClickListener, onEditListener, onRemoveListener
+                onClickListener = onClickListener,
+                onEditListener = onEditListener,
+                onRemoveListener = onRemoveListener
             )
         )
     }

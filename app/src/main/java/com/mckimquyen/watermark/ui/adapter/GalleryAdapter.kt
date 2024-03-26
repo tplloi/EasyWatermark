@@ -20,7 +20,7 @@ import com.mckimquyen.watermark.utils.ktx.loadSmall
 class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() {
 
     companion object {
-        private const val TAG = "GalleryAdapter"
+        private val TAG = GalleryAdapter::class.java.simpleName
     }
 
     private var latestSelectedItem: Int = -1
@@ -30,10 +30,10 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
     val selectedCount: MutableLiveData<Int> = MutableLiveData(0)
 
     private val differ by lazy {
-        AsyncListDiffer<Image>(this, DIFF_CALLBACK)
+        AsyncListDiffer(this, DIFF_CALLBACK)
     }
 
-    private val DIFF_CALLBACK:DiffUtil.ItemCallback<Image> = object : DiffUtil.ItemCallback<Image>() {
+    private val DIFF_CALLBACK: DiffUtil.ItemCallback<Image> = object : DiffUtil.ItemCallback<Image>() {
         override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
             return oldItem.uri == newItem.uri
         }
@@ -61,7 +61,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
     override fun onBindViewHolder(
         holder: GalleryItemHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
@@ -72,13 +72,14 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
                 "selectTo" -> {
                     holder.bindWhenInflated {
                         holder.cbImage.isChecked = true
-                        applyCheckStyle(holder.ivImage, isChecked = true, animate = true)
+                        applyCheckStyle(imageFilterView = holder.ivImage, isChecked = true, animate = true)
                     }
                 }
+
                 "unSelect" -> {
                     holder.bindWhenInflated {
                         holder.cbImage.isChecked = false
-                        applyCheckStyle(holder.ivImage, isChecked = false, animate = true)
+                        applyCheckStyle(imageFilterView = holder.ivImage, isChecked = false, animate = true)
                     }
                 }
             }
@@ -109,9 +110,8 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
                     applyCheckStyle(holder.ivImage, this@with.check, false)
                     setOnCheckedChangeListener { isChecked ->
                         applyCheckStyle(holder.ivImage, isChecked)
-                        val data =
-                            getItem(holder.absoluteAdapterPosition)
-                                ?: return@setOnCheckedChangeListener
+                        val data = getItem(holder.absoluteAdapterPosition)
+                            ?: return@setOnCheckedChangeListener
                         if (data.check && isChecked) {
                             return@setOnCheckedChangeListener
                         }
@@ -140,7 +140,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
         imageFilterView: ImageFilterView,
         isChecked: Boolean,
         animate: Boolean = true,
-        post: () -> Unit = {}
+        post: () -> Unit = {},
     ) {
         val d = 200L
         val round = .4f
@@ -167,6 +167,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
                     playTogether(xAnimator, yAnimator, roundAnimator)
                 }.start()
             }
+
             else -> {
                 imageFilterView.scaleX = if (isChecked) scale else 1f
                 imageFilterView.scaleY = if (isChecked) scale else 1f
@@ -188,7 +189,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
         if (start < 0 || end >= list.size || start >= end) {
             return
         }
-        var changed = false
+        var changed: Boolean
         for (i in end downTo start) {
             val item = list[i]
             changed = item.check != true
@@ -232,16 +233,16 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
             list[i].check = false
             (recyclerView.findViewHolderForAdapterPosition(i) as? GalleryItemHolder?)?.apply {
                 cbImage.isChecked = false
-                applyCheckStyle(ivImage, false)
+                applyCheckStyle(imageFilterView = ivImage, isChecked = false)
             }
         }
         selectedCount.value = 0
         latestSelectedItem = -1
     }
 
-    fun markAutoScroll(autoScrolling: Boolean, autoSelect: Boolean) {
-        Log.i(TAG, "markAutoScroll $autoScrolling, $autoSelect")
-    }
+//    fun markAutoScroll(autoScrolling: Boolean, autoSelect: Boolean) {
+//        Log.i(TAG, "markAutoScroll $autoScrolling, $autoSelect")
+//    }
 
     class GalleryItemHolder(view: AsyncSquareFrameLayout) : RecyclerView.ViewHolder(view) {
         lateinit var cbImage: RadioButton

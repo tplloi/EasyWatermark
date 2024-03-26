@@ -9,10 +9,6 @@ import com.mckimquyen.watermark.ui.widget.ItemClickSupportViewHolder
 open class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
     ItemClickSupportViewHolder {
 
-    /**
-     * A [SpringAnimation] for this RecyclerView item. This animation is used to bring the item back
-     * after the over-scroll effect.
-     */
     val translationX: SpringAnimation by lazy {
         SpringAnimation(itemView, SpringAnimation.TRANSLATION_X)
             .setSpring(

@@ -16,7 +16,7 @@ import com.mckimquyen.watermark.ui.widget.PhotoPreviewItem
 import com.mckimquyen.watermark.utils.VibrateHelper
 
 class PhotoListPreviewAdapter(
-    private val context: Context
+    private val context: Context,
 ) : RecyclerView.Adapter<PhotoListPreviewAdapter.ImageHolder>() {
 
     val data: List<ImageInfo>
@@ -47,10 +47,10 @@ class PhotoListPreviewAdapter(
     override fun onBindViewHolder(
         holder: ImageHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         super.onBindViewHolder(holder, position, payloads)
-        if (payloads.isNullOrEmpty()) {
+        if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
             return
         }
@@ -58,7 +58,7 @@ class PhotoListPreviewAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
-        processUI(holder, position)
+        processUI(holder = holder, position = position)
     }
 
     private fun processUI(holder: ImageHolder, position: Int, isPayLoad: Boolean = false) {
@@ -88,6 +88,7 @@ class PhotoListPreviewAdapter(
                         .withEndAction { holder.ivRemove.isVisible = false }
                         .start()
                 }
+
                 else -> {
                     holder.ivIcon.apply {
                         isVisible = true

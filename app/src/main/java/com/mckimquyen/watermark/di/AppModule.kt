@@ -18,12 +18,12 @@ object AppModule {
     @Singleton
     @Provides
     fun provideYourDatabase(
-        @ApplicationContext app: Context
+        @ApplicationContext app: Context,
     ): AppDatabase? {
         val builder = Room.databaseBuilder(
-            app,
-            AppDatabase::class.java,
-            "ewm-db"
+            context = app,
+            klass = AppDatabase::class.java,
+            name = "ewm-db"
         )
         val isCh = Locale.getDefault().language.contains("zh")
         builder.createFromAsset(if (isCh) "ewm-db-ch.db" else "ewm-db-eng.db")

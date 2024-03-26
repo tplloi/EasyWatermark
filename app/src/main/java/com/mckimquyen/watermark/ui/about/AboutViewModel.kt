@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AboutViewModel @Inject constructor(
     private val waterMarkRepository: WaterMarkRepository,
-    private val memorySettingRepo: MemorySettingRepo
+    memorySettingRepo: MemorySettingRepo,
 ) : ViewModel() {
 
     val waterMark = waterMarkRepository.waterMark.asLiveData()

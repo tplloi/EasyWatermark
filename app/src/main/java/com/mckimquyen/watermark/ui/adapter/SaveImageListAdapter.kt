@@ -24,7 +24,7 @@ import com.mckimquyen.watermark.utils.ktx.appear
 import com.mckimquyen.watermark.utils.ktx.disappear
 
 class SaveImageListAdapter(
-    private val context: Context
+    private val context: Context,
 ) : RecyclerView.Adapter<SaveImageListAdapter.ImageHolder>() {
 
     val data: List<ImageInfo>
@@ -50,8 +50,7 @@ class SaveImageListAdapter(
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
-        val rootView =
-            LayoutInflater.from(context).inflate(R.layout.item_saving_image, parent, false)
+        val rootView = LayoutInflater.from(context).inflate(R.layout.item_saving_image, parent, false)
 
         val holder = ImageHolder(rootView)
         (rootView as ConstraintLayout).apply {
@@ -70,9 +69,9 @@ class SaveImageListAdapter(
     override fun onBindViewHolder(
         holder: ImageHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
-        processUI(holder, position, isPayLoad = !payloads.isNullOrEmpty())
+        processUI(holder, position, isPayLoad = payloads.isNotEmpty())
     }
 
     override fun onBindViewHolder(holder: ImageHolder, position: Int) {
@@ -88,12 +87,15 @@ class SaveImageListAdapter(
                 JobState.Ready -> {
                     holder.ready()
                 }
+
                 JobState.Ing -> {
                     holder.start()
                 }
+
                 is JobState.Failure -> {
                     holder.failed()
                 }
+
                 is JobState.Success -> {
                     holder.success(isPayLoad)
                 }

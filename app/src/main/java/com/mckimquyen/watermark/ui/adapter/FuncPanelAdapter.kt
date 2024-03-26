@@ -15,7 +15,7 @@ import com.mckimquyen.watermark.ui.base.BaseViewHolder
 import com.mckimquyen.watermark.utils.ktx.colorPrimary
 
 class FuncPanelAdapter(
-    val dataSet: ArrayList<FuncTitleModel>
+    val dataSet: ArrayList<FuncTitleModel>,
 ) : RecyclerView.Adapter<FuncPanelAdapter.FuncTitleHolder>() {
 
     var textColor: Int = MyApp.instance.applicationContext.colorPrimary
@@ -23,9 +23,9 @@ class FuncPanelAdapter(
 
     var selectedPos = 0
         set(value) {
-            notifyItemChanged(field, "Selected")
+            notifyItemChanged(/* position = */ field, /* payload = */ "Selected")
             field = value
-            notifyItemChanged(value, "Selected")
+            notifyItemChanged(/* position = */ value, /* payload = */ "Selected")
         }
 
     override fun getItemId(position: Int): Long {
@@ -41,10 +41,10 @@ class FuncPanelAdapter(
     override fun onBindViewHolder(
         holder: FuncTitleHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         super.onBindViewHolder(holder, position, payloads)
-        if (payloads.isNullOrEmpty()) {
+        if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
             return
         }

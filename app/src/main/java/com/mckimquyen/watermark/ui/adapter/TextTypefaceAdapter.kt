@@ -1,5 +1,6 @@
 package com.mckimquyen.watermark.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -16,11 +17,9 @@ class TextTypefaceAdapter(
     private val dataList: ArrayList<TextTypefaceModel>,
     initTypeface: TextTypeface? = TextTypeface.Normal,
     initTextStyle: TextPaintStyle? = TextPaintStyle.Fill,
-    private val onClickAction: (pos: Int, typeface: TextTypeface) -> Unit = { _, _ -> }
+    private val onClickAction: (pos: Int, typeface: TextTypeface) -> Unit = { _, _ -> },
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     private var selectedPos: Int
-
     private var textPaintStyle: TextPaintStyle
 
     init {
@@ -29,8 +28,7 @@ class TextTypefaceAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val root = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_typeface_style, parent, false)
+        val root = LayoutInflater.from(parent.context).inflate(R.layout.item_typeface_style, parent, false)
 
         return TypefaceHolder(
             root
@@ -44,21 +42,27 @@ class TextTypefaceAdapter(
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         super.onBindViewHolder(holder, position, payloads)
-        if (payloads.isNullOrEmpty()) {
+        if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
             return
         }
         handleView(holder, position)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+    ) {
         handleView(holder, position)
     }
 
-    private fun handleView(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun handleView(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+    ) {
         val model = dataList[position]
         val selected = position == selectedPos
         with(holder as TypefaceHolder) {
@@ -81,6 +85,7 @@ class TextTypefaceAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateTextStyle(textPaintStyle: TextPaintStyle) {
         this.textPaintStyle = textPaintStyle
         notifyDataSetChanged()
@@ -96,33 +101,37 @@ class TextTypefaceAdapter(
     }
 
     internal class TypefaceHolder(val root: View) : BaseViewHolder(root) {
-        val tvPreview: TextView by lazy { root.findViewById(R.id.tvPreview) }
-        val tvTitle: TextView? by lazy { root.findViewById(R.id.tvTitle) }
+        val tvPreview: TextView by lazy {
+            root.findViewById(R.id.tvPreview)
+        }
+        val tvTitle: TextView? by lazy {
+            root.findViewById(R.id.tvTitle)
+        }
     }
 
     data class TextTypefaceModel(
         val textTypeface: TextTypeface = TextTypeface.Normal,
-        val title: String
+        val title: String,
     )
 
     companion object {
         fun obtainDefaultTypefaceList(context: Context): ArrayList<TextTypefaceModel> {
             return arrayListOf(
                 TextTypefaceModel(
-                    TextTypeface.Normal,
-                    context.getString(R.string.text_typeface_normal)
+                    textTypeface = TextTypeface.Normal,
+                    title = context.getString(R.string.text_typeface_normal)
                 ),
                 TextTypefaceModel(
-                    TextTypeface.Bold,
-                    context.getString(R.string.text_typeface_bold)
+                    textTypeface = TextTypeface.Bold,
+                    title = context.getString(R.string.text_typeface_bold)
                 ),
                 TextTypefaceModel(
-                    TextTypeface.Italic,
-                    context.getString(R.string.text_typeface_italic)
+                    textTypeface = TextTypeface.Italic,
+                    title = context.getString(R.string.text_typeface_italic)
                 ),
                 TextTypefaceModel(
-                    TextTypeface.BoldItalic,
-                    context.getString(R.string.text_typeface_bold_italic)
+                    textTypeface = TextTypeface.BoldItalic,
+                    title = context.getString(R.string.text_typeface_bold_italic)
                 ),
             )
         }

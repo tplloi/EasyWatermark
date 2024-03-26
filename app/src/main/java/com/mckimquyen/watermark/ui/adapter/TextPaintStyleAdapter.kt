@@ -14,7 +14,7 @@ import com.mckimquyen.watermark.utils.ktx.colorPrimary
 class TextPaintStyleAdapter(
     private val dataList: ArrayList<TextPaintStyleModel>,
     initPaintStyle: TextPaintStyle? = TextPaintStyle.Fill,
-    private val onClickAction: (pos: Int, paintStyle: TextPaintStyle) -> Unit = { _, _ -> }
+    private val onClickAction: (pos: Int, paintStyle: TextPaintStyle) -> Unit = { _, _ -> },
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var selectedPos: Int
@@ -39,17 +39,20 @@ class TextPaintStyleAdapter(
     override fun onBindViewHolder(
         holder: RecyclerView.ViewHolder,
         position: Int,
-        payloads: MutableList<Any>
+        payloads: MutableList<Any>,
     ) {
         super.onBindViewHolder(holder, position, payloads)
-        if (payloads.isNullOrEmpty()) {
+        if (payloads.isEmpty()) {
             onBindViewHolder(holder, position)
             return
         }
         handleView(holder, position)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+    ) {
         handleView(holder, position)
     }
 
@@ -91,19 +94,19 @@ class TextPaintStyleAdapter(
 
     data class TextPaintStyleModel(
         val paintStyle: TextPaintStyle = TextPaintStyle.Fill,
-        val title: String
+        val title: String,
     )
 
     companion object {
         fun obtainDefaultPaintStyleList(context: Context): ArrayList<TextPaintStyleModel> {
             return arrayListOf(
                 TextPaintStyleModel(
-                    TextPaintStyle.Fill,
-                    context.getString(R.string.text_paint_fill)
+                    paintStyle = TextPaintStyle.Fill,
+                    title = context.getString(R.string.text_paint_fill)
                 ),
                 TextPaintStyleModel(
-                    TextPaintStyle.Stroke,
-                    context.getString(R.string.text_paint_stroke)
+                    paintStyle = TextPaintStyle.Stroke,
+                    title = context.getString(R.string.text_paint_stroke)
                 ),
             )
         }

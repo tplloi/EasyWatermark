@@ -15,14 +15,14 @@ abstract class BasePBFragment : BaseBindFragment<FBasePbBinding>() {
 
     override fun bindView(
         layoutInflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ): FBasePbBinding {
         val b = FBasePbBinding.inflate(layoutInflater, container, false)
 
         b.slideContentSize.apply {
             value = formatValue(shareViewModel.waterMark.value)
             addOnChangeListener { slider, value, fromUser ->
-                doOnChange(slider, value, fromUser)
+                doOnChange(slider = slider, value = value, fromUser = fromUser)
             }
         }
 
