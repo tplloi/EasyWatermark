@@ -17,5 +17,5 @@ data class WaterMark(
     val vGap: Int,
     val iconUri: Uri,
     val markMode: WaterMarkRepository.MarkMode,
-    val enableBounds: Boolean
+    val enableBounds: Boolean,
 )

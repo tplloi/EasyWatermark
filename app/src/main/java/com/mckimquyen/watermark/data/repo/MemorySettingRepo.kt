@@ -19,7 +19,6 @@ class MemorySettingRepo @Inject constructor() {
     private val scope = CoroutineScope(Dispatchers.Main)
 
     /**
-     * 从图片中提取的调色板，用于修改整体的主题配色
      * The color palette extracted from the picture, used to modify the overall theme color
      */
     private val _palette: MutableStateFlow<Palette?> = MutableStateFlow(null)

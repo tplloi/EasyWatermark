@@ -22,13 +22,11 @@ import javax.inject.Singleton
 
 @Singleton
 class UserConfigRepository @Inject constructor(
-    @Named("UserPreferences") private val dataStore: DataStore<Preferences>
+    @Named("UserPreferences") private val dataStore: DataStore<Preferences>,
 ) {
     private object PreferenceKeys {
         val KEY_OUTPUT_FORMAT = intPreferencesKey(SP_KEY_FORMAT)
-
         val KEY_COMPRESS_LEVEL = intPreferencesKey(SP_KEY_COMPRESS_LEVEL)
-
         val KEY_CHANGE_LOG = stringPreferencesKey(WaterMarkRepository.SP_KEY_CHANGE_LOG)
     }
 
@@ -54,7 +52,7 @@ class UserConfigRepository @Inject constructor(
         }
 
     suspend fun updateFormat(
-        outputFormat: Bitmap.CompressFormat
+        outputFormat: Bitmap.CompressFormat,
     ) {
         dataStore.edit {
             it[KEY_OUTPUT_FORMAT] = outputFormat.ordinal
@@ -62,7 +60,7 @@ class UserConfigRepository @Inject constructor(
     }
 
     suspend fun updateCompressLevel(
-        compressLevel: Int
+        compressLevel: Int,
     ) {
         dataStore.edit {
             it[KEY_COMPRESS_LEVEL] = compressLevel
@@ -78,8 +76,6 @@ class UserConfigRepository @Inject constructor(
     companion object {
         const val DEFAULT_COMPRESS_LEVEL = 80
         val DEFAULT_BITMAP_COMPRESS_FORMAT = Bitmap.CompressFormat.JPEG
-
-
         const val SP_NAME = "sp_water_mark_user_config"
         const val SP_KEY_FORMAT = "${SP_NAME}_key_format"
         const val SP_KEY_COMPRESS_LEVEL = "${SP_NAME}_key_compress_level"

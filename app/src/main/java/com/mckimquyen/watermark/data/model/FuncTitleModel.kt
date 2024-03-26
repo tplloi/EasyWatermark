@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 data class FuncTitleModel(
     var type: FuncType,
     var title: String,
-    @DrawableRes var iconRes: Int
+    @DrawableRes var iconRes: Int,
 ) {
     sealed class FuncType {
         object Text : FuncType()
@@ -15,17 +15,18 @@ data class FuncTitleModel(
         object Color : FuncType() {
             val tag = "Color"
         }
+
         object Alpha : FuncType()
         object Degree : FuncType()
         object TextStyle : FuncType()
         object Vertical : FuncType()
         object Horizon : FuncType()
         object TextSize : FuncType() {
-            val tag = "TextSize"
+            const val tag = "TextSize"
         }
 
         object TileMode : FuncType() {
-            val tag = "TileMode"
+            const val tag = "TileMode"
         }
     }
 }

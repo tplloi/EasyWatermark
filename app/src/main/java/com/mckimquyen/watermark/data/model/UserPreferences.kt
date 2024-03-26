@@ -7,7 +7,7 @@ import com.mckimquyen.watermark.data.repo.UserConfigRepository
 @Keep
 data class UserPreferences(
     val outputFormat: Bitmap.CompressFormat,
-    val compressLevel: Int
+    val compressLevel: Int,
 ) {
     companion object {
         val DEFAULT = UserPreferences(

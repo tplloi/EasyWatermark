@@ -2,7 +2,9 @@ package com.mckimquyen.watermark.data.model
 
 import android.graphics.Matrix
 import android.widget.ImageView
+import androidx.annotation.Keep
 
+@Keep
 data class ViewInfo(
     val width: Int,
     val height: Int,

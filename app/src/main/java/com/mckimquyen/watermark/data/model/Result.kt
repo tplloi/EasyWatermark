@@ -7,7 +7,7 @@ class Result<T>(
     var message: String? = null,
 ) {
 
-    fun isSuccess() = type == Type.Success
+//    fun isSuccess() = type == Type.Success
 
     fun isFailure() = type == Type.Failure
 

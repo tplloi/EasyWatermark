@@ -2,7 +2,9 @@ package com.mckimquyen.watermark.data.model
 
 import android.graphics.Paint
 import android.widget.TextView
+import androidx.annotation.Keep
 
+@Keep
 sealed class TextPaintStyle : SerializableSealClass<Int> {
 
     abstract fun applyStyle(tv: TextView?)

@@ -4,7 +4,9 @@ import android.graphics.Shader
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.FloatRange
+import androidx.annotation.Keep
 
+@Keep
 data class ImageInfo(
     val uri: Uri,
     var width: Int = 1,
@@ -45,18 +47,18 @@ data class ImageInfo(
     companion object {
         fun empty(): ImageInfo {
             return ImageInfo(
-                Uri.EMPTY,
-                1,
-                1,
-                1,
-                1f,
-                1f,
-                null,
-                JobState.Ready,
-                false,
-                Shader.TileMode.REPEAT.ordinal,
-                0.5f,
-                0.5f
+                uri = Uri.EMPTY,
+                width = 1,
+                height = 1,
+                inSample = 1,
+                scaleX = 1f,
+                scaleY = 1f,
+                result = null,
+                jobState = JobState.Ready,
+                isInDelModel = false,
+                tileMode = Shader.TileMode.REPEAT.ordinal,
+                offsetX = 0.5f,
+                offsetY = 0.5f
             )
         }
     }

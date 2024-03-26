@@ -1,12 +1,9 @@
 package com.mckimquyen.watermark.data.model
 
 import android.widget.TextView
+import androidx.annotation.Keep
 
-/**
- * Sealed for [android.graphics.Typeface]
- * @author rosuh
- * @date 2021/6/27
- */
+@Keep
 sealed class TextTypeface : SerializableSealClass<Int> {
 
     abstract fun applyStyle(tv: TextView?)

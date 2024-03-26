@@ -45,7 +45,7 @@ import javax.inject.Singleton
 
 @Singleton
 class WaterMarkRepository @Inject constructor(
-    @Named("WaterMarkPreferences") private val dataStore: DataStore<Preferences>
+    @Named("WaterMarkPreferences") private val dataStore: DataStore<Preferences>,
 ) {
 
     private object PreferenceKeys {
@@ -59,12 +59,13 @@ class WaterMarkRepository @Inject constructor(
         val KEY_VERTICAL_GAP = intPreferencesKey(SP_KEY_VERTICAL_GAP)
         val KEY_DEGREE = floatPreferencesKey(SP_KEY_DEGREE)
         val KEY_ICON_URI = stringPreferencesKey(SP_KEY_ICON_URI)
-        val KEY_URI = stringPreferencesKey(SP_KEY_URI)
+
+        //        val KEY_URI = stringPreferencesKey(SP_KEY_URI)
         val KEY_MODE = intPreferencesKey(SP_KEY_WATERMARK_MODE)
         val KEY_ENABLE_BOUNDS = booleanPreferencesKey(SP_KEY_ENABLE_BOUNDS)
-        val KEY_TILE_MODE = intPreferencesKey(SP_KEY_TILE_MODEL)
-        val KEY_OFFSET_X = floatPreferencesKey(SP_KEY_OFFSET_X)
-        val KEY_OFFSET_Y = floatPreferencesKey(SP_KEY_OFFSET_Y)
+//        val KEY_TILE_MODE = intPreferencesKey(SP_KEY_TILE_MODEL)
+//        val KEY_OFFSET_X = floatPreferencesKey(SP_KEY_OFFSET_X)
+//        val KEY_OFFSET_Y = floatPreferencesKey(SP_KEY_OFFSET_Y)
     }
 
     private val _selectedImage = MutableStateFlow(ImageInfo.empty())
@@ -81,8 +82,7 @@ class WaterMarkRepository @Inject constructor(
         }
         .map {
             WaterMark(
-                text = it[KEY_TEXT]
-                    ?: MyApp.instance.getString(R.string.config_default_water_mark_text),
+                text = it[KEY_TEXT] ?: MyApp.instance.getString(R.string.config_default_water_mark_text),
                 textSize = (it[KEY_TEXT_SIZE] ?: 14f).coerceAtLeast(1f),
                 textColor = it[KEY_TEXT_COLOR] ?: Color.parseColor("#FFB800"),
                 textStyle = TextPaintStyle.obtainSealedClass(it[KEY_TEXT_STYLE] ?: 0),
@@ -184,7 +184,7 @@ class WaterMarkRepository @Inject constructor(
             return
         }
         val index = imageInfoMap[selectedImage.value.uri] ?: kotlin.run {
-            Log.e("WaterMarkRepository", "updateOffset: imageInfo not found, uri = ${selectedImage.value.uri}")
+//            Log.e("WaterMarkRepository", "updateOffset: imageInfo not found, uri = ${selectedImage.value.uri}")
             return
         }
         val list = ArrayList(imageInfoList)
@@ -202,9 +202,9 @@ class WaterMarkRepository @Inject constructor(
         dataStore.edit { it[KEY_ENABLE_BOUNDS] = enable }
     }
 
-    suspend fun resetList() {
-        updateImageList(emptyList())
-    }
+//    suspend fun resetList() {
+//        updateImageList(emptyList())
+//    }
 
     suspend fun select(uri: Uri) = withContext(Dispatchers.Default) {
         val info = imageInfoList.find { it.uri == uri } ?: ImageInfo(uri)
@@ -219,7 +219,6 @@ class WaterMarkRepository @Inject constructor(
 
     companion object {
         const val SP_NAME = "sp_water_mark_config"
-
         const val SP_KEY_TEXT = "${SP_NAME}_key_text"
         const val SP_KEY_TEXT_SIZE = "${SP_NAME}_key_text_size"
         const val SP_KEY_TEXT_COLOR = "${SP_NAME}_key_text_color"
@@ -232,12 +231,12 @@ class WaterMarkRepository @Inject constructor(
         const val SP_KEY_CHANGE_LOG = "${SP_NAME}_key_change_log"
         const val SP_KEY_ENABLE_BOUNDS = "${SP_NAME}_key_enable_bounds"
         const val SP_KEY_ICON_URI = "${SP_NAME}_key_icon_uri"
-        const val SP_KEY_URI = "${SP_NAME}_key_uri"
+//        const val SP_KEY_URI = "${SP_NAME}_key_uri"
         const val SP_KEY_WATERMARK_MODE = "${SP_NAME}_key_watermark_mode"
-        const val SP_KEY_IMAGE_ROTATION = "${SP_NAME}_key_watermark_mode"
-        const val SP_KEY_TILE_MODEL = "${SP_NAME}_key_tile_model"
-        const val SP_KEY_OFFSET_X = "${SP_NAME}_key_offset_x"
-        const val SP_KEY_OFFSET_Y = "${SP_NAME}_key_offset_y"
+//        const val SP_KEY_IMAGE_ROTATION = "${SP_NAME}_key_watermark_mode"
+//        const val SP_KEY_TILE_MODEL = "${SP_NAME}_key_tile_model"
+//        const val SP_KEY_OFFSET_X = "${SP_NAME}_key_offset_x"
+//        const val SP_KEY_OFFSET_Y = "${SP_NAME}_key_offset_y"
         const val MAX_TEXT_SIZE = 100f
         const val MIN_TEXT_SIZE = 1f
         const val DEFAULT_TEXT_SIZE = 14f
