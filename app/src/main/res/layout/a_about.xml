@@ -19,12 +19,13 @@
         app:tint="?attr/colorPrimary"
         tools:ignore="ContentDescription" />
 
-    <com.mckimquyen.watermark.ui.widget.ColoredImageVIew
+    <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:src="@drawable/ic_logo_about_page"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
