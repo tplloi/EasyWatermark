@@ -81,31 +81,31 @@ class AboutActivity : AppCompatActivity() {
                 //TODO roy93~
                 openLink("https://github.com/rosuH/EasyWatermark/issues/new")
             }
-            tvChangeLog.setOnClickListener {
-                openLink("https://github.com/rosuH/EasyWatermark/releases/")
-            }
-            tvOpenSource.setOnClickListener {
-                kotlin.runCatching {
-                    startActivity(
-                        Intent(
-                            this@AboutActivity,
-                            OpenSourceActivity::class.java
-                        )
-                    )
-                }
-            }
-            tvPrivacyCn.setOnClickListener {
-                openLink(Uri.parse("https://github.com/rosuH/EasyWatermark/blob/master/PrivacyPolicy_zh-CN.md"))
-            }
+//            tvChangeLog.setOnClickListener {
+//                openLink("https://github.com/rosuH/EasyWatermark/releases/")
+//            }
+//            tvOpenSource.setOnClickListener {
+//                kotlin.runCatching {
+//                    startActivity(
+//                        Intent(
+//                            this@AboutActivity,
+//                            OpenSourceActivity::class.java
+//                        )
+//                    )
+//                }
+//            }
+//            tvPrivacyCn.setOnClickListener {
+//                openLink(Uri.parse("https://github.com/rosuH/EasyWatermark/blob/master/PrivacyPolicy_zh-CN.md"))
+//            }
             tvPrivacyEng.setOnClickListener {
-                openLink(Uri.parse("https://github.com/rosuH/EasyWatermark/blob/master/PrivacyPolicy.md"))
+                openLink(Uri.parse("https://loitp.notion.site/loitp/Privacy-Policy-319b1cd8783942fa8923d2a3c9bce60f"))
             }
-            civAvatar.setOnClickListener {
-                openLink("https://github.com/rosuH")
-            }
-            civAvatarDesigner.setOnClickListener {
-                openLink("https://tovi.fun/")
-            }
+//            civAvatar.setOnClickListener {
+//                openLink("https://github.com/rosuH")
+//            }
+//            civAvatarDesigner.setOnClickListener {
+//                openLink("https://tovi.fun/")
+//            }
             ivBack.setOnClickListener { finish() }
 
             switchDebug.setOnCheckedChangeListener { _, isChecked ->
