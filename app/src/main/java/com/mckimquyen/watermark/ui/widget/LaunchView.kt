@@ -81,8 +81,8 @@ class LaunchView : CustomViewGroup {
     val ivGoAboutPage: ImageView by lazy {
         ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
             layoutParams = MarginLayoutParams(
-                96.dp,
-                96.dp
+                250.dp,
+                250.dp
             ).also {
                 it.setMargins(0, 0, 0, 16.dp)
             }
