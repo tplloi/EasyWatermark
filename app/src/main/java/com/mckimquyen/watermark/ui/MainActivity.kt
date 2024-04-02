@@ -842,7 +842,7 @@ class MainActivity : AppCompatActivity() {
         ),
     ) {
         (launchView.parent as? View?)?.setBackgroundColor(color)
-        window?.navigationBarColor = Color.TRANSPARENT
+        window?.navigationBarColor = Color.BLACK
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             window?.navigationBarDividerColor = Color.TRANSPARENT
         }
