@@ -76,11 +76,11 @@ class AboutActivity : AppCompatActivity() {
 //            }
             tvVersionValue.text = BuildConfig.VERSION_NAME
             tvRating.setOnClickListener {
-                openLink(Uri.parse("market://details?id=${it.context.packageName}"))
+//                openLink(Uri.parse("https://play.google.com/store/apps/details?id=com.mckimquyen.kqxs"))
+                openLink(Uri.parse("https://play.google.com/store/apps/details?id=${it.context.packageName}"))
             }
             tvMoreApp.setOnClickListener {
-                //TODO roy93~
-                openLink("https://github.com/rosuH/EasyWatermark/issues/new")
+                openLink("https://play.google.com/store/apps/developer?id=McKimQuyen")
             }
 //            tvChangeLog.setOnClickListener {
 //                openLink("https://github.com/rosuH/EasyWatermark/releases/")
