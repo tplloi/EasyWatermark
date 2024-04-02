@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="45dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_settings"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_version"
-                app:drawableStartCompat="@drawable/ic_version"
+                app:drawableStartCompat="@drawable/baseline_error_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitleAbout" />
@@ -72,9 +72,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tvVersion"
                 app:layout_constraintEnd_toEndOf="@id/tvVersion"
-                app:layout_constraintTop_toTopOf="@id/tvVersion" />
+                app:layout_constraintTop_toTopOf="@id/tvVersion"
+                tools:text="@string/app_name" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvRating"
@@ -84,7 +86,7 @@
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_rating"
-                app:drawableStartCompat="@drawable/ic_rate"
+                app:drawableStartCompat="@drawable/baseline_grade_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvVersion" />
@@ -165,7 +167,7 @@
                 android:drawablePadding="24dp"
                 android:gravity="center|start"
                 android:text="@string/about_title_privacy_statement"
-                app:drawableStartCompat="@drawable/ic_privacy_en"
+                app:drawableStartCompat="@drawable/baseline_gpp_good_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPrivacyCn" />
