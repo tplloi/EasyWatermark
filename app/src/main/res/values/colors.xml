@@ -56,4 +56,5 @@
     <color name="seed">#FFDE32</color>
     <color name="error">#BA1B1B</color>
     <color name="design_default_color_on_error" tools:ignore="PrivateResource">#fff</color>
+    <color name="white">#ffffff</color>
 </resources>
