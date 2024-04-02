@@ -1,13 +1,11 @@
 package com.mckimquyen.watermark.ui.about
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -20,6 +18,7 @@ import androidx.core.view.children
 import androidx.core.widget.TextViewCompat
 import androidx.palette.graphics.Palette
 import com.jakewharton.processphoenix.ProcessPhoenix
+import com.mckimquyen.cmonet.CMonet
 import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.databinding.AAboutBinding
@@ -31,7 +30,6 @@ import com.mckimquyen.watermark.utils.ktx.inflate
 import com.mckimquyen.watermark.utils.ktx.openLink
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 import dagger.hilt.android.AndroidEntryPoint
-import com.mckimquyen.cmonet.CMonet
 
 @AndroidEntryPoint
 class AboutActivity : AppCompatActivity() {
@@ -107,7 +105,9 @@ class AboutActivity : AppCompatActivity() {
 //            civAvatarDesigner.setOnClickListener {
 //                openLink("https://tovi.fun/")
 //            }
-            ivBack.setOnClickListener { finish() }
+            ivBack.setOnClickListener {
+                finish()
+            }
 
             switchDebug.setOnCheckedChangeListener { _, isChecked ->
                 viewModel.toggleBounds(isChecked)
@@ -159,12 +159,8 @@ class AboutActivity : AppCompatActivity() {
                         return@observe
                     }
 
-                    true -> {
-                        applyPaletteForSupportLightStatusIcon(it)
-                    }
-
                     else -> {
-                        applyPaletteForNoMatterWhoYouAre(it)
+                        applyPaletteForSupportLightStatusIcon(it)
                     }
                 }
             }
@@ -208,30 +204,30 @@ class AboutActivity : AppCompatActivity() {
             }
     }
 
-    private fun applyPaletteForNoMatterWhoYouAre(palette: Palette) {
-        val bgColor = palette.bgColor(this@AboutActivity)
-        val bgAccent = palette.bgColor(this@AboutActivity)
-        val colorList = arrayOf(
-            ColorUtils.setAlphaComponent(bgColor, 255),
-            ColorUtils.setAlphaComponent(bgAccent, 65),
-        ).toIntArray()
-        bgDrawable.colors = colorList
-
-        val textColor = palette.titleTextColor(this@AboutActivity)
-        binding.clContainer.children
-            .plus(binding.tvTitle)
-            .plus(binding.tvSubTitle)
-            .plus(binding.tvTitleDesigner)
-            .plus(binding.tvSubTitleDesigner)
-            .forEach { view ->
-                if (view !is TextView) {
-                    return@forEach
-                }
-                view.setTextColor(textColor)
-                TextViewCompat.setCompoundDrawableTintList(
-                    view,
-                    ColorStateList.valueOf(textColor)
-                )
-            }
-    }
+//    private fun applyPaletteForNoMatterWhoYouAre(palette: Palette) {
+//        val bgColor = palette.bgColor(this@AboutActivity)
+//        val bgAccent = palette.bgColor(this@AboutActivity)
+//        val colorList = arrayOf(
+//            ColorUtils.setAlphaComponent(bgColor, 255),
+//            ColorUtils.setAlphaComponent(bgAccent, 65),
+//        ).toIntArray()
+//        bgDrawable.colors = colorList
+//
+//        val textColor = palette.titleTextColor(this@AboutActivity)
+//        binding.clContainer.children
+//            .plus(binding.tvTitle)
+//            .plus(binding.tvSubTitle)
+//            .plus(binding.tvTitleDesigner)
+//            .plus(binding.tvSubTitleDesigner)
+//            .forEach { view ->
+//                if (view !is TextView) {
+//                    return@forEach
+//                }
+//                view.setTextColor(textColor)
+//                TextViewCompat.setCompoundDrawableTintList(
+//                    view,
+//                    ColorStateList.valueOf(textColor)
+//                )
+//            }
+//    }
 }
