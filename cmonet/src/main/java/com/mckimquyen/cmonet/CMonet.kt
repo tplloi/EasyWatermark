@@ -30,7 +30,7 @@ object CMonet {
 
     fun isDynamicColorAvailable(): Boolean {
         val isDynamicColorAvailable = monetManufacturer.isDynamicColorAvailable()
-        Log.d(TAG, "isDynamicColorAvailable $isDynamicColorAvailable")
+//        Log.d(TAG, "isDynamicColorAvailable $isDynamicColorAvailable")
         return isDynamicColorAvailable
     }
 

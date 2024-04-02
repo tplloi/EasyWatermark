@@ -28,7 +28,7 @@ class MonetManufacturer(
     /**
      * cache in memory
      */
-    private var isForceSupport = sp.getValue(KEY_DYNAMIC_COLOR_FORCE, false)
+    private var isForceSupport = sp.getValue(KEY_DYNAMIC_COLOR_FORCE, true)
 
     override fun isDynamicColorAvailable(): Boolean {
         val setContains =
