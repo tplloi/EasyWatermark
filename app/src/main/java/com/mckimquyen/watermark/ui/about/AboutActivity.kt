@@ -2,33 +2,22 @@ package com.mckimquyen.watermark.ui.about
 
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
-import androidx.core.view.children
-import androidx.core.widget.TextViewCompat
-import androidx.palette.graphics.Palette
 import com.jakewharton.processphoenix.ProcessPhoenix
 import com.mckimquyen.cmonet.CMonet
 import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.databinding.AAboutBinding
-import com.mckimquyen.watermark.utils.ktx.bgColor
-import com.mckimquyen.watermark.utils.ktx.colorBackground
-import com.mckimquyen.watermark.utils.ktx.colorPrimary
 import com.mckimquyen.watermark.utils.ktx.colorSecondaryContainer
 import com.mckimquyen.watermark.utils.ktx.inflate
 import com.mckimquyen.watermark.utils.ktx.openLink
-import com.mckimquyen.watermark.utils.ktx.titleTextColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +27,7 @@ class AboutActivity : AppCompatActivity() {
 
     private val viewModel: AboutViewModel by viewModels()
 
-    private lateinit var bgDrawable: GradientDrawable
+//    private lateinit var bgDrawable: GradientDrawable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,12 +52,13 @@ class AboutActivity : AppCompatActivity() {
 
     private fun initView() {
         with(binding) {
-            bgDrawable = ContextCompat.getDrawable(
-                this@AboutActivity,
-                R.drawable.bg_gradient_about_page
-            ) as GradientDrawable
 
-            this.root.background = bgDrawable
+//            bgDrawable = ContextCompat.getDrawable(
+//                this@AboutActivity,
+//                R.drawable.bg_gradient_about_page
+//            ) as GradientDrawable
+//            this.root.background = bgDrawable
+
 //            tvVersion.setOnClickListener {
 //                openLink("https://github.com/rosuH/EasyWatermark/releases/")
 //            }
@@ -134,75 +124,75 @@ class AboutActivity : AppCompatActivity() {
                 switchDebug.isChecked = viewModel.waterMark.value?.enableBounds ?: false
             }
 
-            viewModel.palette.observe(this@AboutActivity) {
-                when {
-                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-                        applyPaletteForSupportNight(it)
-                    }
-
-                    it == null -> {
-                        binding.clContainer.children
-                            .plus(binding.tvTitle)
-                            .plus(binding.tvSubTitle)
-                            .plus(binding.tvTitleDesigner)
-                            .plus(binding.tvSubTitleDesigner)
-                            .forEach { view ->
-                                if (view !is TextView) {
-                                    return@forEach
-                                }
-                                view.setTextColor(Color.WHITE)
-                                TextViewCompat.setCompoundDrawableTintList(
-                                    view,
-                                    ColorStateList.valueOf(Color.WHITE)
-                                )
-                            }
-                        return@observe
-                    }
-
-                    else -> {
-                        applyPaletteForSupportLightStatusIcon(it)
-                    }
-                }
-            }
+//            viewModel.palette.observe(this@AboutActivity) {
+//                when {
+//                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+//                        applyPaletteForSupportNight(it)
+//                    }
+//
+//                    it == null -> {
+//                        binding.clContainer.children
+//                            .plus(binding.tvTitle)
+//                            .plus(binding.tvSubTitle)
+//                            .plus(binding.tvTitleDesigner)
+//                            .plus(binding.tvSubTitleDesigner)
+//                            .forEach { view ->
+//                                if (view !is TextView) {
+//                                    return@forEach
+//                                }
+//                                view.setTextColor(Color.WHITE)
+//                                TextViewCompat.setCompoundDrawableTintList(
+//                                    view,
+//                                    ColorStateList.valueOf(Color.WHITE)
+//                                )
+//                            }
+//                        return@observe
+//                    }
+//
+//                    else -> {
+//                        applyPaletteForSupportLightStatusIcon(it)
+//                    }
+//                }
+//            }
         }
     }
 
-    private fun applyPaletteForSupportNight(palette: Palette?) {
-        val bgColor = palette?.bgColor(this@AboutActivity) ?: this@AboutActivity.colorPrimary
-        val bgAccent = palette?.bgColor(this@AboutActivity) ?: this@AboutActivity.colorBackground
-        val colorList = arrayOf(
-            ColorUtils.setAlphaComponent(bgColor, 255),
-            ColorUtils.setAlphaComponent(bgAccent, 65),
-        ).toIntArray()
-        bgDrawable.colors = colorList
-    }
+//    private fun applyPaletteForSupportNight(palette: Palette?) {
+//        val bgColor = palette?.bgColor(this@AboutActivity) ?: this@AboutActivity.colorPrimary
+//        val bgAccent = palette?.bgColor(this@AboutActivity) ?: this@AboutActivity.colorBackground
+//        val colorList = arrayOf(
+//            ColorUtils.setAlphaComponent(bgColor, 255),
+//            ColorUtils.setAlphaComponent(bgAccent, 65),
+//        ).toIntArray()
+//        bgDrawable.colors = colorList
+//    }
 
-    private fun applyPaletteForSupportLightStatusIcon(palette: Palette) {
-        val bgColor = palette.bgColor(this@AboutActivity)
-        val bgAccent = palette.bgColor(this@AboutActivity)
-        val colorList = arrayOf(
-            ColorUtils.setAlphaComponent(bgColor, 255),
-            ColorUtils.setAlphaComponent(bgAccent, 65),
-        ).toIntArray()
-        bgDrawable.colors = colorList
-
-        val textColor = palette.titleTextColor(this@AboutActivity)
-        binding.clContainer.children
-            .plus(binding.tvTitle)
-            .plus(binding.tvSubTitle)
-            .plus(binding.tvTitleDesigner)
-            .plus(binding.tvSubTitleDesigner)
-            .forEach { view ->
-                if (view !is TextView) {
-                    return@forEach
-                }
-                view.setTextColor(textColor)
-                TextViewCompat.setCompoundDrawableTintList(
-                    view,
-                    ColorStateList.valueOf(textColor)
-                )
-            }
-    }
+//    private fun applyPaletteForSupportLightStatusIcon(palette: Palette) {
+//        val bgColor = palette.bgColor(this@AboutActivity)
+//        val bgAccent = palette.bgColor(this@AboutActivity)
+//        val colorList = arrayOf(
+//            ColorUtils.setAlphaComponent(bgColor, 255),
+//            ColorUtils.setAlphaComponent(bgAccent, 65),
+//        ).toIntArray()
+//        bgDrawable.colors = colorList
+//
+//        val textColor = palette.titleTextColor(this@AboutActivity)
+//        binding.clContainer.children
+//            .plus(binding.tvTitle)
+//            .plus(binding.tvSubTitle)
+//            .plus(binding.tvTitleDesigner)
+//            .plus(binding.tvSubTitleDesigner)
+//            .forEach { view ->
+//                if (view !is TextView) {
+//                    return@forEach
+//                }
+//                view.setTextColor(textColor)
+//                TextViewCompat.setCompoundDrawableTintList(
+//                    view,
+//                    ColorStateList.valueOf(textColor)
+//                )
+//            }
+//    }
 
 //    private fun applyPaletteForNoMatterWhoYouAre(palette: Palette) {
 //        val bgColor = palette.bgColor(this@AboutActivity)

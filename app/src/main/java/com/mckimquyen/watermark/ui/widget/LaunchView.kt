@@ -3,11 +3,14 @@ package com.mckimquyen.watermark.ui.widget
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.provider.CalendarContract
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
@@ -233,6 +236,14 @@ class LaunchView : CustomViewGroup {
         clipChildren = false
         clipToPadding = false
 //        setBackgroundColor(ContextCompat.getColor(context, R.color.md_theme_dark_background))
+
+//        val bgDrawable = ContextCompat.getDrawable(
+//            /* context = */ context,
+//            /* id = */ R.drawable.bg_gradient_about_page
+//        ) as GradientDrawable
+//        setBackgroundDrawable(bgDrawable)
+        setBackgroundColor(Color.BLACK)
+
         launchViews.forEach {
             it.isVisible = false
             addView(it)
