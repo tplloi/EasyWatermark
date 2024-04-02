@@ -60,10 +60,21 @@ class LaunchView : CustomViewGroup {
     //endregion
 
     //region 2 children components
-    val logoView: ColoredImageVIew by lazy {
-        ColoredImageVIew(context).apply {
-            layoutParams = MarginLayoutParams(180.dp, 180.dp)
-            setImageResource(R.drawable.ic_log_transparent)
+//    val logoView: ColoredImageVIew by lazy {
+//        ColoredImageVIew(context).apply {
+//            layoutParams = MarginLayoutParams(180.dp, 180.dp)
+//            setImageResource(R.drawable.ic_log_transparent)
+//        }
+//    }
+    private val logoView: ImageView by lazy {
+        ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
+            layoutParams = MarginLayoutParams(
+                250.dp,
+                250.dp
+            ).also {
+                it.setMargins(0, 0, 0, 16.dp)
+            }
+            setImageResource(R.drawable.ic_launcher)
         }
     }
 

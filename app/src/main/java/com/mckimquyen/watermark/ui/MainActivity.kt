@@ -426,11 +426,11 @@ class MainActivity : AppCompatActivity() {
             onModeChange { _, newMode ->
                 when (newMode) {
                     LaunchView.ViewMode.Editor -> {
-                        launchView.logoView.stop()
+//                        launchView.logoView.stop()
                     }
 
                     LaunchView.ViewMode.LaunchMode -> {
-                        launchView.logoView.start()
+//                        launchView.logoView.start()
                     }
                 }
             }
@@ -723,10 +723,10 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             GalleryFragment().apply {
-                launchView.logoView.stop()
-                doOnDismiss {
-                    launchView.logoView.start()
-                }
+//                launchView.logoView.stop()
+//                doOnDismiss {
+//                    launchView.logoView.start()
+//                }
                 show(supportFragmentManager, "GalleryFragment")
             }
         }
