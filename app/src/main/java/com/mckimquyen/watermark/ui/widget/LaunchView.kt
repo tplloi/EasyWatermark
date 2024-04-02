@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.widget.ImageView
+import androidx.constraintlayout.utils.widget.ImageFilterView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
@@ -19,6 +20,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.tabs.TabLayout
 import com.mckimquyen.watermark.R
@@ -67,13 +69,14 @@ class LaunchView : CustomViewGroup {
 //        }
 //    }
     private val logoView: ImageView by lazy {
-        ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
+        ImageFilterView(context).apply {
             layoutParams = MarginLayoutParams(
                 250.dp,
                 250.dp
             ).also {
                 it.setMargins(0, 0, 0, 16.dp)
             }
+            roundPercent = 1.0f
             setImageResource(R.drawable.ic_launcher)
         }
     }
