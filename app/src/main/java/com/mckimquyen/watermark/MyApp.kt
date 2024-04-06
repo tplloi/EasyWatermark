@@ -16,12 +16,7 @@ import kotlin.system.exitProcess
 //TODO ad
 //TODO firebase
 //TODO color
-
-//TODO rate app
 //TODO share app
-//TODO more app
-//TODO policy
-//TODO keystore
 
 //done
 //pkg name
@@ -29,6 +24,10 @@ import kotlin.system.exitProcess
 //ic launcher
 //ad id, internet permission in manifest
 //leak canary
+//rate app
+//more app
+//policy
+//keystore
 
 @HiltAndroidApp
 class MyApp : Application() {
