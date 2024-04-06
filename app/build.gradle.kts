@@ -23,6 +23,15 @@ android {
         setProperty("archivesBaseName", "$applicationId-v$versionName($versionCode)")
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = "loi"
+            keyPassword = "04021993"
+            storeFile = file("keystore.jks")
+            storePassword = "04021993"
+        }
+    }
+
     buildTypes {
         val debug by getting {
             applicationIdSuffix = ".debug"
@@ -35,6 +44,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "coroutines.pro", "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
 
         create("benchmark") {
