@@ -9,12 +9,11 @@
 
     <ImageView
         android:id="@+id/ivBack"
-        style="@style/Widget.AppCompat.ActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="45dp"
-        android:src="@drawable/ic_back"
+        android:src="@drawable/baseline_cancel_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/colorPrimary"

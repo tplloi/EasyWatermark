@@ -17,7 +17,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_back"
+            app:navigationIcon="@drawable/baseline_cancel_24"
+            app:navigationIconTint="@color/white"
             app:title="@string/about_title_open_source" />
 
         <com.google.android.material.card.MaterialCardView
