@@ -89,8 +89,9 @@ class LaunchView : CustomViewGroup {
             textAlignment = TEXT_ALIGNMENT_CENTER
             gravity = Gravity.CENTER
             text = context.getString(R.string.tips_pick_image)
+            textSize = 25f
             shapeAppearanceModel = ShapeAppearanceModel.Builder().also {
-                it.setAllCornerSizes(0f)
+                it.setAllCornerSizes(90f)
             }.build()
         }
     }
