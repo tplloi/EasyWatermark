@@ -2,6 +2,7 @@ package com.mckimquyen.watermark.ui.adapter
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.Color
 import android.util.Log
 import android.view.ViewGroup
 import androidx.constraintlayout.utils.widget.ImageFilterView
@@ -129,7 +130,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
                     }
                 }
                 holder.ivImage.post {
-                    holder.ivImage.loadSmall(uri, R.drawable.ic_gallery_item_placeholder)
+                    holder.ivImage.loadSmall(uri, R.drawable.ic_trans)
                 }
             }
         }
