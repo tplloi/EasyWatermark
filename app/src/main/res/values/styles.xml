@@ -2,22 +2,22 @@
 
     <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">45dp</item>
     </style>
 
     <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">45dp</item>
     </style>
 
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">45dp</item>
     </style>
 
     <style name="ShapeAppearance.App.FloatActionButton" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">0dp</item>
+        <item name="cornerSize">45dp</item>
     </style>
 
     <style name="WindowAnimationTransition" parent="Animation.MaterialComponents.BottomSheetDialog">
