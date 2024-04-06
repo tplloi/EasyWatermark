@@ -129,7 +129,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryItemHolder>() 
                     }
                 }
                 holder.ivImage.post {
-                    holder.ivImage.loadSmall(uri, R.drawable.ic_gallery_item_placeholder_container)
+                    holder.ivImage.loadSmall(uri, R.drawable.ic_gallery_item_placeholder)
                 }
             }
         }
