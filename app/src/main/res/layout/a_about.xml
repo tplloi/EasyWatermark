@@ -154,7 +154,7 @@
                 android:gravity="center|start"
                 android:text="@string/about_title_privacy_statement_zh"
                 android:visibility="gone"
-                app:drawableStartCompat="@drawable/ic_privacy_cn"
+                app:drawableStartCompat="@drawable/baseline_gpp_good_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvOpenSource" />
