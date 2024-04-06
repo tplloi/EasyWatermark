@@ -779,11 +779,13 @@ class MainActivity : AppCompatActivity() {
         }
         when (requestCode) {
             REQ_CODE_PICK_IMAGE -> {
-                Log.i(MainActivity::class.simpleName, finalList.toTypedArray().contentToString())
+                Log.d("roy93~", "requestCode REQ_CODE_PICK_IMAGE")
+                Log.d("roy93~", finalList.toTypedArray().contentToString())
                 dealWithImage(finalList)
             }
 
             REQ_PICK_ICON -> {
+                Log.d("roy93~", "requestCode REQ_CODE_PICK_IMAGE")
                 viewModel.updateIcon(finalList.first())
             }
         }
