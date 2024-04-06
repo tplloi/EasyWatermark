@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/ivSysImage"
-        android:icon="@drawable/ic_baseline_image_search_24"
+        android:icon="@drawable/sharp_content_paste_search_24"
         android:title="@string/pick_via_system"
         app:showAsAction="always" />
 </menu>
