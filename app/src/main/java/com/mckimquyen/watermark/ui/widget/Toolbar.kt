@@ -27,7 +27,7 @@ class Toolbar : CustomViewGroup {
     private val logoView: ColoredImageVIew by lazy {
         ColoredImageVIew(context).apply {
             layoutParams = MarginLayoutParams(48.dp, 48.dp)
-            setImageResource(R.drawable.ic_log_transparent)
+            setImageResource(R.drawable.ic_launcher)
         }
     }
 

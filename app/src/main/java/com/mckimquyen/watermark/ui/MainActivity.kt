@@ -437,8 +437,7 @@ class MainActivity : AppCompatActivity() {
         }
         // setting tool bar
         launchView.toolbar.apply {
-            navigationIcon =
-                ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_logo_tool_bar)
+            navigationIcon = ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_watermark)
             title = null
             setSupportActionBar(this)
             supportActionBar?.title = null
