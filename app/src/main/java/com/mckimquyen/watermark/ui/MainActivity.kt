@@ -737,6 +737,9 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.d("roy93~", "onRequestPermissionsResult requestCode $requestCode")
+        Log.d("roy93~", "onRequestPermissionsResult permissions $permissions")
+        Log.d("roy93~", "onRequestPermissionsResult grantResults $grantResults")
         when (requestCode) {
             REQ_CODE_REQ_WRITE_PERMISSION -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
@@ -745,7 +748,14 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.request_permission_failed),
                         Toast.LENGTH_SHORT
                     ).show()
+                } else {
+                    Log.d("roy93~", "onRequestPermissionsResult REQ_CODE_REQ_WRITE_PERMISSION")
+                    launchView.ivSelectedPhotoTips.performClick()
                 }
+            }
+
+            REQ_CODE_PICK_IMAGE -> {
+                Log.d("roy93~", "onRequestPermissionsResult REQ_CODE_PICK_IMAGE")
             }
         }
     }
