@@ -100,7 +100,7 @@ class LaunchView : CustomViewGroup {
         ImageView(context, null, 0, android.R.style.Widget_ActionButton).apply {
             layoutParams = MarginLayoutParams(
                 250.dp,
-                250.dp
+                120.dp
             ).also {
                 it.setMargins(0, 0, 0, 16.dp)
             }
