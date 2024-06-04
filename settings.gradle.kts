@@ -1,3 +1,4 @@
+rootProject.name = "Watermark_Creator"
 include(":app")
 include(":cmonet")
 //include(":baseBenchmarks")
