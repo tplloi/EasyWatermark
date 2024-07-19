@@ -196,7 +196,7 @@ class TouchSensitiveRv : RecyclerView {
         borderAnimator.cancel()
     }
 
-    override fun onDraw(c: Canvas?) {
+    override fun onDraw(c: Canvas) {
         super.onDraw(c)
         c?.withSave {
             drawRect(
