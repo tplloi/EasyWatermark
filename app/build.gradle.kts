@@ -31,11 +31,36 @@ android {
             storePassword = "04021993"
         }
     }
+    flavorDimensions.add("default")
+    productFlavors {
+        create("appTest") {
+//            dimension = "version"
+//            applicationIdSuffix = ".free"
+//            versionNameSuffix = "-free"
+//            resValue("string", "app_name", "Watermark Creator Free")
+            resValue("string", "SDK_KEY", "e75FnQfS9XTTqM1Kne69U7PW_MBgAnGQTFvtwVVui6kRPKs5L7ws9twr5IQWwVfzPKZ5pF2IfDa7lguMgGlCyt")
+            resValue("string", "BANNER", "")
+            resValue("string", "INTER", "")
+            resValue("string", "EnableAdInter", "true")
+            resValue("string", "EnableAdBanner", "true")
+        }
+        create("appRelease") {
+//            dimension = "version"
+//            applicationIdSuffix = ".free"
+//            versionNameSuffix = "-free"
+//            resValue("string", "app_name", "Watermark Creator")
+            resValue("string", "SDK_KEY", "e75FnQfS9XTTqM1Kne69U7PW_MBgAnGQTFvtwVVui6kRPKs5L7ws9twr5IQWwVfzPKZ5pF2IfDa7lguMgGlCyt")
+            resValue("string", "BANNER", "")
+            resValue("string", "INTER", "")
+            resValue("string", "EnableAdInter", "true")
+            resValue("string", "EnableAdBanner", "true")
+        }
+    }
 
     buildTypes {
-        val debug by getting {
-            applicationIdSuffix = ".debug"
-        }
+//        val debug by getting {
+//            applicationIdSuffix = ".debug"
+//        }
 
         val release by getting {
             isMinifyEnabled = true
@@ -120,6 +145,7 @@ dependencies {
     api(libs.palette.ktx)
     api(libs.profieinstaller)
     api(libs.colorpicker)
+    api("com.applovin:applovin-sdk:12.5.0")
     api("com.jakewharton:process-phoenix:3.0.0")
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
 }
