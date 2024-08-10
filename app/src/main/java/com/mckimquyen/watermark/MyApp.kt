@@ -10,10 +10,10 @@ import com.mckimquyen.watermark.data.repo.WaterMarkRepository
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.*
 import com.mckimquyen.cmonet.CMonet
+import com.mckimquyen.watermark.utils.setupApplovinAd
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
-//TODO ad
 //TODO firebase
 //TODO color
 //TODO share app
@@ -28,6 +28,7 @@ import kotlin.system.exitProcess
 //more app
 //policy
 //keystore
+//ad applovin
 
 @HiltAndroidApp
 class MyApp : Application() {
@@ -45,6 +46,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        this.setupApplovinAd()
         if (checkRecoveryMode()) {
             return
         } else {
