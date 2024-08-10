@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.mckimquyen.watermark",
+  "variantName": "appReleaseRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 20240819,
+      "versionName": "2024.08.10",
+      "outputFile": "com.mckimquyen.watermark-v2024.08.10(20240819).apk"
+    }
+  ],
+  "elementType": "File"
+}
