@@ -72,15 +72,15 @@ android {
             signingConfig = signingConfigs.getByName("release")
         }
 
-        create("benchmark") {
-            initWith(release)
-            signingConfig = signingConfigs.getByName("debug")
-            // [START_EXCLUDE silent]
-            // Selects release buildType if the benchmark buildType not available in other modules.
-            matchingFallbacks.add("release")
-            // [END_EXCLUDE]
-            proguardFiles("benchmark-rules.pro")
-        }
+//        create("benchmark") {
+//            initWith(release)
+//            signingConfig = signingConfigs.getByName("debug")
+//            // [START_EXCLUDE silent]
+//            // Selects release buildType if the benchmark buildType not available in other modules.
+//            matchingFallbacks.add("release")
+//            // [END_EXCLUDE]
+//            proguardFiles("benchmark-rules.pro")
+//        }
     }
 
     compileOptions {
