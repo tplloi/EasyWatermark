@@ -39,8 +39,8 @@ android {
 //            versionNameSuffix = "-free"
 //            resValue("string", "app_name", "Watermark Creator Free")
             resValue("string", "SDK_KEY", "e75FnQfS9XTTqM1Kne69U7PW_MBgAnGQTFvtwVVui6kRPKs5L7ws9twr5IQWwVfzPKZ5pF2IfDa7lguMgGlCyt")
-            resValue("string", "BANNER", "")
-            resValue("string", "INTER", "")
+            resValue("string", "BANNER", "d3455cc529985b25")
+            resValue("string", "INTER", "a48241ebcb20ad5c")
             resValue("string", "EnableAdInter", "true")
             resValue("string", "EnableAdBanner", "true")
         }
@@ -50,8 +50,8 @@ android {
 //            versionNameSuffix = "-free"
 //            resValue("string", "app_name", "Watermark Creator")
             resValue("string", "SDK_KEY", "e75FnQfS9XTTqM1Kne69U7PW_MBgAnGQTFvtwVVui6kRPKs5L7ws9twr5IQWwVfzPKZ5pF2IfDa7lguMgGlCyt")
-            resValue("string", "BANNER", "")
-            resValue("string", "INTER", "")
+            resValue("string", "BANNER", "d3455cc529985b25")
+            resValue("string", "INTER", "a48241ebcb20ad5c")
             resValue("string", "EnableAdInter", "true")
             resValue("string", "EnableAdBanner", "true")
         }
