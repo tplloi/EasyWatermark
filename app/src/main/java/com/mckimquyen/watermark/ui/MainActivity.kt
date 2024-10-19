@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -872,6 +873,13 @@ class MainActivity : AppCompatActivity() {
 
     fun getImageViewInfo(): ViewInfo {
         return ViewInfo.from(launchView.ivPhoto)
+    }
+
+    override fun attachBaseContext(context: Context) {
+        val override = Configuration(context.resources.configuration)
+        override.fontScale = 1.0f
+        applyOverrideConfiguration(override)
+        super.attachBaseContext(context)
     }
 
     companion object {

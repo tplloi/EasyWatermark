@@ -1,6 +1,8 @@
 package com.mckimquyen.watermark.ui.about
 
+import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
@@ -302,7 +304,7 @@ class AboutActivity : AppCompatActivity() {
         }
     }
 
-    fun showAd(runnable: Runnable? = null) {
+    private fun showAd(runnable: Runnable? = null) {
         val enableAdInter = getString(R.string.EnableAdInter) == "true"
         if (enableAdInter) {
             if (interstitialAd == null) {
@@ -328,4 +330,12 @@ class AboutActivity : AppCompatActivity() {
             runnable?.run()
         }
     }
+
+    override fun attachBaseContext(context: Context) {
+        val override = Configuration(context.resources.configuration)
+        override.fontScale = 1.0f
+        applyOverrideConfiguration(override)
+        super.attachBaseContext(context)
+    }
+
 }

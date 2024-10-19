@@ -1,5 +1,7 @@
 package com.mckimquyen.watermark.ui.about
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mckimquyen.watermark.databinding.AOpenSourceBinding
@@ -38,4 +40,12 @@ class OpenSourceActivity : AppCompatActivity() {
             openLink("https://github.com/zetbaitsu/Compressor/")
         }
     }
+
+    override fun attachBaseContext(context: Context) {
+        val override = Configuration(context.resources.configuration)
+        override.fontScale = 1.0f
+        applyOverrideConfiguration(override)
+        super.attachBaseContext(context)
+    }
+
 }
