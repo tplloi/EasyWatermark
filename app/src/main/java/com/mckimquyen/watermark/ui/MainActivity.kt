@@ -9,7 +9,6 @@ import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -27,7 +26,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.forEach
@@ -38,6 +36,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
+import com.mckimquyen.watermark.BaseActivity
 import com.mckimquyen.watermark.MyApp
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.FuncTitleModel
@@ -62,6 +61,7 @@ import com.mckimquyen.watermark.ui.panel.TileModeFragment
 import com.mckimquyen.watermark.ui.panel.VerticalPbFragment
 import com.mckimquyen.watermark.ui.widget.CenterLayoutManager
 import com.mckimquyen.watermark.ui.widget.LaunchView
+import com.mckimquyen.watermark.ui.widget.onItemClick
 import com.mckimquyen.watermark.utils.FileUtils
 import com.mckimquyen.watermark.utils.PickImageContract
 import com.mckimquyen.watermark.utils.VibrateHelper
@@ -74,13 +74,12 @@ import com.mckimquyen.watermark.utils.ktx.openLink
 import com.mckimquyen.watermark.utils.ktx.preCheckStoragePermission
 import com.mckimquyen.watermark.utils.ktx.titleTextColor
 import com.mckimquyen.watermark.utils.ktx.toColor
-import com.mckimquyen.watermark.ui.widget.onItemClick
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var pickIconLauncher: ActivityResultLauncher<String>
     private val viewModel: MainViewModel by viewModels()
@@ -873,13 +872,6 @@ class MainActivity : AppCompatActivity() {
 
     fun getImageViewInfo(): ViewInfo {
         return ViewInfo.from(launchView.ivPhoto)
-    }
-
-    override fun attachBaseContext(context: Context) {
-        val override = Configuration(context.resources.configuration)
-        override.fontScale = 1.0f
-        applyOverrideConfiguration(override)
-        super.attachBaseContext(context)
     }
 
     companion object {

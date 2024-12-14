@@ -20,6 +20,7 @@ import com.applovin.mediation.ads.MaxAdView
 import com.applovin.mediation.ads.MaxInterstitialAd
 import com.jakewharton.processphoenix.ProcessPhoenix
 import com.mckimquyen.cmonet.CMonet
+import com.mckimquyen.watermark.BaseActivity
 import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.databinding.AAboutBinding
@@ -31,7 +32,7 @@ import com.mckimquyen.watermark.utils.ktx.openLink
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : BaseActivity() {
 
     private val binding by inflate<AAboutBinding>()
 
@@ -329,13 +330,6 @@ class AboutActivity : AppCompatActivity() {
             Toast.makeText(this, "Applovin show ad Inter in debug mode", Toast.LENGTH_SHORT).show()
             runnable?.run()
         }
-    }
-
-    override fun attachBaseContext(context: Context) {
-        val override = Configuration(context.resources.configuration)
-        override.fontScale = 1.0f
-        applyOverrideConfiguration(override)
-        super.attachBaseContext(context)
     }
 
 }
