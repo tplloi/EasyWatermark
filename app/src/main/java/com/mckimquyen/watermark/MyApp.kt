@@ -17,9 +17,9 @@ import kotlin.system.exitProcess
 //TODO firebase
 //TODO color
 //TODO share app
-//TODO roy93~ review in app
 
 //done
+//review in app
 //font scale
 //120hz
 //pkg name

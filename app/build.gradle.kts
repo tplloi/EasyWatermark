@@ -147,5 +147,7 @@ dependencies {
     api(libs.colorpicker)
     api("com.applovin:applovin-sdk:13.0.1")
     api("com.jakewharton:process-phoenix:3.0.0")
+    implementation("com.google.android.play:review:2.0.2")
+    implementation("com.google.android.play:review-ktx:2.0.2")
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
 }
