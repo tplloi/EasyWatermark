@@ -84,7 +84,7 @@ fun Activity.rateAppInApp(forceRateInApp: Boolean = false) {
                 Log.d("roy93~", "requestReview isComplete ${task.isComplete}")
                 Log.d("roy93~", "requestReview exception ${task.exception}")
             } else {
-                @ReviewErrorCode val reviewErrorCode = (task.exception as ReviewException).errorCode
+                @ReviewErrorCode val reviewErrorCode = (task.exception as ReviewException?)?.errorCode
                 Log.e("roy93~", "requestReview error $reviewErrorCode")
             }
         }
