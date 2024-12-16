@@ -19,7 +19,7 @@ import kotlin.system.exitProcess
 //TODO share app
 
 //done
-//review in app
+//review in app bingo
 //font scale
 //120hz
 //pkg name

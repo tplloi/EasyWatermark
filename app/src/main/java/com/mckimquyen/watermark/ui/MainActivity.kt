@@ -37,12 +37,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.mckimquyen.watermark.BaseActivity
+import com.mckimquyen.watermark.BuildConfig
 import com.mckimquyen.watermark.MyApp
 import com.mckimquyen.watermark.R
 import com.mckimquyen.watermark.data.model.FuncTitleModel
 import com.mckimquyen.watermark.data.model.ImageInfo
 import com.mckimquyen.watermark.data.model.ViewInfo
 import com.mckimquyen.watermark.data.repo.WaterMarkRepository
+import com.mckimquyen.watermark.rateAppInApp
 import com.mckimquyen.watermark.ui.about.AboutActivity
 import com.mckimquyen.watermark.ui.adapter.FuncPanelAdapter
 import com.mckimquyen.watermark.ui.adapter.PhotoListPreviewAdapter
@@ -690,6 +692,7 @@ class MainActivity : BaseActivity() {
 
         R.id.actionSave -> {
             SaveImageBSDialogFragment.safetyShow(supportFragmentManager)
+            rateAppInApp(BuildConfig.DEBUG)
             true
         }
 
