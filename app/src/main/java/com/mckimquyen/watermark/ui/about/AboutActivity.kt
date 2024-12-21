@@ -80,7 +80,7 @@ class AboutActivity : BaseActivity() {
                 openLink(Uri.parse("https://play.google.com/store/apps/details?id=${it.context.packageName}"))
             }
             tvMoreApp.setOnClickListener {
-                openLink("https://play.google.com/store/apps/developer?id=McKimQuyen")
+                openLink("https://play.google.com/store/apps/developer?id=SAIGON PHANTOM LABS")
             }
 //            tvChangeLog.setOnClickListener {
 //                openLink("https://github.com/rosuH/EasyWatermark/releases/")
